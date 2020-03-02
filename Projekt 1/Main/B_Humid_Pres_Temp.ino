@@ -30,7 +30,7 @@ void Humid_Pres_Temp() {
     myFileB.print(',');
     myFileB.println(bme.readHumidity());
     myFileB.close();
-    delay(600000);
+    delay(6000);
   }
   else {
     Serial.print("Temperature = ");
@@ -62,7 +62,7 @@ void Humid_Pres_Temp() {
     myFileB.print(',');
     myFileB.println(bme.readHumidity());
     myFileB.close();
-    delay(300000);
+    delay(3000);
   }
 
 }
