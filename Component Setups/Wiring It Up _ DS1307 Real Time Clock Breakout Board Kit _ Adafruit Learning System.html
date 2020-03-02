@@ -1,0 +1,881 @@
+<!doctype html>
+<html lang="en-US" prefix="og: http://ogp.me/ns#">
+<head>
+<meta charset="utf-8">
+<link rel="mask-icon" href="/assets/adafruit_favicon-d77f206e6cc65b40101b6e5b8987f7c35cb6a283ea73c0adad50c37f7347c61a.svg" color="#000000">
+<link rel="shortcut icon" type="image/x-icon" href="/assets/favicon-0c79bd4bc582e6d4cf3afe417bd1e28120527c09d92c08a6464690c5bf6b85f4.ico" />
+<title>Wiring It Up | DS1307 Real Time Clock Breakout Board Kit | Adafruit Learning System</title>
+<meta name="csrf-param" content="authenticity_token" />
+<meta name="csrf-token" content="0CNTRE5Ih8RiPF8ZIfC+fv3i0hGgW4222A/loGniEbeXhbZRYWNfGIzwLsi1fGWpWFGahB8AgvIROQ7ZHEYN3A==" />
+<link rel="alternate" type="application/atom+xml" title="ATOM" href="/feed" />
+<link rel="alternate" type="application/rss+xml" title="RSS" href="/feed.rss" />
+<link rel="stylesheet" media="screen" href="/assets/application-b75f77aa280b21ca0353a60abb193b3e2c8d02797174340e7920475167d2bf81.css" data-turbolinks-track="reload" />
+<script src="https://www.googletagmanager.com/gtag/js?id=GTM-PRPXBQ6"></script>
+<script type="text/javascript">
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+  </script>
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+<meta name="turbolinks-cache-control" content="no-cache">
+<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+<script>window.NREUM||(NREUM={});NREUM.info={"beacon":"bam.nr-data.net","errorBeacon":"bam.nr-data.net","licenseKey":"308175db61","applicationID":"54271218","transactionName":"cVZXRUFeWghRShtEVlVcSh5AWVkT","queueTime":1,"applicationTime":122,"agent":""}</script>
+<script>(window.NREUM||(NREUM={})).loader_config={licenseKey:"308175db61",applicationID:"54271218"};window.NREUM||(NREUM={}),__nr_require=function(e,n,t){function r(t){if(!n[t]){var i=n[t]={exports:{}};e[t][0].call(i.exports,function(n){var i=e[t][1][n];return r(i||n)},i,i.exports)}return n[t].exports}if("function"==typeof __nr_require)return __nr_require;for(var i=0;i<t.length;i++)r(t[i]);return r}({1:[function(e,n,t){function r(){}function i(e,n,t){return function(){return o(e,[u.now()].concat(f(arguments)),n?null:this,t),n?void 0:this}}var o=e("handle"),a=e(4),f=e(5),c=e("ee").get("tracer"),u=e("loader"),s=NREUM;"undefined"==typeof window.newrelic&&(newrelic=s);var p=["setPageViewName","setCustomAttribute","setErrorHandler","finished","addToTrace","inlineHit","addRelease"],l="api-",d=l+"ixn-";a(p,function(e,n){s[n]=i(l+n,!0,"api")}),s.addPageAction=i(l+"addPageAction",!0),s.setCurrentRouteName=i(l+"routeName",!0),n.exports=newrelic,s.interaction=function(){return(new r).get()};var m=r.prototype={createTracer:function(e,n){var t={},r=this,i="function"==typeof n;return o(d+"tracer",[u.now(),e,t],r),function(){if(c.emit((i?"":"no-")+"fn-start",[u.now(),r,i],t),i)try{return n.apply(this,arguments)}catch(e){throw c.emit("fn-err",[arguments,this,e],t),e}finally{c.emit("fn-end",[u.now()],t)}}}};a("actionText,setName,setAttribute,save,ignore,onEnd,getContext,end,get".split(","),function(e,n){m[n]=i(d+n)}),newrelic.noticeError=function(e,n){"string"==typeof e&&(e=new Error(e)),o("err",[e,u.now(),!1,n])}},{}],2:[function(e,n,t){function r(e,n){var t=e.getEntries();t.forEach(function(e){"first-paint"===e.name?c("timing",["fp",Math.floor(e.startTime)]):"first-contentful-paint"===e.name&&c("timing",["fcp",Math.floor(e.startTime)])})}function i(e,n){var t=e.getEntries();t.length>0&&c("lcp",[t[t.length-1]])}function o(e){if(e instanceof s&&!l){var n,t=Math.round(e.timeStamp);n=t>1e12?Date.now()-t:u.now()-t,l=!0,c("timing",["fi",t,{type:e.type,fid:n}])}}if(!("init"in NREUM&&"page_view_timing"in NREUM.init&&"enabled"in NREUM.init.page_view_timing&&NREUM.init.page_view_timing.enabled===!1)){var a,f,c=e("handle"),u=e("loader"),s=NREUM.o.EV;if("PerformanceObserver"in window&&"function"==typeof window.PerformanceObserver){a=new PerformanceObserver(r),f=new PerformanceObserver(i);try{a.observe({entryTypes:["paint"]}),f.observe({entryTypes:["largest-contentful-paint"]})}catch(p){}}if("addEventListener"in document){var l=!1,d=["click","keydown","mousedown","pointerdown","touchstart"];d.forEach(function(e){document.addEventListener(e,o,!1)})}}},{}],3:[function(e,n,t){function r(e,n){if(!i)return!1;if(e!==i)return!1;if(!n)return!0;if(!o)return!1;for(var t=o.split("."),r=n.split("."),a=0;a<r.length;a++)if(r[a]!==t[a])return!1;return!0}var i=null,o=null,a=/Version\/(\S+)\s+Safari/;if(navigator.userAgent){var f=navigator.userAgent,c=f.match(a);c&&f.indexOf("Chrome")===-1&&f.indexOf("Chromium")===-1&&(i="Safari",o=c[1])}n.exports={agent:i,version:o,match:r}},{}],4:[function(e,n,t){function r(e,n){var t=[],r="",o=0;for(r in e)i.call(e,r)&&(t[o]=n(r,e[r]),o+=1);return t}var i=Object.prototype.hasOwnProperty;n.exports=r},{}],5:[function(e,n,t){function r(e,n,t){n||(n=0),"undefined"==typeof t&&(t=e?e.length:0);for(var r=-1,i=t-n||0,o=Array(i<0?0:i);++r<i;)o[r]=e[n+r];return o}n.exports=r},{}],6:[function(e,n,t){n.exports={exists:"undefined"!=typeof window.performance&&window.performance.timing&&"undefined"!=typeof window.performance.timing.navigationStart}},{}],ee:[function(e,n,t){function r(){}function i(e){function n(e){return e&&e instanceof r?e:e?c(e,f,o):o()}function t(t,r,i,o){if(!l.aborted||o){e&&e(t,r,i);for(var a=n(i),f=v(t),c=f.length,u=0;u<c;u++)f[u].apply(a,r);var p=s[y[t]];return p&&p.push([b,t,r,a]),a}}function d(e,n){h[e]=v(e).concat(n)}function m(e,n){var t=h[e];if(t)for(var r=0;r<t.length;r++)t[r]===n&&t.splice(r,1)}function v(e){return h[e]||[]}function g(e){return p[e]=p[e]||i(t)}function w(e,n){u(e,function(e,t){n=n||"feature",y[t]=n,n in s||(s[n]=[])})}var h={},y={},b={on:d,addEventListener:d,removeEventListener:m,emit:t,get:g,listeners:v,context:n,buffer:w,abort:a,aborted:!1};return b}function o(){return new r}function a(){(s.api||s.feature)&&(l.aborted=!0,s=l.backlog={})}var f="nr@context",c=e("gos"),u=e(4),s={},p={},l=n.exports=i();l.backlog=s},{}],gos:[function(e,n,t){function r(e,n,t){if(i.call(e,n))return e[n];var r=t();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(e,n,{value:r,writable:!0,enumerable:!1}),r}catch(o){}return e[n]=r,r}var i=Object.prototype.hasOwnProperty;n.exports=r},{}],handle:[function(e,n,t){function r(e,n,t,r){i.buffer([e],r),i.emit(e,n,t)}var i=e("ee").get("handle");n.exports=r,r.ee=i},{}],id:[function(e,n,t){function r(e){var n=typeof e;return!e||"object"!==n&&"function"!==n?-1:e===window?0:a(e,o,function(){return i++})}var i=1,o="nr@id",a=e("gos");n.exports=r},{}],loader:[function(e,n,t){function r(){if(!x++){var e=E.info=NREUM.info,n=d.getElementsByTagName("script")[0];if(setTimeout(s.abort,3e4),!(e&&e.licenseKey&&e.applicationID&&n))return s.abort();u(y,function(n,t){e[n]||(e[n]=t)}),c("mark",["onload",a()+E.offset],null,"api");var t=d.createElement("script");t.src="https://"+e.agent,n.parentNode.insertBefore(t,n)}}function i(){"complete"===d.readyState&&o()}function o(){c("mark",["domContent",a()+E.offset],null,"api")}function a(){return O.exists&&performance.now?Math.round(performance.now()):(f=Math.max((new Date).getTime(),f))-E.offset}var f=(new Date).getTime(),c=e("handle"),u=e(4),s=e("ee"),p=e(3),l=window,d=l.document,m="addEventListener",v="attachEvent",g=l.XMLHttpRequest,w=g&&g.prototype;NREUM.o={ST:setTimeout,SI:l.setImmediate,CT:clearTimeout,XHR:g,REQ:l.Request,EV:l.Event,PR:l.Promise,MO:l.MutationObserver};var h=""+location,y={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-1167.min.js"},b=g&&w&&w[m]&&!/CriOS/.test(navigator.userAgent),E=n.exports={offset:f,now:a,origin:h,features:{},xhrWrappable:b,userAgent:p};e(1),e(2),d[m]?(d[m]("DOMContentLoaded",o,!1),l[m]("load",r,!1)):(d[v]("onreadystatechange",i),l[v]("onload",r)),c("mark",["firstbyte",f],null,"api");var x=0,O=e(6)},{}],"wrap-function":[function(e,n,t){function r(e){return!(e&&e instanceof Function&&e.apply&&!e[a])}var i=e("ee"),o=e(5),a="nr@original",f=Object.prototype.hasOwnProperty,c=!1;n.exports=function(e,n){function t(e,n,t,i){function nrWrapper(){var r,a,f,c;try{a=this,r=o(arguments),f="function"==typeof t?t(r,a):t||{}}catch(u){l([u,"",[r,a,i],f])}s(n+"start",[r,a,i],f);try{return c=e.apply(a,r)}catch(p){throw s(n+"err",[r,a,p],f),p}finally{s(n+"end",[r,a,c],f)}}return r(e)?e:(n||(n=""),nrWrapper[a]=e,p(e,nrWrapper),nrWrapper)}function u(e,n,i,o){i||(i="");var a,f,c,u="-"===i.charAt(0);for(c=0;c<n.length;c++)f=n[c],a=e[f],r(a)||(e[f]=t(a,u?f+i:i,o,f))}function s(t,r,i){if(!c||n){var o=c;c=!0;try{e.emit(t,r,i,n)}catch(a){l([a,t,r,i])}c=o}}function p(e,n){if(Object.defineProperty&&Object.keys)try{var t=Object.keys(e);return t.forEach(function(t){Object.defineProperty(n,t,{get:function(){return e[t]},set:function(n){return e[t]=n,n}})}),n}catch(r){l([r])}for(var i in e)f.call(e,i)&&(n[i]=e[i]);return n}function l(n){try{e.emit("internal-error",n)}catch(t){}}return e||(e=i),t.inPlace=u,t.flag=a,t}},{}]},{},["loader"]);</script>
+<meta name="guide-title" content="DS1307 Real Time Clock Breakout Board Kit">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@adafruit">
+<meta name="twitter:title" content="DS1307 Real Time Clock Breakout Board Kit">
+<meta name="twitter:description" content="Real time clock mini-breakout board">
+<meta name="twitter:image:src" content="https://cdn-learn.adafruit.com/guides/images/000/000/196/medium800/ds1307rtc_LRG.jpg">
+<meta name="twitter:domain" content="https://learn.adafruit.com">
+<meta property="og:title" content="DS1307 Real Time Clock Breakout Board Kit" />
+<meta property="og:description" content="This is a great battery-backed real time clock (RTC) that allows your microcontroller project to keep track of time even if it is reprogrammed, or if the power is lost. Perfect for datalogging, clock-building, time stamping, timers and alarms, etc. The DS1307 is the most popular RTC, and works best with 5V-based chips such as the Arduino." />
+<meta property="og:type" content="website" />
+<meta property="og:image" content="https://cdn-learn.adafruit.com/guides/images/000/000/196/medium800/ds1307rtc_LRG.jpg" />
+<meta property="og:url" content="https://learn.adafruit.com/ds1307-real-time-clock-breakout-board-kit/wiring-it-up" />
+<meta property="og:site_name" content="Adafruit Learning System" />
+<script type="application/ld+json">
+      {
+        "@context": "http://schema.org",
+        "@type": "WebSite",
+        "url": "https://learn.adafruit.com/ds1307-real-time-clock-breakout-board-kit/wiring-it-up",
+        "name": "DS1307 Real Time Clock Breakout Board Kit",
+        "description": "This is a great battery-backed real time clock (RTC) that allows your microcontroller project to keep track of time even if it is reprogrammed, or if the power is lost. Perfect for datalogging, clock-building, time stamping, timers and alarms, etc. The DS1307 is the most popular RTC, and works best with 5V-based chips such as the Arduino.",
+        "publisher": "Adafruit",
+        "datePublished": "2013-01-29T18:49:14-05:00",
+        "potentialAction": {
+          "@type": "SearchAction",
+          "target": "https://learn.adafruit.com/search?q={search_term}",
+          "query-input": "required name=search_term"
+        },
+        "author": {
+          "@type": "Person",
+          "name": "Tyler Cooper"
+        }
+      }
+    </script>
+<!--[if lte IE 9]>
+    <script src="https://cdn.polyfill.io/v2/polyfill.min.js"></script>
+  <![endif]-->
+<script>
+    window.rails_env = 'production';
+  </script>
+<script src="/packs/js/application-8054bd89046f609780f7.js" data-turbolinks-track="reload"></script>
+<script type="application/ld+json">
+    {
+      "@context": "http://schema.org",
+      "@type": "WebSite",
+      "url": "https://learn.adafruit.com/",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://learn.adafruit.com/search?q={search_term}",
+        "query-input": "required name=search_term"
+      }
+    }
+  </script>
+</head>
+<body class="application pages show">
+
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PRPXBQ6"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+<div id="outer-wrapper">
+<div id="inner-wrapper">
+<div id="messaging-wrapper" data-load="https://www.adafruit.com/api/multi_message.php"></div>
+<header id="adafruit-header">
+<div id="small-header">
+<div class="first-row">
+<div class="row-content">
+<a id="small-header-menu-button" class="menu-link" href="#small-header-nav">
+<i class="fa fa-bars"> </i>
+</a>
+<div class="small-header-logo">
+<a href="https://learn.adafruit.com">
+<img id="small-logo" height="50" width="50" alt="Adafruit Logo" title="Adafruit Logo" src="/logos/adafruit_logo_small.png?-2231604269552442618" />
+</a> </div>
+<a class="small-header-cart" href="https://www.adafruit.com/shopping_cart">
+<span class="small-cart-count">0</span>
+<i class="fa fa-shopping-cart"></i>
+</a> </div>
+</div>
+<div class="second-row">
+<div id="small-search-wrapper">
+<div id="small-search-inner-wrapper">
+<form action="https://learn.adafruit.com/search" method="get">
+<label for="mobile-search" style="display:none;">Search</label>
+<input id="mobile-search" type="text" name="q" placeholder="Search Adafruit" />
+<i class="fa fa-search"></i>
+</form>
+</div>
+</div>
+</div>
+<nav id="small-header-nav">
+<div class="block">
+<ul>
+<li>
+<a href="https://www.adafruit.com/categories">SHOP</a>
+</li>
+<li>
+<a href="https://learn.adafruit.com">LEARN</a>
+</li>
+<li>
+<a href="https://blog.adafruit.com">BLOG</a>
+</li>
+<li>
+<a href="https://forums.adafruit.com">FORUMS</a>
+</li>
+<li>
+<a href="https://www.youtube.com/adafruit">VIDEOS</a>
+</li>
+<li>
+<a href="https://io.adafruit.com">IO</a>
+</li>
+<li>
+<a href="/users/sign_in">SIGN IN</a>
+</li>
+<li>
+<a class="close-btn" id="small-nav-close-button" href="#top">CLOSE MENU</a>
+</li>
+</ul>
+</div>
+</nav>
+</div>
+<div id="large-header">
+<div class="first-row">
+<div class="row-content">
+<ul class="application-links">
+<li><a href="https://www.adafruit.com">Shop</a></li>
+<li class="selected"><a href="https://learn.adafruit.com">Learn</a></li>
+<li><a href="https://blog.adafruit.com">Blog</a></li>
+<li><a href="https://forums.adafruit.com">Forums</a></li>
+<li><a href="https://www.youtube.com/adafruit">Videos</a></li>
+<li><a href="https://www.adabox.com">Adabox</a></li>
+<li><a href="https://io.adafruit.com">IO</a></li>
+</ul>
+<div id="account">
+<span class="sign-out"><a href="/users/sign_in">Sign In</a></span>
+<div class="cart">
+<a href="https://www.adafruit.com/shopping_cart">
+<i class="fa fa-shopping-cart"></i> 0
+</a> </div>
+</div>
+</div>
+</div>
+<div class="second-row">
+<div class="row-content">
+<div class="left-content">
+<div id="logo">
+<a href="https://learn.adafruit.com">
+<img id="logo" alt="Adafruit Logo" title="Adafruit Logo" src="/logos/logo_2x.png?-2231604269552442618" />
+</a> </div>
+<ul class="main-nav-links">
+<li class="dropdown with-overlay">
+<div class="dropdown-label">Explore & Learn</div>
+<div class="dropdown-container">
+<div class="dropdown-content">
+<div class="flyout">
+<div class="three-panels">
+<div class="first-column">
+<div class="content-header">
+<span class="title">Learn Categories</span><a class="view-all-count" href="/search">view all</a>
+</div>
+<div class="categories">
+<ul>
+<li><a href="https://learn.adafruit.com/category/adabox">AdaBox</a></li>
+<li><a href="https://learn.adafruit.com/category/adafruit-products">Adafruit Products</a></li>
+<li><a href="https://learn.adafruit.com/category/arduino">Arduino Compatibles</a></li>
+<li><a href="https://learn.adafruit.com/category/breakout-boards">Breakout Boards</a></li>
+<li><a href="https://learn.adafruit.com/category/circuit-playground">Circuit Playground</a></li>
+<li><a href="https://learn.adafruit.com/category/circuitpython">CircuitPython</a></li>
+<li><a href="https://learn.adafruit.com/category/collins-lab">Collin&#39;s Lab</a></li>
+<li><a href="https://learn.adafruit.com/category/components">Components</a></li>
+<li><a href="https://learn.adafruit.com/category/community-support">Community Support</a></li>
+<li><a href="https://learn.adafruit.com/category/customer-projects">Customer &amp; Partner Projects</a></li>
+<li><a href="https://learn.adafruit.com/category/development-boards">Development Boards</a></li>
+<li><a href="https://learn.adafruit.com/category/educators">Educators</a></li>
+<li><a href="https://learn.adafruit.com/category/el">EL Wire/Tape/Panel</a></li>
+<li><a href="https://learn.adafruit.com/category/feather">Feather</a></li>
+<li><a href="https://learn.adafruit.com/category/hacks">Hacks</a></li>
+<li><a href="https://learn.adafruit.com/category/internet-of-things-iot">Internet of Things - IOT</a></li>
+<li><a href="https://learn.adafruit.com/category/lcds-and-displays">LCDs &amp; Displays</a></li>
+</ul>
+<ul>
+<li><a href="https://learn.adafruit.com/category/leds">LEDs</a></li>
+<li><a href="https://learn.adafruit.com/category/maker-business">Maker Business</a></li>
+<li><a href="https://learn.adafruit.com/category/micro-bit">micro:bit</a></li>
+<li><a href="https://learn.adafruit.com/category/microcontrollers">Microcontrollers</a></li>
+<li><a href="https://learn.adafruit.com/category/programming">Programming</a></li>
+<li><a href="https://learn.adafruit.com/category/projects">Projects</a></li>
+<li><a href="https://learn.adafruit.com/category/raspberry-pi">Raspberry Pi</a></li>
+<li><a href="https://learn.adafruit.com/category/robotics">Robotics &amp; CNC</a></li>
+<li><a href="https://learn.adafruit.com/category/sensors">Sensors</a></li>
+<li><a href="https://learn.adafruit.com/category/tools">Tools</a></li>
+<li><a href="https://learn.adafruit.com/category/wearables">Wearables</a></li>
+<li><a href="https://learn.adafruit.com/category/3d-printing">3D Printing</a></li>
+<li><a href="https://learn.adafruit.com/category/crickit">Crickit</a></li>
+<li><a href="https://learn.adafruit.com/category/makecode">MakeCode</a></li>
+<li><a href="https://learn.adafruit.com/category/trellis">Trellis</a></li>
+<li><a href="https://learn.adafruit.com/category/machine-learning">Machine Learning</a></li>
+</ul>
+</div>
+</div>
+<div class="middle-column">
+<div class="content-header">
+<span class="title">Series</span><a class="view-all-count" href="/groups">view all</a>
+</div>
+<ul class="links">
+<li>
+<a href="/series/circuit-playground">Circuit Playground</a>
+</li>
+<li>
+<a href="/series/adafruit-io-basics">Adafruit IO Basics</a>
+</li>
+</ul>
+</div>
+<div class="last-column hide-md">
+<div class="group-headline">
+<a href="/tags/stemma">
+<img data-src="https://learn.adafruit.com/assets/headlines/stemma-ef66e02164d57776f3c6e36b958d49e60e4697687c622dbe925c112939a8961b.jpg" class="lazy" src="" />
+<div class="text">
+<div class="tagline">
+Plug-n-play components
+</div>
+<div class="main">
+STEMMA
+</div>
+</div>
+<div class="button">
+<div>Get connected</div>
+</div>
+</a> </div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</li>
+<li class="dropdown with-overlay">
+<div class="dropdown-label">New Guides</div>
+<div class="dropdown-container">
+<div class="dropdown-content">
+<div class="flyout">
+<div class="guide-group-preview">
+<div class="group-preview-header">
+<div>
+Latest Guides
+</div>
+<a class="view-all" href="/guides/latest">View All</a>
+</div>
+<div class="guide-group">
+<div class="guide-preview">
+<div class="preview-content">
+<a href="/adafruit-lis2mdl-triple-axis-magnetometer">
+<div class="image-container">
+<img data-src="https://cdn-learn.adafruit.com/guides/cropped_images/000/002/902/medium640/top_crop.jpg?1582909843" class="image-preview lazy" src="" />
+<div class="overlay">
+<div class="tagline">
+Magnetic field orientation in four square mm!
+</div>
+</div>
+</div>
+</a>
+<div class="bottom-section">
+<div class="author">
+<a class="purple" href="/users/siddacious">
+<span class="name">Bryan Siepert</span>
+</a> </div>
+<div class="title">
+<a class="purple" href="/adafruit-lis2mdl-triple-axis-magnetometer">Adafruit LIS2MDL Triple Axis Magnetometer</a>
+</div>
+<div class="badges">
+<div class="badge skill-level-icons" title="Beginner">
+Beginner
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="guide-preview">
+<div class="preview-content">
+<a href="/pyloton">
+<div class="image-container">
+<video class="video-preview lazy" preload="auto" muted="muted" loop="loop" autoplay="autoplay" playsinline data-error="/assets/missing%2Fmissing.png">
+<data-src src="https://cdn-learn.adafruit.com/guides/cropped_images/000/002/911/medium640mp4/bike-loop.mp4?1583116976"></data-src>
+<data-src src="https://cdn-learn.adafruit.com/guides/cropped_images/000/002/911/medium640webm/bike-loop.webm?1583116976" type="video/webm; codecs=vp8,vorbis"></data-src>
+Your browser does not support the video tag.
+</video>
+<div class="overlay">
+<div class="tagline">
+Open Source cycling computer that displays heart rate, speed, cadence, and song playback info!
+</div>
+</div>
+</div>
+</a>
+<div class="bottom-section">
+<div class="author">
+<a class="purple" href="/users/johnpark">
+<span class="name">John Park</span>
+</a> </div>
+<div class="title">
+<a class="purple" href="/pyloton">Pyloton: CircuitPython Cycling Computer</a>
+</div>
+<div class="badges">
+<div class="badge favorites " title="Favorites">
+1
+</div>
+<div class="badge skill-level-icons" title="Intermediate">
+Intermediate
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="guide-preview">
+<div class="preview-content">
+<a href="/circuitpython-ble-advertising-beacons">
+<div class="image-container">
+<video class="video-preview lazy" preload="auto" muted="muted" loop="loop" autoplay="autoplay" playsinline data-error="/assets/missing%2Fmissing.png">
+<data-src src="https://cdn-learn.adafruit.com/guides/cropped_images/000/002/916/medium640mp4/cluebacon.mp4?1582750271"></data-src>
+<data-src src="https://cdn-learn.adafruit.com/guides/cropped_images/000/002/916/medium640webm/cluebacon.webm?1582750271" type="video/webm; codecs=vp8,vorbis"></data-src>
+Your browser does not support the video tag.
+</video>
+<div class="overlay">
+<div class="tagline">
+Create your own Eddystone beacons to advertise URLs over Bluetooth LE
+</div>
+</div>
+</div>
+</a>
+<div class="bottom-section">
+<div class="author">
+<a class="purple" href="/users/johnpark">
+<span class="name">John Park</span>
+</a> </div>
+<div class="title">
+<a class="purple" href="/circuitpython-ble-advertising-beacons">CircuitPython BLE Advertising Beacons</a>
+</div>
+<div class="badges">
+<div class="badge skill-level-icons" title="Beginner">
+Beginner
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="guide-preview">
+<div class="preview-content">
+<a href="/blinking-led-with-zephyr-rtos">
+<div class="image-container">
+<video class="video-preview lazy" preload="auto" muted="muted" loop="loop" autoplay="autoplay" playsinline data-error="/assets/missing%2Fmissing.png">
+<data-src src="https://cdn-learn.adafruit.com/guides/cropped_images/000/002/907/medium640mp4/blinkygif.mp4?1582505759"></data-src>
+<data-src src="https://cdn-learn.adafruit.com/guides/cropped_images/000/002/907/medium640webm/blinkygif.webm?1582505759" type="video/webm; codecs=vp8,vorbis"></data-src>
+Your browser does not support the video tag.
+</video>
+<div class="overlay">
+<div class="tagline">
+Take the leap into Real Time Operating Systems with this simple example for the STM32 Feather
+</div>
+</div>
+</div>
+</a>
+<div class="bottom-section">
+<div class="author">
+<a class="purple" href="/users/hierophect">
+<span class="name">Lucian Copeland</span>
+</a> </div>
+<div class="title">
+<a class="purple" href="/blinking-led-with-zephyr-rtos">Blinking an LED with the Zephyr RTOS</a>
+</div>
+<div class="badges">
+<div class="badge skill-level-icons" title="Advanced">
+Advanced
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</li>
+</ul>
+</div>
+<div class="right-content">
+<div class="search-wrapper">
+<form action="/search" method="get">
+<label for="search" style="display:none;">Search</label>
+<input id="search" type="text" name="q" autocomplete="off" data-page="" data-app-id="W9DMM4OTH0" data-app-key="e613bcda3453b9ef887e2724362f9e57" data-app-index="learn_guides_production" data-app-uri="https://learn.adafruit.com" />
+<i class="fa fa-search"></i>
+<input type="submit" style="visibility: hidden; position: fixed;">
+</form>
+</div>
+</div>
+</div>
+</div>
+</div>
+</header>
+<div id="main-content">
+<div id="main-content-container">
+<div id="page-wrapper" class="">
+<article id="content-wrapper" class="double-sidebar-layout" data-page-id="1115" data-guide-id="196">
+<div class="content">
+<div class="sidebar-left-wrapper">
+<div class="sidebar-left-content" data-clampedwidth=".sidebar-left-wrapper">
+<nav class="sidebar-left">
+<div class="title-bar">
+<div class="image-container">
+<img data-src="https://cdn-learn.adafruit.com/guides/cropped_images/000/000/196/medium640/ds1307rtc_LRG.jpg?1534967584" class="image-preview lazy" src="" />
+</div>
+<div class="title">
+<h1><a href="/ds1307-real-time-clock-breakout-board-kit/overview">DS1307 Real Time Clock Breakout Board Kit</a></h1>
+<span class="page-tagline"><a href="/ds1307-real-time-clock-breakout-board-kit/overview">Real time clock mini-breakout board</a></span>
+</div>
+</div>
+<ul class="page-parent nav">
+<li class='parent  '>
+<a class="published" href="/ds1307-real-time-clock-breakout-board-kit/overview">Overview</a>
+</li>
+<li class='parent  '>
+<a class="published" href="/ds1307-real-time-clock-breakout-board-kit/what-is-an-rtc">What is an RTC?</a>
+</li>
+<li class='parent  '>
+<a class="published" href="/ds1307-real-time-clock-breakout-board-kit/parts-list">Parts List</a>
+</li>
+<li class='parent  '>
+<a class="published" href="/ds1307-real-time-clock-breakout-board-kit/assembly">Assembly</a>
+</li>
+<li class='parent  active'>
+<a class="published" href="/ds1307-real-time-clock-breakout-board-kit/wiring-it-up">Wiring It Up</a>
+</li>
+<li class='parent  '>
+<a class="published" href="/ds1307-real-time-clock-breakout-board-kit/arduino-library">Arduino Library</a>
+</li>
+<li class='parent  '>
+<a class="published" href="/ds1307-real-time-clock-breakout-board-kit/understanding-the-code">Understanding the Code</a>
+</li>
+<li class='parent  '>
+<a class="published" href="/ds1307-real-time-clock-breakout-board-kit/downloads">Downloads</a>
+</li>
+<li class="single-page-spacer"></li>
+<li class="single-page-link ">
+<a href="/ds1307-real-time-clock-breakout-board-kit/featured_products">Featured Products</a>
+</li>
+<li class="single-page-link"><a href="/ds1307-real-time-clock-breakout-board-kit?view=all">Single Page</a></li>
+<li><a href="https://cdn-learn.adafruit.com/downloads/pdf/ds1307-real-time-clock-breakout-board-kit.pdf?timestamp=1583130798">Download PDF</a></li>
+</ul>
+</nav>
+<header class="sidebar-meta hidden-xs">
+<h4>Contributors</h4>
+<div><a href="/users/tcooper">Tyler Cooper</a></div>
+</header>
+<header class="sidebar-meta hidden-xs">
+<a class="feedback-link" title="Feedback? Corrections?" rel="nofollow" data-remote="true" data-method="get" href="/feedback/new?page_id=1115">
+Feedback? Corrections?
+</a> </header>
+</div>
+</div>
+<div class="main-content">
+<div id="categories">
+<span class="category ">
+<a href="/category/adafruit-products">ADAFRUIT PRODUCTS</a>
+</span>
+<span class="category child-category">
+<a href="/category/breakout-boards">BREAKOUT BOARDS</a>
+<span class="category-link-spacer">/</span>
+<a href="/category/clocks">CLOCKS</a>
+</span>
+<span id="guide-favorite">
+<a class="favorites-link category right red" title="Favorite this guide?" data-toggle="tooltip" data-placement="left" data-remote="true" rel="nofollow" data-method="post" href="/guides/196/favorites.js">
+<i class="fa fa-heart-o"></i>
+</a></span>
+</div>
+<div class="page-title-wrapper">
+<h1 class="headline">
+<span id="wiring-it-up">Wiring It Up</span>
+</h1>
+<div class="author">
+<a class="purple" href="/users/tcooper">
+<span class="name">Tyler Cooper</span>
+</a> </div>
+</div>
+<div class="page-content">
+<div class="">
+<div class="row-fluid build-text">
+<p>There are only 5 pins: <strong>5V GND SCL SDA SQW</strong>.</p>
+<ul>
+<li>
+<strong>5V </strong>is used to power to the RTC chip when you want to query it for the time. If there is no 5V signal, the chip goes to sleep using the coin cell for backup.</li>
+<li>Connect <strong>GND </strong>to common power/data ground</li>
+<li>Connect the <strong>SCL</strong> pin to the I2C clock <strong>SCL</strong> pin on your Arduino. On an UNO &amp; '328 based Arduino, this is also known as <strong>A5</strong>, on a Mega it is also known as <strong>digital 21</strong> and on a Leonardo/Micro, <strong>digital 3</strong>
+</li>
+<li>Connect the <strong>SDA</strong> pin to the I2C data <strong>SDA </strong>pin on your Arduino. On an UNO &amp; '328 based Arduino, this is also known as <strong>A4</strong>, on a Mega it is also known as <strong>digital 20</strong> and on a Leonardo/Micro, <strong>digital 2</strong>
+</li>
+</ul>
+<p><strong>SQW</strong> is the optional square-wave output you can get from the RTC if you have configured it to do so. Most people don't need or use this pin</p>
+</div>
+<div class="row-fluid build-image">
+<a href="/assets/3812">
+<img class="3812-asset img-responsive lazy" srcset="https://cdn-learn.adafruit.com/assets/assets/000/003/812/medium260/adafruit_products_breadboard.jpg?1396801999 260w,
+               https://cdn-learn.adafruit.com/assets/assets/000/003/812/medium640/adafruit_products_breadboard.jpg?1396801999 640w,
+               https://cdn-learn.adafruit.com/assets/assets/000/003/812/medium800/adafruit_products_breadboard.jpg?1396801999 800w,
+               https://cdn-learn.adafruit.com/assets/assets/000/003/812/large1024/adafruit_products_breadboard.jpg?1396801999 1024w" sizes="(max-width: 768px) 100vw, (max-width: 1024px) 65vw, (max-width: 1365px) 47vw, 750px" data-src="https://cdn-learn.adafruit.com/assets/assets/000/003/812/medium800/adafruit_products_breadboard.jpg?1396801999" alt="adafruit_products_breadboard.jpg" />
+<span class="image-expand"><i class="fa fa-search-plus"></i></span>
+</a> </div>
+<div class="row-fluid build-text">
+<h1>
+<div class="anchor-anchor">
+<a href="#fun-plug-in-hack-for-arduino-uno-5-3" class="anchor-link"><span class="fa fa-link"></span></a><span id="fun-plug-in-hack-for-arduino-uno-5-3" class="anchor-link-target"></span><span id="fun-plug-in-hack-for-arduino-uno-5-3" class="anchor-link-target"></span>
+</div>Fun Plug-in Hack for Arduino UNO</h1>
+<p>If you set analog pin <strong>A3</strong> to an OUTPUT and HIGH and <strong>A2</strong> to an OUTPUT and LOW you can power the RTC directly from the pins!</p>
+<p>Connect Arduino UNO A4 to SDA. Connect Arduino analog pin A5 to SCL.</p>
+<p>This only works on an UNO and other ATmega328-based Arduinos!</p>
+</div>
+<div class="row-fluid build-image">
+<a href="/assets/3813">
+<img class="3813-asset img-responsive lazy" srcset="https://cdn-learn.adafruit.com/assets/assets/000/003/813/medium260/adafruit_products_quickplug.jpg?1396802006 260w,
+               https://cdn-learn.adafruit.com/assets/assets/000/003/813/medium640/adafruit_products_quickplug.jpg?1396802006 640w,
+               https://cdn-learn.adafruit.com/assets/assets/000/003/813/medium800/adafruit_products_quickplug.jpg?1396802006 800w,
+               https://cdn-learn.adafruit.com/assets/assets/000/003/813/large1024/adafruit_products_quickplug.jpg?1396802006 1024w" sizes="(max-width: 768px) 100vw, (max-width: 1024px) 65vw, (max-width: 1365px) 47vw, 750px" data-src="https://cdn-learn.adafruit.com/assets/assets/000/003/813/medium800/adafruit_products_quickplug.jpg?1396802006" alt="adafruit_products_quickplug.jpg" />
+<span class="image-expand"><i class="fa fa-search-plus"></i></span>
+</a> </div>
+</div>
+<div class="page-navigation">
+<a class="previous-page" href="/ds1307-real-time-clock-breakout-board-kit/assembly">
+<i class="fa fa-chevron-left"></i>ASSEMBLY
+</a> <a class="next-page" href="/ds1307-real-time-clock-breakout-board-kit/arduino-library">
+Arduino Library<i class="fa fa-chevron-right"></i>
+</a> <div class="clear"></div>
+</div>
+<span class="page-last-updated">
+This guide was first published on Jan 29, 2013. It was last
+updated on Jan 29, 2013.
+</span>
+<span class="page-last-updated">
+This page (Wiring It Up) was last updated on Mar 01, 2020.
+</span>
+</div>
+</div>
+<div class="sidebar-right-wrapper">
+<div class="sidebar-right-content">
+<div class="featured-products">
+<div class="product-wrapper">
+<a href="https://www.adafruit.com/product/3296">
+<div class="product-image">
+<img data-src="https://cdn-shop.adafruit.com/640x480/3296-00.jpg" alt="" height="233" class="lazy" data-error="/assets/missing%2Fmissing.png">
+</div>
+<div class="product-details">
+<div class="product-title">Adafruit DS1307 Real Time Clock Assembled Breakout Board</div>
+<span class="product-price hide-xs">$7.50</span>
+</div>
+</a> <div class="product-purchase-link hide-xs">
+<a id="3296-product" class="product-buy btn-primary " data-pid="3296" data-qty="1" data-name="Adafruit DS1307 Real Time Clock Assembled Breakout Board" target="_blank" href="https://www.adafruit.com/product/3296">Add to Cart</a>
+</div>
+</div>
+<div class="product-wrapper">
+<a href="https://www.adafruit.com/product/380">
+<div class="product-image">
+<img data-src="https://cdn-shop.adafruit.com/640x480/380-01.jpg" alt="" height="233" class="lazy" data-error="/assets/missing%2Fmissing.png">
+</div>
+<div class="product-details">
+<div class="product-title">CR1220 12mm Diameter - 3V Lithium Coin Cell Battery</div>
+<span class="product-price hide-xs">$0.95</span>
+</div>
+</a> <div class="product-purchase-link hide-xs">
+<a id="380-product" class="product-buy btn-primary " data-pid="380" data-qty="1" data-name="CR1220 12mm Diameter - 3V Lithium Coin Cell Battery" target="_blank" href="https://www.adafruit.com/product/380">Add to Cart</a>
+</div>
+</div>
+<div class="product-wrapper">
+<a href="https://www.adafruit.com/product/50">
+<div class="product-image">
+<img data-src="https://cdn-shop.adafruit.com/640x480/50-09.jpg" alt="" height="233" class="lazy" data-error="/assets/missing%2Fmissing.png">
+</div>
+<div class="product-details">
+<div class="product-title">Adafruit METRO 328 Fully Assembled - Arduino IDE compatible</div>
+<span class="product-price hide-xs">$17.50</span>
+</div>
+</a> <div class="product-purchase-link hide-xs">
+<a id="50-product" class="product-buy btn-primary " data-pid="50" data-qty="1" data-name="Adafruit METRO 328 Fully Assembled - Arduino IDE compatible" target="_blank" href="https://www.adafruit.com/product/50">Add to Cart</a>
+</div>
+</div>
+<div class="product-wrapper">
+<a href="https://www.adafruit.com/product/153">
+<div class="product-image">
+<img data-src="https://cdn-shop.adafruit.com/640x480/153-04.jpg" alt="" height="233" class="lazy" data-error="/assets/missing%2Fmissing.png">
+</div>
+<div class="product-details">
+<div class="product-title">Breadboarding wire bundle</div>
+<span class="product-price hide-xs">$4.95</span>
+</div>
+</a> <div class="product-purchase-link hide-xs">
+<a id="153-product" class="product-buy btn-primary " data-pid="153" data-qty="1" data-name="Breadboarding wire bundle" target="_blank" href="https://www.adafruit.com/product/153">Add to Cart</a>
+</div>
+</div>
+<div class="product-wrapper">
+<a href="https://www.adafruit.com/product/255">
+<div class="product-image">
+<img data-src="https://cdn-shop.adafruit.com/640x480/255-01.jpg" alt="" height="233" class="lazy" data-error="/assets/missing%2Fmissing.png">
+</div>
+<div class="product-details">
+<div class="product-title">ChronoDot - Ultra-precise Real Time Clock</div>
+<span class="product-price hide-xs">$17.50</span>
+</div>
+</a> <div class="product-purchase-link hide-xs">
+<a id="255-product" class="product-buy btn-primary " data-pid="255" data-qty="1" data-name="ChronoDot - Ultra-precise Real Time Clock" target="_blank" href="https://www.adafruit.com/product/255">Add to Cart</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</article>
+<div class="related-guides-wrapper">
+<div class="guide-group-preview">
+<div class="group-preview-header">
+<div>
+Related Guides
+</div>
+</div>
+<div class="guide-group">
+<div class="guide-preview">
+<div class="preview-content">
+<a href="/adafruit-1-14-240x135-color-tft-breakout">
+<div class="image-container">
+<img data-src="https://cdn-learn.adafruit.com/guides/cropped_images/000/002/766/medium640/48876473946_64866caa3f_k.jpg?1571777528" class="image-preview lazy" src="" />
+<div class="overlay">
+<div class="tagline">
+Adafruit 1.14&quot; 240x135 Color TFT Display + MicroSD Card Breakout - ST7789
+</div>
+</div>
+</div>
+</a>
+<div class="bottom-section">
+<div class="author">
+<a class="purple" href="/users/MakerMelissa">
+<span class="name">M. LeBlanc-Williams</span>
+</a> </div>
+<div class="title">
+<a class="purple" href="/adafruit-1-14-240x135-color-tft-breakout">Adafruit 1.14&quot; 240x135 Color TFT Breakout LCD Display</a>
+</div>
+<div class="badges">
+<div class="badge favorites " title="Favorites">
+1
+</div>
+<div class="badge skill-level-icons" title="Beginner">
+Beginner
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="guide-preview">
+<div class="preview-content">
+<a href="/adafruit-arduino-lesson-16-stepper-motors">
+<div class="image-container">
+<img data-src="https://cdn-learn.adafruit.com/guides/cropped_images/000/000/142/medium640/overview.jpg?1520540019" class="image-preview lazy" src="" />
+<div class="overlay">
+<div class="tagline">
+Learn Arduino, Lesson 16. Stepper Motors
+</div>
+</div>
+</div>
+</a>
+<div class="bottom-section">
+<div class="author">
+<a class="purple" href="/users/simonmonk">
+<span class="name">Simon Monk</span>
+</a> </div>
+<div class="title">
+<a class="purple" href="/adafruit-arduino-lesson-16-stepper-motors">Arduino Lesson 16. Stepper Motors</a>
+</div>
+<div class="badges">
+<div class="badge favorites " title="Favorites">
+50
+</div>
+<div class="badge skill-level-icons" title="Intermediate">
+Intermediate
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="guide-preview">
+<div class="preview-content">
+<a href="/make-a-google-glass-remote-with-bluefruit">
+<div class="image-container">
+<img data-src="https://cdn-learn.adafruit.com/guides/cropped_images/000/000/418/medium640/Untitled.jpg?1515089817" class="image-preview lazy" src="" />
+<div class="overlay">
+<div class="tagline">
+Reconfigure Bluefruit as a remote!
+</div>
+</div>
+</div>
+</a>
+<div class="bottom-section">
+<div class="author">
+<a class="purple" href="/users/DeqingSun">
+<span class="name">Deqing Sun</span>
+</a> </div>
+<div class="title">
+<a class="purple" href="/make-a-google-glass-remote-with-bluefruit">Make a Google Glass remote with Bluefruit</a>
+</div>
+<div class="badges">
+<div class="badge favorites " title="Favorites">
+3
+</div>
+<div class="badge skill-level-icons" title="Beginner">
+Beginner
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="guide-preview">
+<div class="preview-content">
+<a href="/circuitpython-oled-watch">
+<div class="image-container">
+<img data-src="https://cdn-learn.adafruit.com/guides/cropped_images/000/001/504/medium640/hero-front-orange.jpg?1535580070" class="image-preview lazy" src="" />
+<div class="overlay">
+<div class="tagline">
+Make a CircuitPython OLED Watch
+</div>
+</div>
+</div>
+</a>
+<div class="bottom-section">
+<div class="author">
+<a class="purple" href="/users/pixil3d">
+<span class="name">Ruiz Brothers</span>
+</a> </div>
+<div class="title">
+<a class="purple" href="/circuitpython-oled-watch">CircuitPython OLED Watch Clock</a>
+</div>
+<div class="badges">
+<div class="badge favorites " title="Favorites">
+23
+</div>
+<div class="badge skill-level-icons" title="Intermediate">
+Intermediate
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="footer-spacer"></div>
+</div>
+<div class="modal fade" id="notify-modal">
+<div class="modal-dialog">
+<div class="modal-content">
+<div class="modal-header">
+<a href="#" class="close" data-dismiss="modal">×</a>
+<h5>OUT OF STOCK NOTIFICATION</h5>
+</div>
+<div class="modal-body">
+<p class="notify-modal-form-header"></p>
+<div class="notify-modal-products"></div>
+<form id="notify-modal-form" name="back_in_stock_notification">
+<p class="notify-modal-form-notice"></p>
+<div class="notify-modal-break"></div>
+<div class="form-group">
+<label class="inputLabel" for="name">YOUR NAME</label>
+<input type="text" size="25" maxlength="64" name="name" value="">
+</div>
+<div class="form-group">
+<label class="inputLabel" for="email">YOUR EMAIL</label>
+<input type="email" size="25" maxlength="96" name="email" value="">
+</div>
+<input type="hidden" name="notify_me" value="true">
+</form>
+<div id="notify-modal-success" style="display:none">
+<p>You have been successfully subscribed to the Notification List for this product and will therefore receive an e-mail from us when it is back in stock!</p>
+<p>For security reasons, an e-mail has been sent to you acknowledging your subscription. Please remember that this subscription will not result in you receiving any e-mail from us about anything other than the restocking of this item.</p>
+<p>If, for any reason, you would like to unsubscribe from the Notification List for this product you will find details of how to do so in the e-mail that has just been sent to you!</p>
+</div>
+</div>
+<div class="modal-footer">
+<a href="#" id="close-notify" style="display: none" data-dismiss="modal" data-target="#notify-modal">CLOSE</a>
+<a href="#" id="submit-notify" rel="nofollow" class="blue-button">NOTIFY ME</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="search-container">
+</div>
+<div id="remote-modal"></div>
+</div>
+<footer id="adafruit-footer">
+<div class="footer-container">
+<section>
+<h1>Help</h1>
+<ul>
+<li>
+<a href="https://www.adafruit.com/contact_us">Contact Us</a>
+</li>
+<li>
+<a href="https://forums.adafruit.com/">Tech Support Forums</a>
+</li>
+<li>
+<a href="https://www.adafruit.com/faq">FAQs</a>
+</li>
+<li>
+<a href="https://www.adafruit.com/shippinginfo">Shipping &amp; Returns</a>
+</li>
+<li>
+<a href="https://www.adafruit.com/terms_of_service">Terms of Service</a>
+</li>
+<li>
+<a href="https://www.adafruit.com/privacy">Privacy &amp; Legal</a>
+</li>
+</ul>
+</section>
+<section>
+<h1>Explore</h1>
+<ul>
+<li>
+<a href="https://www.adafruit.com/about">About Us</a>
+</li>
+<li>
+<a href="https://www.adafruit.com/press">Press</a>
+</li>
+<li>
+<a href="https://www.adafruit.com/educators">Educators</a>
+</li>
+<li>
+<a href="https://www.adafruit.com/distributors">Distributors</a>
+</li>
+<li>
+<a href="https://jobs.adafruit.com">Jobs</a>
+</li>
+<li>
+<a href="https://www.adafruit.com/category/14">Gift Cards</a>
+</li>
+</ul>
+</section>
+<aside>
+<div class="quote">"Calculation and reasoning, like weaving and ploughing, are work, not for human souls, but for clever combinations of iron and wood"</div>
+<div class="quote-attribution"><a href="http://books.google.com/books?oe=UTF-8&id=k7s0AAAAMAAJ&q=calculation#v=onepage&q=calculation&f=false">Mary Boole</a></div>
+</aside>
+</div>
+<div class="footer-container bottom">
+<a title="About Adafruit" id="footer-logo" href="https://learn.adafruit.com">
+<img src="/logos/adafruit_logo_small.png" />
+</a>
+<div class="social-links">
+<a rel="noopener" href="https://www.instagram.com/adafruit/" target="_blank" aria-label="Adafruit on Instagram"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+<a rel="noopener" href="https://twitter.com/adafruit/" target="_blank" aria-label="Adafruit on Twitter"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+<a rel="noopener" href="https://www.facebook.com/adafruitindustries" target="_blank" aria-label="Adafruit on Facebook"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+<a rel="noopener" href="https://www.youtube.com/adafruit" target="_blank" aria-label="Adafruit on YouTube"><i class="fa fa-youtube" aria-hidden="true"></i></a>
+<a rel="noopener" href="https://github.com/adafruit" target="_blank" aria-label="Adafruit on Github"><i class="fa fa-github" aria-hidden="true"></i></a>
+</div>
+</div>
+</footer>
+</div>
+</div>
+</body>
+</html>

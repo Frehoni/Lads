@@ -1,0 +1,1566 @@
+<!DOCTYPE html>
+<html lang="en-US"
+	prefix="og: http://ogp.me/ns#" >
+<head>
+	<meta charset="UTF-8">
+	<link rel="profile" href="https://gmpg.org/xfn/11">
+	<link media="all" href="https://randomnerdtutorials.com/wp-content/cache/autoptimize/css/autoptimize_5474f0a8b245cdf1ba2adb02cd079339.css" rel="stylesheet" /><title>Guide for BME280 Sensor with Arduino (Pressure, Temperature, Humidity) | Random Nerd Tutorials</title>
+
+<!-- All in One SEO Pack 2.12.1 by Michael Torbert of Semper Fi Web Designob_start_detected [-1,-1] -->
+<meta name="description"  content="Learn how to use the BME280 sensor module with Arduino to read pressure, temperature, humidity and estimate altitude. Build the circuit and write a sketch example." />
+
+<meta name="keywords"  content="guide for bme280 sensor with arduino pressure temperature humidity,arduino bme280 sensor module pressure temperature humidity,bme280 sensor arduino sketch schematic example tutorial,read temperature humidity pressure bme280 with arduino board" />
+
+<link rel="canonical" href="https://randomnerdtutorials.com/bme280-sensor-arduino-pressure-temperature-humidity/" />
+<meta property="og:title" content="Guide for BME280 Sensor with Arduino (Pressure, Temperature, Humidity) | Random Nerd Tutorials" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://randomnerdtutorials.com/bme280-sensor-arduino-pressure-temperature-humidity/" />
+<meta property="og:image" content="https://i0.wp.com/randomnerdtutorials.com/wp-content/uploads/2019/07/BME280-arduino-thumbnail.png?fit=813%2C457&#038;ssl=1" />
+<meta property="og:site_name" content="Random Nerd Tutorials" />
+<meta property="og:description" content="Learn how to use the BME280 sensor module with Arduino to read pressure, temperature, humidity and estimate altitude. Build the circuit and write a sketch example." />
+<meta property="article:published_time" content="2019-07-02T12:30:22Z" />
+<meta property="article:modified_time" content="2019-07-09T10:04:27Z" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Guide for BME280 Sensor with Arduino (Pressure, Temperature, Humidity) | Random Nerd Tutorials" />
+<meta name="twitter:description" content="Learn how to use the BME280 sensor module with Arduino to read pressure, temperature, humidity and estimate altitude. Build the circuit and write a sketch example." />
+<meta name="twitter:image" content="https://i0.wp.com/randomnerdtutorials.com/wp-content/uploads/2019/07/BME280-arduino-thumbnail.png?fit=813%2C457&#038;ssl=1" />
+<meta itemprop="image" content="https://i0.wp.com/randomnerdtutorials.com/wp-content/uploads/2019/07/BME280-arduino-thumbnail.png?fit=813%2C457&#038;ssl=1" />
+<!-- /all in one seo pack -->
+<link rel='dns-prefetch' href='//scripts.mediavine.com' />
+<link rel='dns-prefetch' href='//fonts.googleapis.com' />
+<link rel='dns-prefetch' href='//s.w.org' />
+<link href='https://fonts.gstatic.com' crossorigin rel='preconnect' />
+<link rel="alternate" type="application/rss+xml" title="Random Nerd Tutorials &raquo; Feed" href="https://randomnerdtutorials.com/feed/" />
+<link rel="alternate" type="application/rss+xml" title="Random Nerd Tutorials &raquo; Comments Feed" href="https://randomnerdtutorials.com/comments/feed/" />
+<link rel="alternate" type="application/rss+xml" title="Random Nerd Tutorials &raquo; Guide for BME280 Sensor with Arduino (Pressure, Temperature, Humidity) Comments Feed" href="https://randomnerdtutorials.com/bme280-sensor-arduino-pressure-temperature-humidity/feed/" />
+		<script type="text/javascript">
+			window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/12.0.0-1\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/12.0.0-1\/svg\/","svgExt":".svg","source":{"concatemoji":"https:\/\/randomnerdtutorials.com\/wp-includes\/js\/wp-emoji-release.min.js?ver=5.3.2"}};
+			!function(e,a,t){var r,n,o,i,p=a.createElement("canvas"),s=p.getContext&&p.getContext("2d");function c(e,t){var a=String.fromCharCode;s.clearRect(0,0,p.width,p.height),s.fillText(a.apply(this,e),0,0);var r=p.toDataURL();return s.clearRect(0,0,p.width,p.height),s.fillText(a.apply(this,t),0,0),r===p.toDataURL()}function l(e){if(!s||!s.fillText)return!1;switch(s.textBaseline="top",s.font="600 32px Arial",e){case"flag":return!c([127987,65039,8205,9895,65039],[127987,65039,8203,9895,65039])&&(!c([55356,56826,55356,56819],[55356,56826,8203,55356,56819])&&!c([55356,57332,56128,56423,56128,56418,56128,56421,56128,56430,56128,56423,56128,56447],[55356,57332,8203,56128,56423,8203,56128,56418,8203,56128,56421,8203,56128,56430,8203,56128,56423,8203,56128,56447]));case"emoji":return!c([55357,56424,55356,57342,8205,55358,56605,8205,55357,56424,55356,57340],[55357,56424,55356,57342,8203,55358,56605,8203,55357,56424,55356,57340])}return!1}function d(e){var t=a.createElement("script");t.src=e,t.defer=t.type="text/javascript",a.getElementsByTagName("head")[0].appendChild(t)}for(i=Array("flag","emoji"),t.supports={everything:!0,everythingExceptFlag:!0},o=0;o<i.length;o++)t.supports[i[o]]=l(i[o]),t.supports.everything=t.supports.everything&&t.supports[i[o]],"flag"!==i[o]&&(t.supports.everythingExceptFlag=t.supports.everythingExceptFlag&&t.supports[i[o]]);t.supports.everythingExceptFlag=t.supports.everythingExceptFlag&&!t.supports.flag,t.DOMReady=!1,t.readyCallback=function(){t.DOMReady=!0},t.supports.everything||(n=function(){t.readyCallback()},a.addEventListener?(a.addEventListener("DOMContentLoaded",n,!1),e.addEventListener("load",n,!1)):(e.attachEvent("onload",n),a.attachEvent("onreadystatechange",function(){"complete"===a.readyState&&t.readyCallback()})),(r=t.source||{}).concatemoji?d(r.concatemoji):r.wpemoji&&r.twemoji&&(d(r.twemoji),d(r.wpemoji)))}(window,document,window._wpemojiSettings);
+		</script>
+		
+	<link rel='stylesheet' id='generate-fonts-css'  href='https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,regular,italic,600,600italic,700,700italic,800,800italic' type='text/css' media='all' />
+
+
+
+
+
+
+
+
+
+
+
+<link rel='stylesheet' id='elementor-post-83058-css'  href='https://randomnerdtutorials.com/wp-content/cache/autoptimize/css/autoptimize_single_22546a863b9efc631155756a7a09c1d6.css?ver=1582996062' type='text/css' media='all' />
+
+
+
+
+
+
+
+<script>if (document.location.protocol != "https:") {document.location = document.URL.replace(/^http:/i, "https:");}</script><script type='text/javascript' src='https://randomnerdtutorials.com/wp-includes/js/jquery/jquery.js?ver=1.12.4-wp'></script>
+
+<script type='text/javascript' async="async" data-noptimize="1" data-cfasync="false" src='https://scripts.mediavine.com/tags/random-nerd-tutorials.js?ver=5.3.2'></script>
+
+<link rel='https://api.w.org/' href='https://randomnerdtutorials.com/wp-json/' />
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://randomnerdtutorials.com/xmlrpc.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="https://randomnerdtutorials.com/wp-includes/wlwmanifest.xml" /> 
+<link rel='prev' title='Guide for DS18B20 Temperature Sensor with Arduino' href='https://randomnerdtutorials.com/guide-for-ds18b20-temperature-sensor-with-arduino/' />
+<link rel='next' title='ESP32 with BME280 Sensor using Arduino IDE (Pressure, Temperature, Humidity)' href='https://randomnerdtutorials.com/esp32-bme280-arduino-ide-pressure-temperature-humidity/' />
+<meta name="generator" content="WordPress 5.3.2" />
+<link rel='shortlink' href='https://randomnerdtutorials.com/?p=86653' />
+<link rel="alternate" type="application/json+oembed" href="https://randomnerdtutorials.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Frandomnerdtutorials.com%2Fbme280-sensor-arduino-pressure-temperature-humidity%2F" />
+<link rel="alternate" type="text/xml+oembed" href="https://randomnerdtutorials.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Frandomnerdtutorials.com%2Fbme280-sensor-arduino-pressure-temperature-humidity%2F&#038;format=xml" />
+
+<link rel='dns-prefetch' href='//v0.wordpress.com'/>
+<link rel='dns-prefetch' href='//i0.wp.com'/>
+<link rel='dns-prefetch' href='//i1.wp.com'/>
+<link rel='dns-prefetch' href='//i2.wp.com'/>
+<meta name="viewport" content="width=device-width, initial-scale=1"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.15.0/themes/prism.min.css">
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-41273278-2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-41273278-2');
+</script><link rel="icon" href="https://i2.wp.com/randomnerdtutorials.com/wp-content/uploads/2018/03/n-favicon-2018.png?fit=16%2C16&#038;ssl=1" sizes="32x32" />
+<link rel="icon" href="https://i2.wp.com/randomnerdtutorials.com/wp-content/uploads/2018/03/n-favicon-2018.png?fit=16%2C16&#038;ssl=1" sizes="192x192" />
+<link rel="apple-touch-icon-precomposed" href="https://i2.wp.com/randomnerdtutorials.com/wp-content/uploads/2018/03/n-favicon-2018.png?fit=16%2C16&#038;ssl=1" />
+<meta name="msapplication-TileImage" content="https://i2.wp.com/randomnerdtutorials.com/wp-content/uploads/2018/03/n-favicon-2018.png?fit=16%2C16&#038;ssl=1" />
+</head>
+
+<body data-rsssl=1 class="post-template-default single single-post postid-86653 single-format-standard wp-embed-responsive post-image-above-header post-image-aligned-center sticky-menu-no-transition sticky-enabled menu-logo menu-logo-enabled both-sticky-menu right-sidebar nav-above-header fluid-header separate-containers active-footer-widgets-0 nav-search-enabled nav-aligned-center header-aligned-center dropdown-hover featured-image-active elementor-default elementor-kit-94299 elementor-page-82536" itemtype="https://schema.org/Blog" itemscope>
+	<a class="screen-reader-text skip-link" href="#content" title="Skip to content">Skip to content</a>		<nav id="site-navigation" class="auto-hide-sticky main-navigation" itemtype="https://schema.org/SiteNavigationElement" itemscope>
+			<div class="inside-navigation grid-container grid-parent">
+				<div class="site-logo sticky-logo navigation-logo">
+				<a href="https://randomnerdtutorials.com/" title="Random Nerd Tutorials" rel="home">
+					<img src="https://randomnerdtutorials.com/wp-content/uploads/2016/04/logornt.png" alt="Random Nerd Tutorials" />
+				</a>
+			</div><form method="get" class="search-form navigation-search" action="https://randomnerdtutorials.com/">
+				<input type="search" class="search-field" value="" name="s" title="Search" />
+			</form>		<div class="mobile-bar-items">
+						<span class="search-item">
+				<a aria-label="Open Search Bar" href="#">
+									</a>
+			</span>
+		</div><!-- .mobile-bar-items -->
+						<button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false">
+					<span class="mobile-menu">Menu</span>				</button>
+				<div id="primary-menu" class="main-nav"><ul id="menu-newtop" class=" menu sf-menu"><li id="menu-item-20482" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-20482"><a href="https://randomnerdtutorials.com/">Home</a></li>
+<li id="menu-item-20487" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-20487"><a href="https://randomnerdtutorials.com/download">Free eBooks</a></li>
+<li id="menu-item-20484" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-20484"><a href="https://randomnerdtutorials.com/about">About</a></li>
+<li id="menu-item-20485" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-20485"><a href="https://randomnerdtutorials.com/contact">Contact</a></li>
+<li id="menu-item-20498" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-20498"><a href="https://randomnerdtutorials.com/projects/">Projects</a></li>
+<li id="menu-item-20486" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-20486"><a href="#More">More<span role="presentation" class="dropdown-menu-toggle"></span></a>
+<ul class="sub-menu">
+	<li id="menu-item-43624" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-43624"><a target="_blank" rel="noopener noreferrer" href="https://makeradvisor.com/">MakerAdvisor.com</a></li>
+	<li id="menu-item-68854" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-68854"><a target="_blank" rel="noopener noreferrer" href="https://rntlab.com/login">Member Login</a></li>
+	<li id="menu-item-68853" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-68853"><a target="_blank" rel="noopener noreferrer" href="https://rntlab.com/">Join the RNT Lab</a></li>
+</ul>
+</li>
+<li id="menu-item-20483" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-20483"><a href="https://randomnerdtutorials.com/courses/">Get Courses<span role="presentation" class="dropdown-menu-toggle"></span></a>
+<ul class="sub-menu">
+	<li id="menu-item-40154" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-40154"><a href="https://randomnerdtutorials.com/courses/">All eBooks &#038; Courses</a></li>
+	<li id="menu-item-83302" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-83302"><a href="https://randomnerdtutorials.com/micropython-programming-with-esp32-and-esp8266/"><strong>MicroPython Programming with ESP32 and ESP8266</strong></a></li>
+	<li id="menu-item-69105" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-69105"><a href="https://randomnerdtutorials.com/learn-esp32-with-arduino-ide/">Learn ESP32 with Arduino IDE</a></li>
+	<li id="menu-item-40149" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-40149"><a href="https://randomnerdtutorials.com/home-automation-using-esp8266/">Home Automation Using ESP8266</a></li>
+	<li id="menu-item-40150" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-40150"><a href="https://randomnerdtutorials.com/build-a-home-automation-system-for-100/">Build a Home Automation System for $100</a></li>
+	<li id="menu-item-40151" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-40151"><a href="https://randomnerdtutorials.com/arduino-step-by-step-projects/">Arduino Step-by-step Projects</a></li>
+	<li id="menu-item-40153" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-40153"><a href="https://randomnerdtutorials.com/android-apps-for-arduino-with-mit-app-inventor-2/">Android Apps For Arduino</a></li>
+	<li id="menu-item-40152" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-40152"><a href="https://randomnerdtutorials.com/electronics-for-beginners/">Electronics For Beginners</a></li>
+</ul>
+</li>
+<li class="search-item"><a aria-label="Open Search Bar" href="#"></a></li></ul></div>			</div><!-- .inside-navigation -->
+		</nav><!-- #site-navigation -->
+				<header id="masthead" class="site-header" itemtype="https://schema.org/WPHeader" itemscope>
+			<div class="inside-header">
+							</div><!-- .inside-header -->
+		</header><!-- #masthead -->
+		
+	<div id="page" class="hfeed site grid-container container grid-parent">
+				<div id="content" class="site-content">
+			
+	<div id="primary" class="content-area grid-parent mobile-grid-100 grid-75 tablet-grid-75">
+		<main id="main" class="site-main">
+			
+<article id="post-86653" class="post-86653 post type-post status-publish format-standard has-post-thumbnail hentry category-arduino category-0-guide category-guide-project category-project category-a-tutorials" itemtype="https://schema.org/CreativeWork" itemscope>
+	<div class="inside-article">
+		
+		<header class="entry-header">
+			<h1 class="entry-title" itemprop="headline">Guide for BME280 Sensor with Arduino (Pressure, Temperature, Humidity)</h1>			<div class="entry-meta">
+							</div><!-- .entry-meta -->
+				</header><!-- .entry-header -->
+
+		
+		<div class="entry-content" itemprop="text">
+			
+<p>This guide shows how to use the BME280 sensor module with Arduino to read pressure, temperature, humidity and estimate altitude. We’ll show you how to wire the sensor, install the required libraries, and write a simple sketch to display the sensor readings.</p>
+
+
+
+<div class="wp-block-image"><figure class="aligncenter"><img src="https://i0.wp.com/randomnerdtutorials.com/wp-content/uploads/2019/07/BME280-arduino-thumbnail.png?w=813&#038;ssl=1" alt="Guide for BME280 Sensor with Arduino Pressure, Temperature, and Humidity" class="wp-image-86654" srcset="https://i0.wp.com/randomnerdtutorials.com/wp-content/uploads/2019/07/BME280-arduino-thumbnail.png?w=1280&amp;ssl=1 1280w, https://i0.wp.com/randomnerdtutorials.com/wp-content/uploads/2019/07/BME280-arduino-thumbnail.png?resize=300%2C169&amp;ssl=1 300w, https://i0.wp.com/randomnerdtutorials.com/wp-content/uploads/2019/07/BME280-arduino-thumbnail.png?resize=768%2C432&amp;ssl=1 768w, https://i0.wp.com/randomnerdtutorials.com/wp-content/uploads/2019/07/BME280-arduino-thumbnail.png?resize=1024%2C576&amp;ssl=1 1024w" sizes="(max-width: 813px) 100vw, 813px" data-recalc-dims="1" /></figure></div>
+
+
+
+<p>You might also like reading other BME280 guides:</p>
+
+
+
+<ul><li><span style="font-size: inherit; background-color: initial;"><a href="https://randomnerdtutorials.com/esp32-bme280-arduino-ide-pressure-temperature-humidity/">ESP32 with BME280 Sensor using Arduino IDE</a></span></li><li><a href="https://randomnerdtutorials.com/esp32-web-server-with-bme280-mini-weather-station/">ESP32 Web Server with BME280 – Weather Station</a></li><li><a href="https://randomnerdtutorials.com/esp8266-bme280-arduino-ide/">ESP8266 with BME280 using Arduino IDE</a></li><li><a href="https://randomnerdtutorials.com/micropython-bme280-esp32-esp8266/">ESP32/ESP8266 with BME280 using MicroPython</a></li></ul>
+
+
+
+<h2>Introducing BME280 Sensor Module</h2>
+
+
+
+<p>The <a rel="noreferrer noopener" aria-label="BME280 sensor (opens in a new tab)" href="https://makeradvisor.com/tools/bme280-sensor-module/" target="_blank">BME280 sensor</a> module reads barometric pressure, temperature, and humidity. Because pressure changes with altitude, you can also estimate altitude. There are several versions of this sensor module. The BME280 sensor uses I2C or SPI communication protocol to exchange data with a microcontroller.</p>
+
+
+
+<p>We’re using the module illustrated in the figure below.</p>
+
+
+
+<div class="wp-block-image"><figure class="aligncenter"><img src="https://i0.wp.com/randomnerdtutorials.com/wp-content/uploads/2019/06/bme280-sensor.jpg?fit=1024%2C616&amp;ssl=1" alt="BME280 Sensor Module reads pressure, temperature, and humidity" class="wp-image-86437" srcset="https://i2.wp.com/randomnerdtutorials.com/wp-content/uploads/2019/06/bme280-sensor.jpg?w=1280&amp;ssl=1 1280w, https://i2.wp.com/randomnerdtutorials.com/wp-content/uploads/2019/06/bme280-sensor.jpg?resize=300%2C180&amp;ssl=1 300w, https://i2.wp.com/randomnerdtutorials.com/wp-content/uploads/2019/06/bme280-sensor.jpg?resize=768%2C462&amp;ssl=1 768w, https://i2.wp.com/randomnerdtutorials.com/wp-content/uploads/2019/06/bme280-sensor.jpg?resize=1024%2C616&amp;ssl=1 1024w" sizes="(max-width: 813px) 100vw, 813px" /></figure></div>
+
+
+
+<p>This sensor communicates using I2C communication protocol, so the wiring is very simple. You connect the BME280 sensor to the Arduino Uno I2C pins as shown in the table below:</p>
+
+
+
+<table class="wp-block-table"><tbody><tr><td><strong>BME280</strong></td><td><strong>Arduino</strong></td></tr><tr><td>Vin</td><td><span class="rnthl rntcred">5V</span></td></tr><tr><td>GND</td><td><span class="rnthl rntcblack">GND</span></td></tr><tr><td>SCL</td><td><span class="rnthl rntcblue">A5</span></td></tr><tr><td>SDA</td><td><span class="rnthl rntcgreen">A4</span></td></tr></tbody></table>
+
+
+
+<p>There are other versions of this sensor that can use either SPI or I2C communication protocols, like the module shown in the next figure:</p>
+
+
+
+<div class="wp-block-image"><figure class="aligncenter"><img src="https://i1.wp.com/randomnerdtutorials.com/wp-content/uploads/2019/07/BME280-SPI.jpg?w=813&#038;ssl=1" alt="BME280 with SPI and I2C" class="wp-image-86630" srcset="https://i1.wp.com/randomnerdtutorials.com/wp-content/uploads/2019/07/BME280-SPI.jpg?w=750&amp;ssl=1 750w, https://i1.wp.com/randomnerdtutorials.com/wp-content/uploads/2019/07/BME280-SPI.jpg?resize=300%2C168&amp;ssl=1 300w" sizes="(max-width: 750px) 100vw, 750px" data-recalc-dims="1" /></figure></div>
+
+
+
+<p>If you&#8217;re using one of these sensors, to use I2C communication protocol, use the following pins:</p>
+
+
+
+<table class="wp-block-table"><tbody><tr><td><strong>BME280</strong></td><td><strong>Arduino</strong></td></tr><tr><td>SCK (SCL Pin)</td><td> <span class="rnthl rntcblue">A5</span> </td></tr><tr><td>SDI (SDA pin) </td><td> <span class="rnthl rntcgreen">A4</span> </td></tr></tbody></table>
+
+
+
+<p>If you use SPI communication protocol, you need to use the following pins:</p>
+
+
+
+<table class="wp-block-table"><tbody><tr><td><strong>BME280</strong></td><td><strong>Arduino</strong></td></tr><tr><td> SCK (SPI Clock)</td><td> <span class="rnthl rntcblue">Pin 13</span></td></tr><tr><td> SDO&nbsp;(MISO)</td><td> <span class="rnthl rntcyellow">Pin 12</span></td></tr><tr><td> SDI (MOSI)</td><td> <span class="rnthl rntcgreen">Pin 11</span></td></tr><tr><td> CS (Chip Select) </td><td> <span class="rnthl rntcbrown">Pin 10</span></td></tr></tbody></table>
+
+
+
+<h2>Parts Required</h2>
+
+
+
+<p>To complete this tutorial you need the following parts:</p>
+
+
+
+<ul><li><a href="https://makeradvisor.com/tools/bme280-sensor-module/" target="_blank" rel="noreferrer noopener" aria-label=" (opens in a new tab)">BME280 sensor module</a></li><li><a rel="noreferrer noopener" aria-label=" (opens in a new tab)" href="https://makeradvisor.com/tools/compatible-arduino-uno-r3-board/" target="_blank">Arduino </a>(read <a rel="noreferrer noopener" aria-label=" (opens in a new tab)" href="https://makeradvisor.com/best-arduino-starter-kits/" target="_blank">Best Arduino Started Kits</a>)</li><li><a rel="noreferrer noopener" aria-label=" (opens in a new tab)" href="https://makeradvisor.com/tools/mb-102-solderless-breadboard-830-points/" target="_blank">Breadboard</a></li><li><a rel="noreferrer noopener" aria-label=" (opens in a new tab)" href="https://makeradvisor.com/tools/jumper-wires-kit-120-pieces/" target="_blank">Jumper wires</a></li></ul>
+
+
+<p>You can use the preceding links or go directly to <a href="https://makeradvisor.com/tools/?utm_source=rnt&utm_medium=post&utm_campaign=post" target="_blank">MakerAdvisor.com/tools</a> to find all the parts for your projects at the best price!</p><p style="text-align:center;"><a href="https://makeradvisor.com/tools/?utm_source=rnt&utm_medium=post&utm_campaign=post" target="_blank"><img src="https://i1.wp.com/randomnerdtutorials.com/wp-content/uploads/2017/10/header-200.png?w=813&#038;ssl=1" data-recalc-dims="1"></a></p>
+
+
+
+<h2>Schematic</h2>
+
+
+
+<p>Wire the BME280 sensor to your Arduino board as shown in the following schematic diagram.</p>
+
+
+
+<div class="wp-block-image"><figure class="aligncenter is-resized"><a href="https://i0.wp.com/randomnerdtutorials.com/wp-content/uploads/2019/07/BME280-Arduino_schematic.png?ssl=1"><img src="https://i0.wp.com/randomnerdtutorials.com/wp-content/uploads/2019/07/BME280-Arduino_schematic.png?resize=563%2C680&#038;ssl=1" alt="Arduino BME280 Wiring Schematic Diagram" class="wp-image-86657" width="563" height="680" srcset="https://i0.wp.com/randomnerdtutorials.com/wp-content/uploads/2019/07/BME280-Arduino_schematic.png?w=750&amp;ssl=1 750w, https://i0.wp.com/randomnerdtutorials.com/wp-content/uploads/2019/07/BME280-Arduino_schematic.png?resize=248%2C300&amp;ssl=1 248w" sizes="(max-width: 563px) 100vw, 563px" data-recalc-dims="1" /></a></figure></div>
+
+
+
+<h2>Installing the BME280 library</h2>
+
+
+
+<p>To get readings from the BME280 sensor module you need to use the <a href="https://github.com/adafruit/Adafruit_BME280_Library" target="_blank" rel="noreferrer noopener" aria-label=" (opens in a new tab)">Adafruit_BME280 library</a>. Follow the next steps to install the library in your Arduino IDE:</p>
+
+
+
+<p>Open your Arduino IDE and go to&nbsp;<strong>Sketch&nbsp;</strong>&gt;&nbsp;<strong>Include Library</strong>&nbsp;&gt;&nbsp;<strong>Manage Libraries</strong>. The Library Manager should open.</p>
+
+
+
+<p>Search for “<strong>adafruit bme280</strong> ” on the Search box and install the library.</p>
+
+
+
+<div class="wp-block-image"><figure class="aligncenter"><img src="https://i1.wp.com/randomnerdtutorials.com/wp-content/uploads/2018/08/install-bme280.png?w=813&#038;ssl=1" alt="Installing BME280 library in Arduino IDE" class="wp-image-70233" srcset="https://i1.wp.com/randomnerdtutorials.com/wp-content/uploads/2018/08/install-bme280.png?w=786&amp;ssl=1 786w, https://i1.wp.com/randomnerdtutorials.com/wp-content/uploads/2018/08/install-bme280.png?resize=300%2C169&amp;ssl=1 300w, https://i1.wp.com/randomnerdtutorials.com/wp-content/uploads/2018/08/install-bme280.png?resize=768%2C433&amp;ssl=1 768w" sizes="(max-width: 786px) 100vw, 786px" data-recalc-dims="1" /></figure></div>
+
+
+
+<h2>Installing the Adafruit_Sensor library</h2>
+
+
+
+<p>To use the BME280 library, you also need to install the <a href="https://github.com/adafruit/Adafruit_Sensor" target="_blank" rel="noreferrer noopener" aria-label=" (opens in a new tab)">Adafruit_Sensor library</a>. Follow the next steps to install the library in your Arduino IDE:</p>
+
+
+
+<p>Go to <strong>Sketch&nbsp;</strong>&gt;&nbsp;<strong>Include Library</strong>&nbsp;&gt;&nbsp;<strong>Manage Libraries</strong> and type “<strong>Adafruit Unified Sensor</strong>” in the search box. Scroll all the way down to find the library and install it.</p>
+
+
+
+<figure class="wp-block-image"><img src="https://i0.wp.com/randomnerdtutorials.com/wp-content/uploads/2019/04/adafruit_unified_sensor_library.png?w=813&#038;ssl=1" alt="Installing Adafruit Unified Sensor driver library" class="wp-image-84295" srcset="https://i0.wp.com/randomnerdtutorials.com/wp-content/uploads/2019/04/adafruit_unified_sensor_library.png?w=750&amp;ssl=1 750w, https://i0.wp.com/randomnerdtutorials.com/wp-content/uploads/2019/04/adafruit_unified_sensor_library.png?resize=300%2C169&amp;ssl=1 300w" sizes="(max-width: 750px) 100vw, 750px" data-recalc-dims="1" /></figure>
+
+
+
+<p>After installing the libraries, restart your Arduino IDE.</p>
+
+
+
+<h2>Reading Pressure, Temperature, and Humidity</h2>
+
+
+
+<p>To read pressure, temperature, and humidity we&#8217;ll use a sketch example from the library.</p>
+
+
+
+<div class="wp-block-image"><figure class="aligncenter"><img src="https://i1.wp.com/randomnerdtutorials.com/wp-content/uploads/2019/07/Arduino-BME280-circuit.jpg?w=813&#038;ssl=1" alt="Arduino BME280 Guide Reading Temperature, Humidity, and Pressure Sketch" class="wp-image-86658" srcset="https://i1.wp.com/randomnerdtutorials.com/wp-content/uploads/2019/07/Arduino-BME280-circuit.jpg?w=750&amp;ssl=1 750w, https://i1.wp.com/randomnerdtutorials.com/wp-content/uploads/2019/07/Arduino-BME280-circuit.jpg?resize=300%2C168&amp;ssl=1 300w" sizes="(max-width: 750px) 100vw, 750px" data-recalc-dims="1" /></figure></div>
+
+
+
+<p>After installing the BME280 library, and the Adafruit_Sensor library, open the Arduino IDE and, go to <strong>File</strong> &gt; <strong>Examples</strong> &gt; <strong>Adafruit BME280 library</strong> &gt; <strong>bme280 test</strong>.</p>
+
+
+<pre style="max-height: 40em; margin-bottom: 20px;"><code class="language-c">/*
+ * Complete Project Details https://randomnerdtutorials.com
+*/
+
+#include &lt;Wire.h&gt;
+#include &lt;SPI.h&gt;
+#include &lt;Adafruit_Sensor.h&gt;
+#include &lt;Adafruit_BME280.h&gt;
+
+#define BME_SCK 13
+#define BME_MISO 12
+#define BME_MOSI 11
+#define BME_CS 10
+
+#define SEALEVELPRESSURE_HPA (1013.25)
+
+Adafruit_BME280 bme; // I2C
+//Adafruit_BME280 bme(BME_CS); // hardware SPI
+//Adafruit_BME280 bme(BME_CS, BME_MOSI, BME_MISO, BME_SCK); // software SPI
+
+unsigned long delayTime;
+
+void setup() {
+  Serial.begin(9600);
+  Serial.println(F(&quot;BME280 test&quot;));
+
+  bool status;
+  
+  // default settings
+  // (you can also pass in a Wire library object like &amp;Wire2)
+  status = bme.begin();  
+  if (!status) {
+    Serial.println(&quot;Could not find a valid BME280 sensor, check wiring!&quot;);
+    while (1);
+  }
+  
+  Serial.println(&quot;-- Default Test --&quot;);
+  delayTime = 1000;
+
+  Serial.println();
+}
+
+
+void loop() { 
+  printValues();
+  delay(delayTime);
+}
+
+
+void printValues() {
+  Serial.print(&quot;Temperature = &quot;);
+  Serial.print(bme.readTemperature());
+  Serial.println(&quot; *C&quot;);
+  
+  // Convert temperature to Fahrenheit
+  /*Serial.print(&quot;Temperature = &quot;);
+  Serial.print(1.8 * bme.readTemperature() + 32);
+  Serial.println(&quot; *F&quot;);*/
+  
+  Serial.print(&quot;Pressure = &quot;);
+  Serial.print(bme.readPressure() / 100.0F);
+  Serial.println(&quot; hPa&quot;);
+  
+  Serial.print(&quot;Approx. Altitude = &quot;);
+  Serial.print(bme.readAltitude(SEALEVELPRESSURE_HPA));
+  Serial.println(&quot; m&quot;);
+  
+  Serial.print(&quot;Humidity = &quot;);
+  Serial.print(bme.readHumidity());
+  Serial.println(&quot; %&quot;);
+  
+  Serial.println();
+}
+</code></pre>
+	<p style="text-align:center"><a class="rntwhite" href="https://github.com/RuiSantosdotme/Random-Nerd-Tutorials/raw/master/Projects/Arduino/Arduino_BME280_Test.ino" target="_blank">View raw code</a></p>
+
+
+
+<h2>How the Code Works</h2>
+
+
+
+<p>Continue reading this section to learn how the code works, or skip to the &#8220;Demonstration&#8221; section.</p>
+
+
+
+<h3>Libraries</h3>
+
+
+
+<p>The code starts by including the needed libraries: the <span class="rnthl rntliteral">wire</span> library to use I2C, and the <span class="rnthl rntliteral">Adafruit_Sensor</span> and <span class="rnthl rntliteral">Adafruit_BME280</span> libraries to interface with the BME280 sensor.</p>
+
+
+
+<pre class="wp-block-code language-c"><code>#include &lt;Wire.h>
+#include &lt;Adafruit_Sensor.h>
+#include &lt;Adafruit_BME280.h></code></pre>
+
+
+
+<h3>SPI communication</h3>
+
+
+
+<p>As we&#8217;re going to use I2C communication, the following lines that define the SPI pins are commented:</p>
+
+
+
+<pre class="wp-block-code language-c"><code>/*#define BME_SCK 13
+#define BME_MISO 12
+#define BME_MOSI 11
+#define BME_CS 10*/</code></pre>
+
+
+
+<h3>Sea level pressure</h3>
+
+
+
+<p>A variable called <span class="rnthl rntliteral">SEALEVELPRESSURE_HPA</span> is created.</p>
+
+
+
+<pre class="wp-block-code language-c"><code>#define SEALEVELPRESSURE_HPA (1013.25)</code></pre>
+
+
+
+<p>This variable saves the pressure at the sea level in hectopascal (is equivalent to milibar). This variable is used to estimate the altitude for a given pressure by comparing it with the sea level pressure. This example uses the default value, but for more accurate results, replace the value with the current sea level pressure at your location.</p>
+
+
+
+<h3>I2C</h3>
+
+
+
+<p>This example uses I2C communication protocol by default. As you can see, you just need to create an <span class="rnthl rntliteral">Adafruit_BME280</span> object called <span class="rnthl rntliteral">bme</span>.</p>
+
+
+
+<pre class="wp-block-code language-c"><code>Adafruit_BME280 bme; // I2C</code></pre>
+
+
+
+<p>To use SPI, you need to comment this previous line and uncomment one of the following lines.</p>
+
+
+
+<pre class="wp-block-code language-c"><code>//Adafruit_BME280 bme(BME_CS); // hardware SPI
+//Adafruit_BME280 bme(BME_CS, BME_MOSI, BME_MISO, BME_SCK); // software SPI</code></pre>
+
+
+
+<h3>setup()</h3>
+
+
+
+<p>In the <span class="rnthl rntliteral">setup()</span>, start a serial communication:</p>
+
+
+
+<pre class="wp-block-code language-c"><code>Serial.begin(9600);</code></pre>
+
+
+
+<p>And the sensor is initialized:</p>
+
+
+
+<pre class="wp-block-code language-c"><code>status = bme.begin(); 
+if (!status) {
+  Serial.println("Could not find a valid BME280 sensor, check wiring!");
+  while (1);
+}</code></pre>
+
+
+
+<p class="rntbox rntclblue"><strong>Note: </strong> when testing the sensor, if you can&#8217;t get any sensor readings, you may need to find your BME280 sensor I2C address. With the BME280 wired to your Arduino, run <a rel="noreferrer noopener" aria-label=" (opens in a new tab)" href="https://raw.githubusercontent.com/RuiSantosdotme/Random-Nerd-Tutorials/master/Projects/LCD_I2C/I2C_Scanner.ino" target="_blank">this I2C scanner sketch</a> to check the address of your sensor. Then, pass the address to the <span class="rnthl rntliteral">begin()</span> method.</p>
+
+
+
+<h3>Printing values</h3>
+
+
+
+<p>In the <span class="rnthl rntliteral">loop()</span>, the <span class="rnthl rntliteral">printValues()</span> function reads the values from the BME280 and prints the results in the Serial Monitor.</p>
+
+
+
+<pre class="wp-block-code language-c"><code>void loop() { 
+  printValues();
+  delay(delayTime);
+}</code></pre>
+
+
+
+<p>Reading temperature, humidity, pressure, and estimate altitude is as simple as using the following methods on the <span class="rnthl rntliteral">bme</span> object:</p>
+
+
+
+<ul><li><span class="rnthl rntliteral">bme.readTemperature()</span> &#8211; reads temperature in Celsius;</li><li><span class="rnthl rntliteral">bme.readHumidity()</span> &#8211; reads absolute humidity;</li><li><span class="rnthl rntliteral">bme.readPressure()</span> &#8211; reads pressure in hPa (hectoPascal = millibar);</li><li><span class="rnthl rntliteral">bme.readAltitude(SEALEVELPRESSURE_HPA)</span> &#8211; estimates altitude in meters based on the pressure at the sea level.</li></ul>
+
+
+
+<h2>Demonstration</h2>
+
+
+
+<div class="wp-block-image"><figure class="aligncenter"><img src="https://i0.wp.com/randomnerdtutorials.com/wp-content/uploads/2019/07/Arduino-BME280-guide.jpg?w=813&#038;ssl=1" alt="Arduino BME280 Read Temperature, Humidity, and Pressure Sketch" class="wp-image-86659" srcset="https://i0.wp.com/randomnerdtutorials.com/wp-content/uploads/2019/07/Arduino-BME280-guide.jpg?w=750&amp;ssl=1 750w, https://i0.wp.com/randomnerdtutorials.com/wp-content/uploads/2019/07/Arduino-BME280-guide.jpg?resize=300%2C168&amp;ssl=1 300w" sizes="(max-width: 750px) 100vw, 750px" data-recalc-dims="1" /></figure></div>
+
+
+
+<p>Upload the code to your Arduino Board.</p>
+
+
+
+<div class="wp-block-image"><figure class="aligncenter"><img src="https://i0.wp.com/randomnerdtutorials.com/wp-content/uploads/2016/12/arduino-ide-upload-button.png?w=813&#038;ssl=1" alt="Upload Arduino Sketch for BME280 Sensor" class="wp-image-65439" data-recalc-dims="1"/></figure></div>
+
+
+
+<p>Open the Serial Monitor at a baud rate of 9600. </p>
+
+
+
+<div class="wp-block-image"><figure class="aligncenter"><img src="https://i2.wp.com/randomnerdtutorials.com/wp-content/uploads/2019/02/serial-monitor.png?w=813&#038;ssl=1" alt="Upload Arduino Sketch for BME280 Sensor" class="wp-image-81671" srcset="https://i2.wp.com/randomnerdtutorials.com/wp-content/uploads/2019/02/serial-monitor.png?w=745&amp;ssl=1 745w, https://i2.wp.com/randomnerdtutorials.com/wp-content/uploads/2019/02/serial-monitor.png?resize=300%2C44&amp;ssl=1 300w" sizes="(max-width: 745px) 100vw, 745px" data-recalc-dims="1" /></figure></div>
+
+
+
+<p>You should see the readings displayed on the Serial Monitor.</p>
+
+
+
+<div class="wp-block-image"><figure class="aligncenter"><img src="https://i0.wp.com/randomnerdtutorials.com/wp-content/uploads/2019/06/bme280-readings-arduino-ide.png?w=813&#038;ssl=1" alt="Arduino Sketch for BME280 Sensor Demonstration Serial Monitor" class="wp-image-86486" srcset="https://i0.wp.com/randomnerdtutorials.com/wp-content/uploads/2019/06/bme280-readings-arduino-ide.png?w=666&amp;ssl=1 666w, https://i0.wp.com/randomnerdtutorials.com/wp-content/uploads/2019/06/bme280-readings-arduino-ide.png?resize=300%2C211&amp;ssl=1 300w" sizes="(max-width: 666px) 100vw, 666px" data-recalc-dims="1" /></figure></div>
+
+
+
+<h2>Wrapping Up</h2>
+
+
+
+<p>The BME280 provides an easy and inexpensive way to get pressure, temperature and humidity readings. The sensor communicates via I2C communication protocol, which means that wiring is very simple, you just need to connect the sensor to the Arduino I2C pins. </p>
+
+
+
+<p>Writing the code to get the sensor readings is also very straightforward thanks to the BME280_Adafruit library. You just need to use the <span class="rnthl rntliteral">readTemperature()</span>, <span class="rnthl rntliteral">readHumidity()</span> and <span class="rnthl rntliteral">readPressure()</span> methods. You can also estimate altitude using the <span class="rnthl rntliteral">readAltitude()</span> method.</p>
+
+
+
+<p>We have guides for other sensors and modules with the Arduino that you may find useful:</p>
+
+
+
+<ul><li><a href="https://randomnerdtutorials.com/complete-guide-for-dht11dht22-humidity-and-temperature-sensor-with-arduino/">DHT11/DHT22 Humidity and Temperature Sensor With Arduino</a></li><li><a href="https://randomnerdtutorials.com/guide-for-ds18b20-temperature-sensor-with-arduino/">DS18B20 Temperature Sensor with Arduino</a></li><li><a href="https://randomnerdtutorials.com/guide-for-oled-display-with-arduino/">I2C OLED Display with Arduino</a></li><li><a href="https://randomnerdtutorials.com/guide-for-relay-module-with-arduino/">Relay Module with Arduino</a></li><li><a href="https://randomnerdtutorials.com/complete-guide-for-ultrasonic-sensor-hc-sr04/">Ultrasonic Sensor HC-SR04 with Arduino</a></li></ul>
+
+
+
+<p>If you want to learn more about Arduino, take a look at our resources:</p>
+
+
+
+<ul><li><a href="https://randomnerdtutorials.com/arduino-step-by-step-projects/">Arduino Step-by-step projects course</a></li><li><a href="https://randomnerdtutorials.com/projects-arduino/">Free Arduino Projects and Tutorials</a></li><li><a href="https://randomnerdtutorials.com/arduino-mini-course/">Arduino Mini Course</a></li></ul>
+
+
+
+<p>Thanks for reading.</p>
+		</div><!-- .entry-content -->
+
+					<footer class="entry-meta">
+						<nav id="nav-below" class="post-navigation">
+			<span class="screen-reader-text">Post navigation</span>
+
+					</nav><!-- #nav-below -->
+					</footer><!-- .entry-meta -->
+		<br>
+		<div data-elementor-type="section" data-elementor-id="83032" class="elementor elementor-83032" data-elementor-settings="[]">
+			<div class="elementor-inner">
+				<div class="elementor-section-wrap">
+							<section class="elementor-element elementor-element-2d8a9105 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-id="2d8a9105" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div class="elementor-element elementor-element-2280806f elementor-column elementor-col-100 elementor-top-column" data-id="2280806f" data-element_type="column">
+			<div class="elementor-column-wrap  elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<section class="elementor-element elementor-element-4a840dd4 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-inner-section" data-id="4a840dd4" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div class="elementor-element elementor-element-3497580 elementor-column elementor-col-50 elementor-inner-column" data-id="3497580" data-element_type="column">
+			<div class="elementor-column-wrap  elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div class="elementor-element elementor-element-7b0162e9 elementor-widget elementor-widget-image" data-id="7b0162e9" data-element_type="widget" data-widget_type="image.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-image">
+											<a href="https://randomnerdtutorials.com/micropython-programming-with-esp32-and-esp8266/">
+							<img width="500" height="500" src="https://i0.wp.com/randomnerdtutorials.com/wp-content/uploads/2018/12/micropython-cover-ebook-1-1f.jpg?fit=500%2C500&amp;ssl=1" class="attachment-full size-full" alt="" srcset="https://i0.wp.com/randomnerdtutorials.com/wp-content/uploads/2018/12/micropython-cover-ebook-1-1f.jpg?w=500&amp;ssl=1 500w, https://i0.wp.com/randomnerdtutorials.com/wp-content/uploads/2018/12/micropython-cover-ebook-1-1f.jpg?resize=150%2C150&amp;ssl=1 150w, https://i0.wp.com/randomnerdtutorials.com/wp-content/uploads/2018/12/micropython-cover-ebook-1-1f.jpg?resize=300%2C300&amp;ssl=1 300w, https://i0.wp.com/randomnerdtutorials.com/wp-content/uploads/2018/12/micropython-cover-ebook-1-1f.jpg?resize=80%2C80&amp;ssl=1 80w, https://i0.wp.com/randomnerdtutorials.com/wp-content/uploads/2018/12/micropython-cover-ebook-1-1f.jpg?resize=220%2C220&amp;ssl=1 220w" sizes="(max-width: 500px) 100vw, 500px" />								</a>
+											</div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+				<div class="elementor-element elementor-element-45a69540 elementor-column elementor-col-50 elementor-inner-column" data-id="45a69540" data-element_type="column">
+			<div class="elementor-column-wrap  elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div class="elementor-element elementor-element-d7f411a elementor-widget elementor-widget-heading" data-id="d7f411a" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<h2 class="elementor-heading-title elementor-size-default"><a href="https://randomnerdtutorials.com/micropython-programming-with-esp32-and-esp8266/">[eBook] MicroPython Programming with ESP32 and ESP8266</a></h2>		</div>
+				</div>
+				<div class="elementor-element elementor-element-5dc4402f elementor-hidden-phone elementor-widget elementor-widget-text-editor" data-id="5dc4402f" data-element_type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><p>Learn how to program and build projects with the ESP32 and ESP8266 using MicroPython firmware <strong><a href="https://randomnerdtutorials.com/micropython-programming-with-esp32-and-esp8266/" rel="noopener">DOWNLOAD »</a></strong></p></div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<div class="elementor-element elementor-element-4de314b8 elementor-hidden-desktop elementor-hidden-tablet elementor-widget elementor-widget-text-editor" data-id="4de314b8" data-element_type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><p>Learn how to program and build projects with the ESP32 and ESP8266 using MicroPython firmware <strong><a href="https://randomnerdtutorials.com/micropython-programming-with-esp32-and-esp8266/" rel="noopener">DOWNLOAD »</a></strong></p></div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+						</div>
+			</div>
+		</div>
+		
+		<div data-elementor-type="section" data-elementor-id="82533" class="elementor elementor-82533" data-elementor-settings="[]">
+			<div class="elementor-inner">
+				<div class="elementor-section-wrap">
+							<section class="elementor-element elementor-element-31c9920 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-id="31c9920" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div class="elementor-element elementor-element-e6bec81 elementor-column elementor-col-100 elementor-top-column" data-id="e6bec81" data-element_type="column">
+			<div class="elementor-column-wrap  elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div class="elementor-element elementor-element-ae5f36f elementor-widget elementor-widget-text-editor" data-id="ae5f36f" data-element_type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><h3>Recommended Resources</h3></div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section class="elementor-element elementor-element-df31b19 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-id="df31b19" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div class="elementor-element elementor-element-f988f78 elementor-column elementor-col-33 elementor-top-column" data-id="f988f78" data-element_type="column">
+			<div class="elementor-column-wrap  elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div class="elementor-element elementor-element-ea4ffd5 elementor-widget elementor-widget-image" data-id="ea4ffd5" data-element_type="widget" data-widget_type="image.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-image">
+											<a href="https://randomnerdtutorials.com/build-a-home-automation-system-for-100/">
+							<img width="400" height="225" src="https://i1.wp.com/randomnerdtutorials.com/wp-content/uploads/2017/10/home-automation-sb-img.jpg?fit=400%2C225&amp;ssl=1" class="attachment-full size-full" alt="" srcset="https://i1.wp.com/randomnerdtutorials.com/wp-content/uploads/2017/10/home-automation-sb-img.jpg?w=400&amp;ssl=1 400w, https://i1.wp.com/randomnerdtutorials.com/wp-content/uploads/2017/10/home-automation-sb-img.jpg?resize=300%2C169&amp;ssl=1 300w" sizes="(max-width: 400px) 100vw, 400px" />								</a>
+											</div>
+				</div>
+				</div>
+				<div class="elementor-element elementor-element-1d03956 elementor-widget elementor-widget-text-editor" data-id="1d03956" data-element_type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><p><strong><a href="https://randomnerdtutorials.com/build-a-home-automation-system-for-100/">Build a Home Automation System from Scratch »</a> </strong>With Raspberry Pi, ESP8266, Arduino, and Node-RED.</p></div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+				<div class="elementor-element elementor-element-c804b9b elementor-column elementor-col-33 elementor-top-column" data-id="c804b9b" data-element_type="column">
+			<div class="elementor-column-wrap  elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div class="elementor-element elementor-element-caff517 elementor-widget elementor-widget-image" data-id="caff517" data-element_type="widget" data-widget_type="image.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-image">
+											<a href="https://randomnerdtutorials.com/home-automation-using-esp8266/">
+							<img width="400" height="225" src="https://i1.wp.com/randomnerdtutorials.com/wp-content/uploads/2017/10/esp8266-sb-img.jpg?fit=400%2C225&amp;ssl=1" class="attachment-full size-full" alt="" srcset="https://i1.wp.com/randomnerdtutorials.com/wp-content/uploads/2017/10/esp8266-sb-img.jpg?w=400&amp;ssl=1 400w, https://i1.wp.com/randomnerdtutorials.com/wp-content/uploads/2017/10/esp8266-sb-img.jpg?resize=300%2C169&amp;ssl=1 300w" sizes="(max-width: 400px) 100vw, 400px" />								</a>
+											</div>
+				</div>
+				</div>
+				<div class="elementor-element elementor-element-7bc712f elementor-widget elementor-widget-text-editor" data-id="7bc712f" data-element_type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><p><strong><a href="https://randomnerdtutorials.com/home-automation-using-esp8266/">Home Automation using ESP8266 eBook and video course »</a> </strong>Build IoT and home automation projects.</p></div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+				<div class="elementor-element elementor-element-9487535 elementor-column elementor-col-33 elementor-top-column" data-id="9487535" data-element_type="column">
+			<div class="elementor-column-wrap  elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div class="elementor-element elementor-element-330785f elementor-widget elementor-widget-image" data-id="330785f" data-element_type="widget" data-widget_type="image.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-image">
+											<a href="https://randomnerdtutorials.com/arduino-step-by-step-projects/">
+							<img width="400" height="225" src="https://i1.wp.com/randomnerdtutorials.com/wp-content/uploads/2017/10/arduino-sb-img.jpg?fit=400%2C225&amp;ssl=1" class="attachment-full size-full" alt="" srcset="https://i1.wp.com/randomnerdtutorials.com/wp-content/uploads/2017/10/arduino-sb-img.jpg?w=400&amp;ssl=1 400w, https://i1.wp.com/randomnerdtutorials.com/wp-content/uploads/2017/10/arduino-sb-img.jpg?resize=300%2C169&amp;ssl=1 300w" sizes="(max-width: 400px) 100vw, 400px" />								</a>
+											</div>
+				</div>
+				</div>
+				<div class="elementor-element elementor-element-e9540a9 elementor-widget elementor-widget-text-editor" data-id="e9540a9" data-element_type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><p><strong><a href="https://randomnerdtutorials.com/arduino-step-by-step-projects/">Arduino Step-by-Step Projects »</a> </strong>Build 25 Arduino projects with our course, even with no prior experience!</p></div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section class="elementor-element elementor-element-a9e9c13 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-id="a9e9c13" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div class="elementor-element elementor-element-25cf7ca elementor-column elementor-col-100 elementor-top-column" data-id="25cf7ca" data-element_type="column">
+			<div class="elementor-column-wrap  elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div class="elementor-element elementor-element-88fc6c0 elementor-widget elementor-widget-text-editor" data-id="88fc6c0" data-element_type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><h3>What to Read Next&#8230;</h3></div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section class="elementor-element elementor-element-d68ef93 elementor-section-height-min-height elementor-section-boxed elementor-section-height-default elementor-section-items-middle elementor-section elementor-top-section" data-id="d68ef93" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-no">
+				<div class="elementor-row">
+				<div class="elementor-element elementor-element-4ab337a elementor-column elementor-col-100 elementor-top-column" data-id="4ab337a" data-element_type="column">
+			<div class="elementor-column-wrap  elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div class="elementor-element elementor-element-efac60e elementor-grid-3 elementor-grid-tablet-2 elementor-grid-mobile-1 elementor-posts--thumbnail-top elementor-card-shadow-yes elementor-posts__hover-gradient elementor-widget elementor-widget-posts" data-id="efac60e" data-element_type="widget" data-settings="{&quot;cards_row_gap&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:16,&quot;sizes&quot;:[]},&quot;cards_columns&quot;:&quot;3&quot;,&quot;cards_columns_tablet&quot;:&quot;2&quot;,&quot;cards_columns_mobile&quot;:&quot;1&quot;}" data-widget_type="posts.cards">
+				<div class="elementor-widget-container">
+					<div class="elementor-posts-container elementor-posts elementor-posts--skin-cards elementor-grid">
+				<article class="elementor-post elementor-grid-item post-86386 post type-post status-publish format-standard has-post-thumbnail hentry category-esp32 category-esp32-project category-esp32-arduino-ide category-0-esp32 category-esp8266-project category-project">
+			<div class="elementor-post__card">
+				<a class="elementor-post__thumbnail__link" href="https://randomnerdtutorials.com/display-images-esp32-esp8266-web-server/">
+			<div class="elementor-post__thumbnail"><img width="1280" height="720" src="https://i1.wp.com/randomnerdtutorials.com/wp-content/uploads/2019/06/How-to-Display-Images-in-ESP32-ESP8266-Web-Server.jpg?fit=1280%2C720&amp;ssl=1" class="attachment-full size-full" alt="How to Display Images in ESP32/ESP8266 Web Server" srcset="https://i1.wp.com/randomnerdtutorials.com/wp-content/uploads/2019/06/How-to-Display-Images-in-ESP32-ESP8266-Web-Server.jpg?w=1280&amp;ssl=1 1280w, https://i1.wp.com/randomnerdtutorials.com/wp-content/uploads/2019/06/How-to-Display-Images-in-ESP32-ESP8266-Web-Server.jpg?resize=300%2C169&amp;ssl=1 300w, https://i1.wp.com/randomnerdtutorials.com/wp-content/uploads/2019/06/How-to-Display-Images-in-ESP32-ESP8266-Web-Server.jpg?resize=768%2C432&amp;ssl=1 768w, https://i1.wp.com/randomnerdtutorials.com/wp-content/uploads/2019/06/How-to-Display-Images-in-ESP32-ESP8266-Web-Server.jpg?resize=1024%2C576&amp;ssl=1 1024w" sizes="(max-width: 1280px) 100vw, 1280px" /></div>
+		</a>
+				<div class="elementor-post__text">
+				<h3 class="elementor-post__title">
+			<a href="https://randomnerdtutorials.com/display-images-esp32-esp8266-web-server/">
+				How to Display Images in ESP32 and ESP8266 Web Server			</a>
+		</h3>
+				</div>
+					</div>
+		</article>
+				<article class="elementor-post elementor-grid-item post-89131 post type-post status-publish format-standard has-post-thumbnail hentry category-esp32 category-esp32-project category-esp32-arduino-ide category-0-esp32 category-project category-uncategorized">
+			<div class="elementor-post__card">
+				<a class="elementor-post__thumbnail__link" href="https://randomnerdtutorials.com/esp32-sim800l-send-text-messages-sms/">
+			<div class="elementor-post__thumbnail"><img width="1280" height="720" src="https://i1.wp.com/randomnerdtutorials.com/wp-content/uploads/2019/09/ESP32-SIM800L-Send-Text-Message-SMS-Temperature.jpg?fit=1280%2C720&amp;ssl=1" class="attachment-full size-full" alt="ESP32 SIM800L Send Text Messages (SMS Alert) with Sensor Readings" srcset="https://i1.wp.com/randomnerdtutorials.com/wp-content/uploads/2019/09/ESP32-SIM800L-Send-Text-Message-SMS-Temperature.jpg?w=1280&amp;ssl=1 1280w, https://i1.wp.com/randomnerdtutorials.com/wp-content/uploads/2019/09/ESP32-SIM800L-Send-Text-Message-SMS-Temperature.jpg?resize=300%2C169&amp;ssl=1 300w, https://i1.wp.com/randomnerdtutorials.com/wp-content/uploads/2019/09/ESP32-SIM800L-Send-Text-Message-SMS-Temperature.jpg?resize=768%2C432&amp;ssl=1 768w, https://i1.wp.com/randomnerdtutorials.com/wp-content/uploads/2019/09/ESP32-SIM800L-Send-Text-Message-SMS-Temperature.jpg?resize=1024%2C576&amp;ssl=1 1024w" sizes="(max-width: 1280px) 100vw, 1280px" /></div>
+		</a>
+				<div class="elementor-post__text">
+				<h3 class="elementor-post__title">
+			<a href="https://randomnerdtutorials.com/esp32-sim800l-send-text-messages-sms/">
+				ESP32 SIM800L: Send Text Messages (SMS Alert) with Sensor Readings			</a>
+		</h3>
+				</div>
+					</div>
+		</article>
+				<article class="elementor-post elementor-grid-item post-53022 post type-post status-publish format-standard has-post-thumbnail hentry category-esp8266 category-esp8266-project category-esp8266-arduino-ide category-esp8266-projects category-0-esp8266 category-project category-web-server category-web-server-2">
+			<div class="elementor-post__card">
+				<a class="elementor-post__thumbnail__link" href="https://randomnerdtutorials.com/wifimanager-with-esp8266-autoconnect-custom-parameter-and-manage-your-ssid-and-password/">
+			<div class="elementor-post__thumbnail"><img width="1280" height="720" src="https://i2.wp.com/randomnerdtutorials.com/wp-content/uploads/2018/02/Wi-fi-manager-thumbnail.jpg?fit=1280%2C720&amp;ssl=1" class="attachment-full size-full" alt="" srcset="https://i2.wp.com/randomnerdtutorials.com/wp-content/uploads/2018/02/Wi-fi-manager-thumbnail.jpg?w=1280&amp;ssl=1 1280w, https://i2.wp.com/randomnerdtutorials.com/wp-content/uploads/2018/02/Wi-fi-manager-thumbnail.jpg?resize=300%2C169&amp;ssl=1 300w, https://i2.wp.com/randomnerdtutorials.com/wp-content/uploads/2018/02/Wi-fi-manager-thumbnail.jpg?resize=768%2C432&amp;ssl=1 768w, https://i2.wp.com/randomnerdtutorials.com/wp-content/uploads/2018/02/Wi-fi-manager-thumbnail.jpg?resize=1024%2C576&amp;ssl=1 1024w" sizes="(max-width: 1280px) 100vw, 1280px" /></div>
+		</a>
+				<div class="elementor-post__text">
+				<h3 class="elementor-post__title">
+			<a href="https://randomnerdtutorials.com/wifimanager-with-esp8266-autoconnect-custom-parameter-and-manage-your-ssid-and-password/">
+				WiFiManager with ESP8266 &#8211; Autoconnect, Custom Parameter and Manage your SSID and Password			</a>
+		</h3>
+				</div>
+					</div>
+		</article>
+				<article class="elementor-post elementor-grid-item post-67483 post type-post status-publish format-standard has-post-thumbnail hentry category-esp32 category-esp32-project category-esp32-arduino-ide category-0-esp32 category-esp8266 category-esp8266-project category-esp8266-arduino-ide category-esp8266-projects category-project">
+			<div class="elementor-post__card">
+				<a class="elementor-post__thumbnail__link" href="https://randomnerdtutorials.com/esp32-esp8266-i2c-lcd-arduino-ide/">
+			<div class="elementor-post__thumbnail"><img width="1280" height="720" src="https://i2.wp.com/randomnerdtutorials.com/wp-content/uploads/2018/07/LCD-display-featured-image.jpg?fit=1280%2C720&amp;ssl=1" class="attachment-full size-full" alt="" srcset="https://i2.wp.com/randomnerdtutorials.com/wp-content/uploads/2018/07/LCD-display-featured-image.jpg?w=1280&amp;ssl=1 1280w, https://i2.wp.com/randomnerdtutorials.com/wp-content/uploads/2018/07/LCD-display-featured-image.jpg?resize=300%2C169&amp;ssl=1 300w, https://i2.wp.com/randomnerdtutorials.com/wp-content/uploads/2018/07/LCD-display-featured-image.jpg?resize=768%2C432&amp;ssl=1 768w, https://i2.wp.com/randomnerdtutorials.com/wp-content/uploads/2018/07/LCD-display-featured-image.jpg?resize=1024%2C576&amp;ssl=1 1024w" sizes="(max-width: 1280px) 100vw, 1280px" /></div>
+		</a>
+				<div class="elementor-post__text">
+				<h3 class="elementor-post__title">
+			<a href="https://randomnerdtutorials.com/esp32-esp8266-i2c-lcd-arduino-ide/">
+				How to Use I2C LCD with ESP32 on Arduino IDE (ESP8266 compatible)			</a>
+		</h3>
+				</div>
+					</div>
+		</article>
+				<article class="elementor-post elementor-grid-item post-84225 post type-post status-publish format-standard has-post-thumbnail hentry category-esp32 category-esp8266 category-guide category-0-esp32-micropython">
+			<div class="elementor-post__card">
+				<a class="elementor-post__thumbnail__link" href="https://randomnerdtutorials.com/esp32-esp8266-digital-inputs-digital-outputs-micropython/">
+			<div class="elementor-post__thumbnail"><img width="1280" height="720" src="https://i0.wp.com/randomnerdtutorials.com/wp-content/uploads/2019/04/digital_io_micropython_esp32_esp8266.jpg?fit=1280%2C720&amp;ssl=1" class="attachment-full size-full" alt="" srcset="https://i0.wp.com/randomnerdtutorials.com/wp-content/uploads/2019/04/digital_io_micropython_esp32_esp8266.jpg?w=1280&amp;ssl=1 1280w, https://i0.wp.com/randomnerdtutorials.com/wp-content/uploads/2019/04/digital_io_micropython_esp32_esp8266.jpg?resize=300%2C169&amp;ssl=1 300w, https://i0.wp.com/randomnerdtutorials.com/wp-content/uploads/2019/04/digital_io_micropython_esp32_esp8266.jpg?resize=768%2C432&amp;ssl=1 768w, https://i0.wp.com/randomnerdtutorials.com/wp-content/uploads/2019/04/digital_io_micropython_esp32_esp8266.jpg?resize=1024%2C576&amp;ssl=1 1024w" sizes="(max-width: 1280px) 100vw, 1280px" /></div>
+		</a>
+				<div class="elementor-post__text">
+				<h3 class="elementor-post__title">
+			<a href="https://randomnerdtutorials.com/esp32-esp8266-digital-inputs-digital-outputs-micropython/">
+				ESP32/ESP8266 Digital Inputs and Digital Outputs with MicroPython			</a>
+		</h3>
+				</div>
+					</div>
+		</article>
+				<article class="elementor-post elementor-grid-item post-83525 post type-post status-publish format-standard has-post-thumbnail hentry category-esp32 category-esp32-project category-esp32-arduino-ide category-0-esp32 category-project">
+			<div class="elementor-post__card">
+				<a class="elementor-post__thumbnail__link" href="https://randomnerdtutorials.com/esp32-external-wake-up-deep-sleep/">
+			<div class="elementor-post__thumbnail"><img width="1280" height="720" src="https://i1.wp.com/randomnerdtutorials.com/wp-content/uploads/2019/04/ESP32-deep-sleep-external-wake-up.jpg?fit=1280%2C720&amp;ssl=1" class="attachment-full size-full" alt="" srcset="https://i1.wp.com/randomnerdtutorials.com/wp-content/uploads/2019/04/ESP32-deep-sleep-external-wake-up.jpg?w=1280&amp;ssl=1 1280w, https://i1.wp.com/randomnerdtutorials.com/wp-content/uploads/2019/04/ESP32-deep-sleep-external-wake-up.jpg?resize=300%2C169&amp;ssl=1 300w, https://i1.wp.com/randomnerdtutorials.com/wp-content/uploads/2019/04/ESP32-deep-sleep-external-wake-up.jpg?resize=768%2C432&amp;ssl=1 768w, https://i1.wp.com/randomnerdtutorials.com/wp-content/uploads/2019/04/ESP32-deep-sleep-external-wake-up.jpg?resize=1024%2C576&amp;ssl=1 1024w" sizes="(max-width: 1280px) 100vw, 1280px" /></div>
+		</a>
+				<div class="elementor-post__text">
+				<h3 class="elementor-post__title">
+			<a href="https://randomnerdtutorials.com/esp32-external-wake-up-deep-sleep/">
+				ESP32 External Wake Up from Deep Sleep			</a>
+		</h3>
+				</div>
+					</div>
+		</article>
+				</div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+						</div>
+			</div>
+		</div>
+		
+<br>
+		<div data-elementor-type="section" data-elementor-id="82829" class="elementor elementor-82829" data-elementor-settings="[]">
+			<div class="elementor-inner">
+				<div class="elementor-section-wrap">
+							<section class="elementor-element elementor-element-1e028b5e elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-id="1e028b5e" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div class="elementor-element elementor-element-69628243 elementor-column elementor-col-100 elementor-top-column" data-id="69628243" data-element_type="column">
+			<div class="elementor-column-wrap  elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<section class="elementor-element elementor-element-4a02bbce elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-inner-section" data-id="4a02bbce" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div class="elementor-element elementor-element-3a76ce22 elementor-column elementor-col-100 elementor-inner-column" data-id="3a76ce22" data-element_type="column">
+			<div class="elementor-column-wrap  elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div class="elementor-element elementor-element-d86fe9d elementor-widget elementor-widget-heading" data-id="d86fe9d" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<h3 class="elementor-heading-title elementor-size-default">Enjoyed this project? Stay updated by subscribing our weekly newsletter!</h3>		</div>
+				</div>
+				<div class="elementor-element elementor-element-93ef837 elementor-button-align-stretch elementor-widget elementor-widget-form" data-id="93ef837" data-element_type="widget" data-widget_type="form.default">
+				<div class="elementor-widget-container">
+					<form class="elementor-form" method="post" name="New Form">
+			<input type="hidden" name="post_id" value="82829"/>
+			<input type="hidden" name="form_id" value="93ef837"/>
+
+			<div class="elementor-form-fields-wrapper elementor-labels-">
+								<div class="elementor-field-type-email elementor-field-group elementor-column elementor-field-group-email elementor-col-66 elementor-field-required">
+					<label for="form-field-email" class="elementor-field-label elementor-screen-only">Email</label><input size="1" type="email" name="form_fields[email]" id="form-field-email" class="elementor-field elementor-size-sm  elementor-field-textual" placeholder="Your Email Address" required="required" aria-required="true">				</div>
+								<div class="elementor-field-group elementor-column elementor-field-type-submit elementor-col-33">
+					<button type="submit" class="elementor-button elementor-size-sm">
+						<span >
+															<span class=" elementor-button-icon">
+									<i class="fa fa-envelope-o" aria-hidden="true"></i>																	</span>
+																						<span class="elementor-button-text">SUBSCRIBE</span>
+													</span>
+					</button>
+				</div>
+			</div>
+		</form>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+						</div>
+			</div>
+		</div>
+			</div><!-- .inside-article -->
+</article><!-- #post-## -->
+
+					<div class="comments-area">
+						<div id="comments">
+
+			<h3 class="comments-title">
+			16 thoughts on &ldquo;Guide for BME280 Sensor with Arduino (Pressure, Temperature, Humidity)&rdquo;		</h3>
+
+		
+		<ol class="comment-list">
+			
+		<li id="comment-383516" class="comment even thread-even depth-1 parent">
+			<article id="div-comment-383516" class="comment-body" itemtype="https://schema.org/Comment" itemscope>
+				<footer class="comment-meta">
+					<img alt='' src='https://secure.gravatar.com/avatar/730a57defcacb6e9d3063c9597a661dc?s=50&#038;d=mm&#038;r=g' srcset='https://secure.gravatar.com/avatar/730a57defcacb6e9d3063c9597a661dc?s=100&#038;d=mm&#038;r=g 2x' class='avatar avatar-50 photo' height='50' width='50' />					<div class="comment-author-info">
+						<div class="comment-author vcard" itemprop="author" itemtype="https://schema.org/Person" itemscope>
+							<cite itemprop="name" class="fn">Leslie Pieterse</cite>						</div><!-- .comment-author -->
+
+						<div class="entry-meta comment-metadata">
+							<a href="https://randomnerdtutorials.com/bme280-sensor-arduino-pressure-temperature-humidity/#comment-383516">
+								<time datetime="2019-07-02T15:32:47+00:00" itemprop="datePublished">
+									July 2, 2019 at 3:32 pm								</time>
+							</a>
+													</div><!-- .comment-metadata -->
+					</div><!-- .comment-author-info -->
+
+									</footer><!-- .comment-meta -->
+
+				<div class="comment-content" itemprop="text">
+					<p>Would be great to see this BME280 on an ESP 01 for outdoor and read to your mobile device or better to another indoor ESP8266 with LCD 🙂 Thanks for the great work. You guys are awesome. Thumbs up!</p>
+<span class="reply"><a rel='nofollow' class='comment-reply-link' href='https://randomnerdtutorials.com/bme280-sensor-arduino-pressure-temperature-humidity/?replytocom=383516#respond' data-commentid="383516" data-postid="86653" data-belowelement="div-comment-383516" data-respondelement="respond" aria-label='Reply to Leslie Pieterse'>Reply</a></span>				</div><!-- .comment-content -->
+			</article><!-- .comment-body -->
+		<ul class="children">
+
+		<li id="comment-383526" class="comment byuser comment-author-sara-santos bypostauthor odd alt depth-2">
+			<article id="div-comment-383526" class="comment-body" itemtype="https://schema.org/Comment" itemscope>
+				<footer class="comment-meta">
+					<img alt='' src='https://secure.gravatar.com/avatar/25e3da92f25bc3fde695d9c0d92207b0?s=50&#038;d=mm&#038;r=g' srcset='https://secure.gravatar.com/avatar/25e3da92f25bc3fde695d9c0d92207b0?s=100&#038;d=mm&#038;r=g 2x' class='avatar avatar-50 photo' height='50' width='50' />					<div class="comment-author-info">
+						<div class="comment-author vcard" itemprop="author" itemtype="https://schema.org/Person" itemscope>
+							<cite itemprop="name" class="fn">Sara Santos</cite>						</div><!-- .comment-author -->
+
+						<div class="entry-meta comment-metadata">
+							<a href="https://randomnerdtutorials.com/bme280-sensor-arduino-pressure-temperature-humidity/#comment-383526">
+								<time datetime="2019-07-02T17:03:01+00:00" itemprop="datePublished">
+									July 2, 2019 at 5:03 pm								</time>
+							</a>
+													</div><!-- .comment-metadata -->
+					</div><!-- .comment-author-info -->
+
+									</footer><!-- .comment-meta -->
+
+				<div class="comment-content" itemprop="text">
+					<p>Thank you.<br />
+We&#8217;re preparing a guide for the BME280 with ESP8266. So, stay tuned 😀</p>
+<span class="reply"><a rel='nofollow' class='comment-reply-link' href='https://randomnerdtutorials.com/bme280-sensor-arduino-pressure-temperature-humidity/?replytocom=383526#respond' data-commentid="383526" data-postid="86653" data-belowelement="div-comment-383526" data-respondelement="respond" aria-label='Reply to Sara Santos'>Reply</a></span>				</div><!-- .comment-content -->
+			</article><!-- .comment-body -->
+		</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+
+		<li id="comment-383586" class="comment even thread-odd thread-alt depth-1 parent">
+			<article id="div-comment-383586" class="comment-body" itemtype="https://schema.org/Comment" itemscope>
+				<footer class="comment-meta">
+					<img alt='' src='https://secure.gravatar.com/avatar/e2eae895c3ec5648661ff64f3f8ac8f3?s=50&#038;d=mm&#038;r=g' srcset='https://secure.gravatar.com/avatar/e2eae895c3ec5648661ff64f3f8ac8f3?s=100&#038;d=mm&#038;r=g 2x' class='avatar avatar-50 photo' height='50' width='50' />					<div class="comment-author-info">
+						<div class="comment-author vcard" itemprop="author" itemtype="https://schema.org/Person" itemscope>
+							<cite itemprop="name" class="fn">K Adams</cite>						</div><!-- .comment-author -->
+
+						<div class="entry-meta comment-metadata">
+							<a href="https://randomnerdtutorials.com/bme280-sensor-arduino-pressure-temperature-humidity/#comment-383586">
+								<time datetime="2019-07-03T04:23:58+00:00" itemprop="datePublished">
+									July 3, 2019 at 4:23 am								</time>
+							</a>
+													</div><!-- .comment-metadata -->
+					</div><!-- .comment-author-info -->
+
+									</footer><!-- .comment-meta -->
+
+				<div class="comment-content" itemprop="text">
+					<p>Excellent article.  There is a similar Bosch sensor called the BMP280 which  has Pressure/Temperature but does not include humidity.  Many ebay sellers confuse the two and sell the BMP280 as the BME280.  There are 3 ways to identify the BME280 :<br />
+1. Shape &#8211; the metal BME sensor is square; the BMP is rectangular.<br />
+2. Location of Vent Hole &#8211;  On LHS for BME;  or RHS for BMP.<br />
+3. Code &#8211; the BME has  P in the code marking;  the BMP  has  K in the code.<br />
+Also, the BME boards are often 3-4 times the price of the BMP boards.<br />
+To avoid frustration, check that the sensor you have bought is the BME280 and not the BMP280.</p>
+<span class="reply"><a rel='nofollow' class='comment-reply-link' href='https://randomnerdtutorials.com/bme280-sensor-arduino-pressure-temperature-humidity/?replytocom=383586#respond' data-commentid="383586" data-postid="86653" data-belowelement="div-comment-383586" data-respondelement="respond" aria-label='Reply to K Adams'>Reply</a></span>				</div><!-- .comment-content -->
+			</article><!-- .comment-body -->
+		<ul class="children">
+
+		<li id="comment-384527" class="comment byuser comment-author-sara-santos bypostauthor odd alt depth-2">
+			<article id="div-comment-384527" class="comment-body" itemtype="https://schema.org/Comment" itemscope>
+				<footer class="comment-meta">
+					<img alt='' src='https://secure.gravatar.com/avatar/25e3da92f25bc3fde695d9c0d92207b0?s=50&#038;d=mm&#038;r=g' srcset='https://secure.gravatar.com/avatar/25e3da92f25bc3fde695d9c0d92207b0?s=100&#038;d=mm&#038;r=g 2x' class='avatar avatar-50 photo' height='50' width='50' />					<div class="comment-author-info">
+						<div class="comment-author vcard" itemprop="author" itemtype="https://schema.org/Person" itemscope>
+							<cite itemprop="name" class="fn">Sara Santos</cite>						</div><!-- .comment-author -->
+
+						<div class="entry-meta comment-metadata">
+							<a href="https://randomnerdtutorials.com/bme280-sensor-arduino-pressure-temperature-humidity/#comment-384527">
+								<time datetime="2019-07-12T22:20:16+00:00" itemprop="datePublished">
+									July 12, 2019 at 10:20 pm								</time>
+							</a>
+													</div><!-- .comment-metadata -->
+					</div><!-- .comment-author-info -->
+
+									</footer><!-- .comment-meta -->
+
+				<div class="comment-content" itemprop="text">
+					<p>Hi.<br />
+Thank you so much for sharing that info.<br />
+It might save hours of frustration.<br />
+Regards,<br />
+Sara</p>
+<span class="reply"><a rel='nofollow' class='comment-reply-link' href='https://randomnerdtutorials.com/bme280-sensor-arduino-pressure-temperature-humidity/?replytocom=384527#respond' data-commentid="384527" data-postid="86653" data-belowelement="div-comment-384527" data-respondelement="respond" aria-label='Reply to Sara Santos'>Reply</a></span>				</div><!-- .comment-content -->
+			</article><!-- .comment-body -->
+		</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+
+		<li id="comment-383598" class="comment even thread-even depth-1 parent">
+			<article id="div-comment-383598" class="comment-body" itemtype="https://schema.org/Comment" itemscope>
+				<footer class="comment-meta">
+					<img alt='' src='https://secure.gravatar.com/avatar/1164a1214160fa30b9a7cabb352ae0aa?s=50&#038;d=mm&#038;r=g' srcset='https://secure.gravatar.com/avatar/1164a1214160fa30b9a7cabb352ae0aa?s=100&#038;d=mm&#038;r=g 2x' class='avatar avatar-50 photo' height='50' width='50' />					<div class="comment-author-info">
+						<div class="comment-author vcard" itemprop="author" itemtype="https://schema.org/Person" itemscope>
+							<cite itemprop="name" class="fn">Duncan Amos</cite>						</div><!-- .comment-author -->
+
+						<div class="entry-meta comment-metadata">
+							<a href="https://randomnerdtutorials.com/bme280-sensor-arduino-pressure-temperature-humidity/#comment-383598">
+								<time datetime="2019-07-03T06:41:31+00:00" itemprop="datePublished">
+									July 3, 2019 at 6:41 am								</time>
+							</a>
+													</div><!-- .comment-metadata -->
+					</div><!-- .comment-author-info -->
+
+									</footer><!-- .comment-meta -->
+
+				<div class="comment-content" itemprop="text">
+					<p>It would be useful to know how to find the current sea level air pressure for a location.</p>
+<p>Hoe do I do it?</p>
+<span class="reply"><a rel='nofollow' class='comment-reply-link' href='https://randomnerdtutorials.com/bme280-sensor-arduino-pressure-temperature-humidity/?replytocom=383598#respond' data-commentid="383598" data-postid="86653" data-belowelement="div-comment-383598" data-respondelement="respond" aria-label='Reply to Duncan Amos'>Reply</a></span>				</div><!-- .comment-content -->
+			</article><!-- .comment-body -->
+		<ul class="children">
+
+		<li id="comment-383640" class="comment odd alt depth-2 parent">
+			<article id="div-comment-383640" class="comment-body" itemtype="https://schema.org/Comment" itemscope>
+				<footer class="comment-meta">
+					<img alt='' src='https://secure.gravatar.com/avatar/3093d2a327d1c262cc04e9edbf8556f5?s=50&#038;d=mm&#038;r=g' srcset='https://secure.gravatar.com/avatar/3093d2a327d1c262cc04e9edbf8556f5?s=100&#038;d=mm&#038;r=g 2x' class='avatar avatar-50 photo' height='50' width='50' />					<div class="comment-author-info">
+						<div class="comment-author vcard" itemprop="author" itemtype="https://schema.org/Person" itemscope>
+							<cite itemprop="name" class="fn">Andrew Wilson</cite>						</div><!-- .comment-author -->
+
+						<div class="entry-meta comment-metadata">
+							<a href="https://randomnerdtutorials.com/bme280-sensor-arduino-pressure-temperature-humidity/#comment-383640">
+								<time datetime="2019-07-03T17:02:04+00:00" itemprop="datePublished">
+									July 3, 2019 at 5:02 pm								</time>
+							</a>
+													</div><!-- .comment-metadata -->
+					</div><!-- .comment-author-info -->
+
+									</footer><!-- .comment-meta -->
+
+				<div class="comment-content" itemprop="text">
+					<p>Duncan, You need the qnh value for your nearest aerodrome</p>
+<p>Here is mine (1015hpa)</p>
+<p>skybrary.aero/index.php/EGNX</p>
+<span class="reply"><a rel='nofollow' class='comment-reply-link' href='https://randomnerdtutorials.com/bme280-sensor-arduino-pressure-temperature-humidity/?replytocom=383640#respond' data-commentid="383640" data-postid="86653" data-belowelement="div-comment-383640" data-respondelement="respond" aria-label='Reply to Andrew Wilson'>Reply</a></span>				</div><!-- .comment-content -->
+			</article><!-- .comment-body -->
+		<ul class="children">
+
+		<li id="comment-383748" class="comment even depth-3">
+			<article id="div-comment-383748" class="comment-body" itemtype="https://schema.org/Comment" itemscope>
+				<footer class="comment-meta">
+					<img alt='' src='https://secure.gravatar.com/avatar/1164a1214160fa30b9a7cabb352ae0aa?s=50&#038;d=mm&#038;r=g' srcset='https://secure.gravatar.com/avatar/1164a1214160fa30b9a7cabb352ae0aa?s=100&#038;d=mm&#038;r=g 2x' class='avatar avatar-50 photo' height='50' width='50' />					<div class="comment-author-info">
+						<div class="comment-author vcard" itemprop="author" itemtype="https://schema.org/Person" itemscope>
+							<cite itemprop="name" class="fn">Duncan Amos</cite>						</div><!-- .comment-author -->
+
+						<div class="entry-meta comment-metadata">
+							<a href="https://randomnerdtutorials.com/bme280-sensor-arduino-pressure-temperature-humidity/#comment-383748">
+								<time datetime="2019-07-04T09:10:28+00:00" itemprop="datePublished">
+									July 4, 2019 at 9:10 am								</time>
+							</a>
+													</div><!-- .comment-metadata -->
+					</div><!-- .comment-author-info -->
+
+									</footer><!-- .comment-meta -->
+
+				<div class="comment-content" itemprop="text">
+					<p>My point was that Rui should show a method in the tutorial, not just leave it hanging in mid air&#8230;</p>
+<p>Thanks</p>
+<span class="reply"><a rel='nofollow' class='comment-reply-link' href='https://randomnerdtutorials.com/bme280-sensor-arduino-pressure-temperature-humidity/?replytocom=383748#respond' data-commentid="383748" data-postid="86653" data-belowelement="div-comment-383748" data-respondelement="respond" aria-label='Reply to Duncan Amos'>Reply</a></span>				</div><!-- .comment-content -->
+			</article><!-- .comment-body -->
+		</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+
+		<li id="comment-383651" class="comment byuser comment-author-sara-santos bypostauthor odd alt depth-2">
+			<article id="div-comment-383651" class="comment-body" itemtype="https://schema.org/Comment" itemscope>
+				<footer class="comment-meta">
+					<img alt='' src='https://secure.gravatar.com/avatar/25e3da92f25bc3fde695d9c0d92207b0?s=50&#038;d=mm&#038;r=g' srcset='https://secure.gravatar.com/avatar/25e3da92f25bc3fde695d9c0d92207b0?s=100&#038;d=mm&#038;r=g 2x' class='avatar avatar-50 photo' height='50' width='50' />					<div class="comment-author-info">
+						<div class="comment-author vcard" itemprop="author" itemtype="https://schema.org/Person" itemscope>
+							<cite itemprop="name" class="fn">Sara Santos</cite>						</div><!-- .comment-author -->
+
+						<div class="entry-meta comment-metadata">
+							<a href="https://randomnerdtutorials.com/bme280-sensor-arduino-pressure-temperature-humidity/#comment-383651">
+								<time datetime="2019-07-03T17:56:47+00:00" itemprop="datePublished">
+									July 3, 2019 at 5:56 pm								</time>
+							</a>
+													</div><!-- .comment-metadata -->
+					</div><!-- .comment-author-info -->
+
+									</footer><!-- .comment-meta -->
+
+				<div class="comment-content" itemprop="text">
+					<p>Hi Duncam.<br />
+I think it depends on where you live.<br />
+Here in Portugal, I cant get the pressure from IPMA website (portuguese meteorology website).<br />
+Try searching your country + sea level pressure on google and see the results.<br />
+Regards,<br />
+Sara</p>
+<span class="reply"><a rel='nofollow' class='comment-reply-link' href='https://randomnerdtutorials.com/bme280-sensor-arduino-pressure-temperature-humidity/?replytocom=383651#respond' data-commentid="383651" data-postid="86653" data-belowelement="div-comment-383651" data-respondelement="respond" aria-label='Reply to Sara Santos'>Reply</a></span>				</div><!-- .comment-content -->
+			</article><!-- .comment-body -->
+		</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+
+		<li id="comment-383612" class="comment even thread-odd thread-alt depth-1">
+			<article id="div-comment-383612" class="comment-body" itemtype="https://schema.org/Comment" itemscope>
+				<footer class="comment-meta">
+					<img alt='' src='https://secure.gravatar.com/avatar/aead80937d7af48881f58dd9b10d5a2e?s=50&#038;d=mm&#038;r=g' srcset='https://secure.gravatar.com/avatar/aead80937d7af48881f58dd9b10d5a2e?s=100&#038;d=mm&#038;r=g 2x' class='avatar avatar-50 photo' height='50' width='50' />					<div class="comment-author-info">
+						<div class="comment-author vcard" itemprop="author" itemtype="https://schema.org/Person" itemscope>
+							<cite itemprop="name" class="fn">ed</cite>						</div><!-- .comment-author -->
+
+						<div class="entry-meta comment-metadata">
+							<a href="https://randomnerdtutorials.com/bme280-sensor-arduino-pressure-temperature-humidity/#comment-383612">
+								<time datetime="2019-07-03T09:13:02+00:00" itemprop="datePublished">
+									July 3, 2019 at 9:13 am								</time>
+							</a>
+													</div><!-- .comment-metadata -->
+					</div><!-- .comment-author-info -->
+
+									</footer><!-- .comment-meta -->
+
+				<div class="comment-content" itemprop="text">
+					<p>Interesting post.<br />
+With the BME280 it is important to realise that by default it is in automode, taking continuous readings. This will warm up the chip, affecting the read temperature.<br />
+It is better to use the BME in &#8220;Forced mode&#8221; and to set the sampling rate:<br />
+ bme.setSampling(Adafruit_BME280::MODE_FORCED,<br />
+                  Adafruit_BME280::SAMPLING_X1, // temperature<br />
+                  Adafruit_BME280::SAMPLING_X1, // pressure<br />
+                  Adafruit_BME280::SAMPLING_X1, // humidity<br />
+                  Adafruit_BME280::FILTER_OFF   );</p>
+<span class="reply"><a rel='nofollow' class='comment-reply-link' href='https://randomnerdtutorials.com/bme280-sensor-arduino-pressure-temperature-humidity/?replytocom=383612#respond' data-commentid="383612" data-postid="86653" data-belowelement="div-comment-383612" data-respondelement="respond" aria-label='Reply to ed'>Reply</a></span>				</div><!-- .comment-content -->
+			</article><!-- .comment-body -->
+		</li><!-- #comment-## -->
+
+		<li id="comment-424965" class="comment odd alt thread-even depth-1 parent">
+			<article id="div-comment-424965" class="comment-body" itemtype="https://schema.org/Comment" itemscope>
+				<footer class="comment-meta">
+					<img alt='' src='https://secure.gravatar.com/avatar/6d72aec4697ae064e4b64a7e8f390626?s=50&#038;d=mm&#038;r=g' srcset='https://secure.gravatar.com/avatar/6d72aec4697ae064e4b64a7e8f390626?s=100&#038;d=mm&#038;r=g 2x' class='avatar avatar-50 photo' height='50' width='50' />					<div class="comment-author-info">
+						<div class="comment-author vcard" itemprop="author" itemtype="https://schema.org/Person" itemscope>
+							<cite itemprop="name" class="fn">Gerard</cite>						</div><!-- .comment-author -->
+
+						<div class="entry-meta comment-metadata">
+							<a href="https://randomnerdtutorials.com/bme280-sensor-arduino-pressure-temperature-humidity/#comment-424965">
+								<time datetime="2020-01-30T09:16:45+00:00" itemprop="datePublished">
+									January 30, 2020 at 9:16 am								</time>
+							</a>
+													</div><!-- .comment-metadata -->
+					</div><!-- .comment-author-info -->
+
+									</footer><!-- .comment-meta -->
+
+				<div class="comment-content" itemprop="text">
+					<p>Hi Sara and Rui,</p>
+<p>What to do if I want to use BME280 twice.<br />
+For my greenhouse I want to know T and RH outside and inside.<br />
+Is that possible anyway?<br />
+Cheers<br />
+Gerard</p>
+<span class="reply"><a rel='nofollow' class='comment-reply-link' href='https://randomnerdtutorials.com/bme280-sensor-arduino-pressure-temperature-humidity/?replytocom=424965#respond' data-commentid="424965" data-postid="86653" data-belowelement="div-comment-424965" data-respondelement="respond" aria-label='Reply to Gerard'>Reply</a></span>				</div><!-- .comment-content -->
+			</article><!-- .comment-body -->
+		<ul class="children">
+
+		<li id="comment-424970" class="comment byuser comment-author-sara-santos bypostauthor even depth-2 parent">
+			<article id="div-comment-424970" class="comment-body" itemtype="https://schema.org/Comment" itemscope>
+				<footer class="comment-meta">
+					<img alt='' src='https://secure.gravatar.com/avatar/25e3da92f25bc3fde695d9c0d92207b0?s=50&#038;d=mm&#038;r=g' srcset='https://secure.gravatar.com/avatar/25e3da92f25bc3fde695d9c0d92207b0?s=100&#038;d=mm&#038;r=g 2x' class='avatar avatar-50 photo' height='50' width='50' />					<div class="comment-author-info">
+						<div class="comment-author vcard" itemprop="author" itemtype="https://schema.org/Person" itemscope>
+							<cite itemprop="name" class="fn">Sara Santos</cite>						</div><!-- .comment-author -->
+
+						<div class="entry-meta comment-metadata">
+							<a href="https://randomnerdtutorials.com/bme280-sensor-arduino-pressure-temperature-humidity/#comment-424970">
+								<time datetime="2020-01-30T09:40:02+00:00" itemprop="datePublished">
+									January 30, 2020 at 9:40 am								</time>
+							</a>
+													</div><!-- .comment-metadata -->
+					</div><!-- .comment-author-info -->
+
+									</footer><!-- .comment-meta -->
+
+				<div class="comment-content" itemprop="text">
+					<p>Hi Gerard.<br />
+Can you provide more details?<br />
+Do you want to wire the BME280 to the same board? Read this guide to learn how to interface multiple I2C devices: <a href="https://randomnerdtutorials.com/esp32-i2c-communication-arduino-ide/" rel="nofollow ugc">https://randomnerdtutorials.com/esp32-i2c-communication-arduino-ide/</a><br />
+If you want to use different boards, you can read this article to learn how to send BME280 sensor readings from one board to the other: <a href="https://randomnerdtutorials.com/esp32-client-server-wi-fi/" rel="nofollow ugc">https://randomnerdtutorials.com/esp32-client-server-wi-fi/</a><br />
+Regards,<br />
+Sara</p>
+<span class="reply"><a rel='nofollow' class='comment-reply-link' href='https://randomnerdtutorials.com/bme280-sensor-arduino-pressure-temperature-humidity/?replytocom=424970#respond' data-commentid="424970" data-postid="86653" data-belowelement="div-comment-424970" data-respondelement="respond" aria-label='Reply to Sara Santos'>Reply</a></span>				</div><!-- .comment-content -->
+			</article><!-- .comment-body -->
+		<ul class="children">
+
+		<li id="comment-424986" class="comment odd alt depth-3">
+			<article id="div-comment-424986" class="comment-body" itemtype="https://schema.org/Comment" itemscope>
+				<footer class="comment-meta">
+					<img alt='' src='https://secure.gravatar.com/avatar/6d72aec4697ae064e4b64a7e8f390626?s=50&#038;d=mm&#038;r=g' srcset='https://secure.gravatar.com/avatar/6d72aec4697ae064e4b64a7e8f390626?s=100&#038;d=mm&#038;r=g 2x' class='avatar avatar-50 photo' height='50' width='50' />					<div class="comment-author-info">
+						<div class="comment-author vcard" itemprop="author" itemtype="https://schema.org/Person" itemscope>
+							<cite itemprop="name" class="fn">Gerard</cite>						</div><!-- .comment-author -->
+
+						<div class="entry-meta comment-metadata">
+							<a href="https://randomnerdtutorials.com/bme280-sensor-arduino-pressure-temperature-humidity/#comment-424986">
+								<time datetime="2020-01-30T10:10:09+00:00" itemprop="datePublished">
+									January 30, 2020 at 10:10 am								</time>
+							</a>
+													</div><!-- .comment-metadata -->
+					</div><!-- .comment-author-info -->
+
+									</footer><!-- .comment-meta -->
+
+				<div class="comment-content" itemprop="text">
+					<p>Wow, thank you for the quick reply Sara.<br />
+Preferably I use one board but two BME280 connected to it<br />
+I will have a look at the guide and be back in case I run into problems.<br />
+Thank you so much<br />
+Cheers,<br />
+Gerard</p>
+<span class="reply"><a rel='nofollow' class='comment-reply-link' href='https://randomnerdtutorials.com/bme280-sensor-arduino-pressure-temperature-humidity/?replytocom=424986#respond' data-commentid="424986" data-postid="86653" data-belowelement="div-comment-424986" data-respondelement="respond" aria-label='Reply to Gerard'>Reply</a></span>				</div><!-- .comment-content -->
+			</article><!-- .comment-body -->
+		</li><!-- #comment-## -->
+
+		<li id="comment-425091" class="comment even depth-3 parent">
+			<article id="div-comment-425091" class="comment-body" itemtype="https://schema.org/Comment" itemscope>
+				<footer class="comment-meta">
+					<img alt='' src='https://secure.gravatar.com/avatar/1164a1214160fa30b9a7cabb352ae0aa?s=50&#038;d=mm&#038;r=g' srcset='https://secure.gravatar.com/avatar/1164a1214160fa30b9a7cabb352ae0aa?s=100&#038;d=mm&#038;r=g 2x' class='avatar avatar-50 photo' height='50' width='50' />					<div class="comment-author-info">
+						<div class="comment-author vcard" itemprop="author" itemtype="https://schema.org/Person" itemscope>
+							<cite itemprop="name" class="fn">Duncan Amos</cite>						</div><!-- .comment-author -->
+
+						<div class="entry-meta comment-metadata">
+							<a href="https://randomnerdtutorials.com/bme280-sensor-arduino-pressure-temperature-humidity/#comment-425091">
+								<time datetime="2020-01-30T15:22:15+00:00" itemprop="datePublished">
+									January 30, 2020 at 3:22 pm								</time>
+							</a>
+													</div><!-- .comment-metadata -->
+					</div><!-- .comment-author-info -->
+
+									</footer><!-- .comment-meta -->
+
+				<div class="comment-content" itemprop="text">
+					<p>bluedot.space/tutorials/connect-two-bme280-on-i2c-bus/ refers to the BME280 specifically.</p>
+<span class="reply"><a rel='nofollow' class='comment-reply-link' href='https://randomnerdtutorials.com/bme280-sensor-arduino-pressure-temperature-humidity/?replytocom=425091#respond' data-commentid="425091" data-postid="86653" data-belowelement="div-comment-425091" data-respondelement="respond" aria-label='Reply to Duncan Amos'>Reply</a></span>				</div><!-- .comment-content -->
+			</article><!-- .comment-body -->
+		<ul class="children">
+
+		<li id="comment-425390" class="comment odd alt depth-4">
+			<article id="div-comment-425390" class="comment-body" itemtype="https://schema.org/Comment" itemscope>
+				<footer class="comment-meta">
+					<img alt='' src='https://secure.gravatar.com/avatar/6d72aec4697ae064e4b64a7e8f390626?s=50&#038;d=mm&#038;r=g' srcset='https://secure.gravatar.com/avatar/6d72aec4697ae064e4b64a7e8f390626?s=100&#038;d=mm&#038;r=g 2x' class='avatar avatar-50 photo' height='50' width='50' />					<div class="comment-author-info">
+						<div class="comment-author vcard" itemprop="author" itemtype="https://schema.org/Person" itemscope>
+							<cite itemprop="name" class="fn">Gerard</cite>						</div><!-- .comment-author -->
+
+						<div class="entry-meta comment-metadata">
+							<a href="https://randomnerdtutorials.com/bme280-sensor-arduino-pressure-temperature-humidity/#comment-425390">
+								<time datetime="2020-01-31T08:31:26+00:00" itemprop="datePublished">
+									January 31, 2020 at 8:31 am								</time>
+							</a>
+													</div><!-- .comment-metadata -->
+					</div><!-- .comment-author-info -->
+
+									</footer><!-- .comment-meta -->
+
+				<div class="comment-content" itemprop="text">
+					<p>Thank you Duncan, that is exactly what I was looking for.<br />
+Cheers,<br />
+Gerard</p>
+<span class="reply"><a rel='nofollow' class='comment-reply-link' href='https://randomnerdtutorials.com/bme280-sensor-arduino-pressure-temperature-humidity/?replytocom=425390#respond' data-commentid="425390" data-postid="86653" data-belowelement="div-comment-425390" data-respondelement="respond" aria-label='Reply to Gerard'>Reply</a></span>				</div><!-- .comment-content -->
+			</article><!-- .comment-body -->
+		</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+
+		<li id="comment-425469" class="comment even depth-3 parent">
+			<article id="div-comment-425469" class="comment-body" itemtype="https://schema.org/Comment" itemscope>
+				<footer class="comment-meta">
+					<img alt='' src='https://secure.gravatar.com/avatar/6d72aec4697ae064e4b64a7e8f390626?s=50&#038;d=mm&#038;r=g' srcset='https://secure.gravatar.com/avatar/6d72aec4697ae064e4b64a7e8f390626?s=100&#038;d=mm&#038;r=g 2x' class='avatar avatar-50 photo' height='50' width='50' />					<div class="comment-author-info">
+						<div class="comment-author vcard" itemprop="author" itemtype="https://schema.org/Person" itemscope>
+							<cite itemprop="name" class="fn">Gerard</cite>						</div><!-- .comment-author -->
+
+						<div class="entry-meta comment-metadata">
+							<a href="https://randomnerdtutorials.com/bme280-sensor-arduino-pressure-temperature-humidity/#comment-425469">
+								<time datetime="2020-01-31T11:41:01+00:00" itemprop="datePublished">
+									January 31, 2020 at 11:41 am								</time>
+							</a>
+													</div><!-- .comment-metadata -->
+					</div><!-- .comment-author-info -->
+
+									</footer><!-- .comment-meta -->
+
+				<div class="comment-content" itemprop="text">
+					<p>Hi Sara,</p>
+<p>I followed the instructions as suggested by Duncan (see below)<br />
+In the sketch as in this tutorial BlueDot_BME280.h was included instead of Wire.h It runs like clockwork</p>
+<p>Kind regards,<br />
+Gerard</p>
+<span class="reply"><a rel='nofollow' class='comment-reply-link' href='https://randomnerdtutorials.com/bme280-sensor-arduino-pressure-temperature-humidity/?replytocom=425469#respond' data-commentid="425469" data-postid="86653" data-belowelement="div-comment-425469" data-respondelement="respond" aria-label='Reply to Gerard'>Reply</a></span>				</div><!-- .comment-content -->
+			</article><!-- .comment-body -->
+		<ul class="children">
+
+		<li id="comment-425520" class="comment odd alt depth-4">
+			<article id="div-comment-425520" class="comment-body" itemtype="https://schema.org/Comment" itemscope>
+				<footer class="comment-meta">
+					<img alt='' src='https://secure.gravatar.com/avatar/6d72aec4697ae064e4b64a7e8f390626?s=50&#038;d=mm&#038;r=g' srcset='https://secure.gravatar.com/avatar/6d72aec4697ae064e4b64a7e8f390626?s=100&#038;d=mm&#038;r=g 2x' class='avatar avatar-50 photo' height='50' width='50' />					<div class="comment-author-info">
+						<div class="comment-author vcard" itemprop="author" itemtype="https://schema.org/Person" itemscope>
+							<cite itemprop="name" class="fn">Gerard</cite>						</div><!-- .comment-author -->
+
+						<div class="entry-meta comment-metadata">
+							<a href="https://randomnerdtutorials.com/bme280-sensor-arduino-pressure-temperature-humidity/#comment-425520">
+								<time datetime="2020-01-31T15:22:55+00:00" itemprop="datePublished">
+									January 31, 2020 at 3:22 pm								</time>
+							</a>
+													</div><!-- .comment-metadata -->
+					</div><!-- .comment-author-info -->
+
+									</footer><!-- .comment-meta -->
+
+				<div class="comment-content" itemprop="text">
+					<p>below &gt;&gt; above</p>
+<span class="reply"><a rel='nofollow' class='comment-reply-link' href='https://randomnerdtutorials.com/bme280-sensor-arduino-pressure-temperature-humidity/?replytocom=425520#respond' data-commentid="425520" data-postid="86653" data-belowelement="div-comment-425520" data-respondelement="respond" aria-label='Reply to Gerard'>Reply</a></span>				</div><!-- .comment-content -->
+			</article><!-- .comment-body -->
+		</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+		</ol><!-- .comment-list -->
+
+			<div id="respond" class="comment-respond">
+		<h3 id="reply-title" class="comment-reply-title">Leave a Comment <small><a rel="nofollow" id="cancel-comment-reply-link" href="/bme280-sensor-arduino-pressure-temperature-humidity/#respond" style="display:none;">Cancel reply</a></small></h3><form action="https://randomnerdtutorials.com/wp-comments-post.php" method="post" id="commentform" class="comment-form" novalidate><p class="comment-form-comment"><label for="comment" class="screen-reader-text">Comment</label><textarea id="comment" name="comment" cols="45" rows="8" aria-required="true"></textarea></p><label for="author" class="screen-reader-text">Name</label><input placeholder="Name *" id="author" name="author" type="text" value="" size="30" />
+<label for="email" class="screen-reader-text">Email</label><input placeholder="Email *" id="email" name="email" type="email" value="" size="30" />
+<label for="url" class="screen-reader-text">Website</label><input placeholder="Website" id="url" name="url" type="url" value="" size="30" />
+<p class="comment-subscription-form"><input type="checkbox" name="subscribe_comments" id="subscribe_comments" value="subscribe" style="width: auto; -moz-appearance: checkbox; -webkit-appearance: checkbox;" /> <label class="subscribe-label" id="subscribe-label" for="subscribe_comments">Notify me of follow-up comments by email.</label></p><p class="comment-subscription-form"><input type="checkbox" name="subscribe_blog" id="subscribe_blog" value="subscribe" style="width: auto; -moz-appearance: checkbox; -webkit-appearance: checkbox;" /> <label class="subscribe-label" id="subscribe-blog-label" for="subscribe_blog">Notify me of new posts by email.</label></p><p class="form-submit"><input name="submit" type="submit" id="submit" class="submit" value="Post Comment" /> <input type='hidden' name='comment_post_ID' value='86653' id='comment_post_ID' />
+<input type='hidden' name='comment_parent' id='comment_parent' value='0' />
+</p><p style="display: none;"><input type="hidden" id="akismet_comment_nonce" name="akismet_comment_nonce" value="c8452550d3" /></p><p style="display: none;"><input type="hidden" id="ak_js" name="ak_js" value="161"/></p></form>	</div><!-- #respond -->
+	
+</div><!-- #comments -->
+					</div>
+
+							</main><!-- #main -->
+	</div><!-- #primary -->
+
+	<div id="right-sidebar" class="widget-area grid-25 tablet-grid-25 grid-parent sidebar" itemtype="https://schema.org/WPSideBar" itemscope>
+	<div class="inside-right-sidebar">
+		<aside id="text-48" class="widget inner-padding widget_text">			<div class="textwidget"><p><a href="https://randomnerdtutorials.com/arduino-step-by-step-projects/"><img class="aligncenter" src="https://i1.wp.com/randomnerdtutorials.com/wp-content/uploads/2017/10/arduino-sb-img.jpg?w=813" data-recalc-dims="1" /></a><br />
+<strong><a href="https://randomnerdtutorials.com/arduino-step-by-step-projects/">Arduino Step-by-Step Projects »</a><br />
+</strong>Build 25 cool Arduino projects with our course even with no prior experience!</p>
+</div>
+		</aside><aside id="elementor-library-2" class="widget inner-padding widget_elementor-library">		<div data-elementor-type="section" data-elementor-id="82648" class="elementor elementor-82648" data-elementor-settings="[]">
+			<div class="elementor-inner">
+				<div class="elementor-section-wrap">
+							<section class="elementor-element elementor-element-e5b3ca7 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-id="e5b3ca7" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div class="elementor-element elementor-element-d913468 elementor-column elementor-col-100 elementor-top-column" data-id="d913468" data-element_type="column">
+			<div class="elementor-column-wrap  elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div class="elementor-element elementor-element-a9017d2 elementor-grid-1 elementor-grid-tablet-1 elementor-posts--thumbnail-left elementor-posts--align-left elementor-hidden-phone elementor-grid-mobile-1 elementor-invisible elementor-widget elementor-widget-posts" data-id="a9017d2" data-element_type="widget" data-settings="{&quot;classic_columns&quot;:&quot;1&quot;,&quot;classic_columns_tablet&quot;:&quot;1&quot;,&quot;classic_row_gap&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:20,&quot;sizes&quot;:[]},&quot;_animation&quot;:&quot;none&quot;,&quot;classic_columns_mobile&quot;:&quot;1&quot;}" data-widget_type="posts.classic">
+				<div class="elementor-widget-container">
+					<div class="elementor-posts-container elementor-posts elementor-posts--skin-classic elementor-grid">
+				<article class="elementor-post elementor-grid-item post-83645 post type-post status-publish format-standard has-post-thumbnail hentry category-esp32 category-esp32-project category-esp32-arduino-ide category-0-esp32 category-guide category-project">
+				<a class="elementor-post__thumbnail__link" href="https://randomnerdtutorials.com/esp32-touch-wake-up-deep-sleep/">
+			<div class="elementor-post__thumbnail"><img width="1280" height="720" src="https://i0.wp.com/randomnerdtutorials.com/wp-content/uploads/2019/04/ESP32-deep-sleep-touch.jpg?fit=1280%2C720&amp;ssl=1" class="attachment-full size-full" alt="" srcset="https://i0.wp.com/randomnerdtutorials.com/wp-content/uploads/2019/04/ESP32-deep-sleep-touch.jpg?w=1280&amp;ssl=1 1280w, https://i0.wp.com/randomnerdtutorials.com/wp-content/uploads/2019/04/ESP32-deep-sleep-touch.jpg?resize=300%2C169&amp;ssl=1 300w, https://i0.wp.com/randomnerdtutorials.com/wp-content/uploads/2019/04/ESP32-deep-sleep-touch.jpg?resize=768%2C432&amp;ssl=1 768w, https://i0.wp.com/randomnerdtutorials.com/wp-content/uploads/2019/04/ESP32-deep-sleep-touch.jpg?resize=1024%2C576&amp;ssl=1 1024w" sizes="(max-width: 1280px) 100vw, 1280px" /></div>
+		</a>
+				<div class="elementor-post__text">
+				<h3 class="elementor-post__title">
+			<a href="https://randomnerdtutorials.com/esp32-touch-wake-up-deep-sleep/">
+				ESP32 Touch Wake Up from Deep Sleep			</a>
+		</h3>
+				</div>
+				</article>
+				<article class="elementor-post elementor-grid-item post-89983 post type-post status-publish format-standard has-post-thumbnail hentry category-esp32 category-esp32-project category-esp32-arduino-ide category-0-esp32 category-project">
+				<a class="elementor-post__thumbnail__link" href="https://randomnerdtutorials.com/ttgo-lora32-sx1276-arduino-ide/">
+			<div class="elementor-post__thumbnail"><img width="1280" height="720" src="https://i0.wp.com/randomnerdtutorials.com/wp-content/uploads/2019/10/TTGO-LoRa-ESP32-Dev-Board-Arduino-IDE-Project.jpg?fit=1280%2C720&amp;ssl=1" class="attachment-full size-full" alt="TTGO LoRa32 OLED SX1276 Board: Getting Started with Arduino IDE" srcset="https://i0.wp.com/randomnerdtutorials.com/wp-content/uploads/2019/10/TTGO-LoRa-ESP32-Dev-Board-Arduino-IDE-Project.jpg?w=1280&amp;ssl=1 1280w, https://i0.wp.com/randomnerdtutorials.com/wp-content/uploads/2019/10/TTGO-LoRa-ESP32-Dev-Board-Arduino-IDE-Project.jpg?resize=300%2C169&amp;ssl=1 300w, https://i0.wp.com/randomnerdtutorials.com/wp-content/uploads/2019/10/TTGO-LoRa-ESP32-Dev-Board-Arduino-IDE-Project.jpg?resize=768%2C432&amp;ssl=1 768w, https://i0.wp.com/randomnerdtutorials.com/wp-content/uploads/2019/10/TTGO-LoRa-ESP32-Dev-Board-Arduino-IDE-Project.jpg?resize=1024%2C576&amp;ssl=1 1024w" sizes="(max-width: 1280px) 100vw, 1280px" /></div>
+		</a>
+				<div class="elementor-post__text">
+				<h3 class="elementor-post__title">
+			<a href="https://randomnerdtutorials.com/ttgo-lora32-sx1276-arduino-ide/">
+				TTGO LoRa32 SX1276 OLED Board: Getting Started with Arduino IDE			</a>
+		</h3>
+				</div>
+				</article>
+				<article class="elementor-post elementor-grid-item post-74820 post type-post status-publish format-standard has-post-thumbnail hentry category-esp32-project category-esp8266-project category-micropython category-0-esp32-micropython category-project">
+				<a class="elementor-post__thumbnail__link" href="https://randomnerdtutorials.com/install-upycraft-ide-mac-os-x-instructions/">
+			<div class="elementor-post__thumbnail"><img width="1280" height="720" src="https://i0.wp.com/randomnerdtutorials.com/wp-content/uploads/2018/10/Installing-uPyCraft-IDE-Mac-OS-X-MicroPython-featured.jpg?fit=1280%2C720&amp;ssl=1" class="attachment-full size-full" alt="" srcset="https://i0.wp.com/randomnerdtutorials.com/wp-content/uploads/2018/10/Installing-uPyCraft-IDE-Mac-OS-X-MicroPython-featured.jpg?w=1280&amp;ssl=1 1280w, https://i0.wp.com/randomnerdtutorials.com/wp-content/uploads/2018/10/Installing-uPyCraft-IDE-Mac-OS-X-MicroPython-featured.jpg?resize=300%2C169&amp;ssl=1 300w, https://i0.wp.com/randomnerdtutorials.com/wp-content/uploads/2018/10/Installing-uPyCraft-IDE-Mac-OS-X-MicroPython-featured.jpg?resize=768%2C432&amp;ssl=1 768w, https://i0.wp.com/randomnerdtutorials.com/wp-content/uploads/2018/10/Installing-uPyCraft-IDE-Mac-OS-X-MicroPython-featured.jpg?resize=1024%2C576&amp;ssl=1 1024w" sizes="(max-width: 1280px) 100vw, 1280px" /></div>
+		</a>
+				<div class="elementor-post__text">
+				<h3 class="elementor-post__title">
+			<a href="https://randomnerdtutorials.com/install-upycraft-ide-mac-os-x-instructions/">
+				Install uPyCraft IDE &#8211; Mac OS X Instructions			</a>
+		</h3>
+				</div>
+				</article>
+				<article class="elementor-post elementor-grid-item post-67776 post type-post status-publish format-standard has-post-thumbnail hentry category-esp32 category-esp32-project category-esp32-arduino-ide category-0-esp32 category-guide-project category-project">
+				<a class="elementor-post__thumbnail__link" href="https://randomnerdtutorials.com/esp32-troubleshooting-guide/">
+			<div class="elementor-post__thumbnail"><img width="1280" height="720" src="https://i1.wp.com/randomnerdtutorials.com/wp-content/uploads/2018/07/ESP32-troubleshooting.jpg?fit=1280%2C720&amp;ssl=1" class="attachment-full size-full" alt="" srcset="https://i1.wp.com/randomnerdtutorials.com/wp-content/uploads/2018/07/ESP32-troubleshooting.jpg?w=1280&amp;ssl=1 1280w, https://i1.wp.com/randomnerdtutorials.com/wp-content/uploads/2018/07/ESP32-troubleshooting.jpg?resize=300%2C169&amp;ssl=1 300w, https://i1.wp.com/randomnerdtutorials.com/wp-content/uploads/2018/07/ESP32-troubleshooting.jpg?resize=768%2C432&amp;ssl=1 768w, https://i1.wp.com/randomnerdtutorials.com/wp-content/uploads/2018/07/ESP32-troubleshooting.jpg?resize=1024%2C576&amp;ssl=1 1024w" sizes="(max-width: 1280px) 100vw, 1280px" /></div>
+		</a>
+				<div class="elementor-post__text">
+				<h3 class="elementor-post__title">
+			<a href="https://randomnerdtutorials.com/esp32-troubleshooting-guide/">
+				ESP32 Troubleshooting Guide			</a>
+		</h3>
+				</div>
+				</article>
+				<article class="elementor-post elementor-grid-item post-81128 post type-post status-publish format-standard has-post-thumbnail hentry category-esp32-project category-esp8266-project category-micropython category-0-esp32-micropython category-project">
+				<a class="elementor-post__thumbnail__link" href="https://randomnerdtutorials.com/micropython-ws2812b-addressable-rgb-leds-neopixel-esp32-esp8266/">
+			<div class="elementor-post__thumbnail"><img width="1280" height="720" src="https://i0.wp.com/randomnerdtutorials.com/wp-content/uploads/2019/02/ws2812b-micropython-esp8266-esp32.jpg?fit=1280%2C720&amp;ssl=1" class="attachment-full size-full" alt="" srcset="https://i0.wp.com/randomnerdtutorials.com/wp-content/uploads/2019/02/ws2812b-micropython-esp8266-esp32.jpg?w=1280&amp;ssl=1 1280w, https://i0.wp.com/randomnerdtutorials.com/wp-content/uploads/2019/02/ws2812b-micropython-esp8266-esp32.jpg?resize=300%2C169&amp;ssl=1 300w, https://i0.wp.com/randomnerdtutorials.com/wp-content/uploads/2019/02/ws2812b-micropython-esp8266-esp32.jpg?resize=768%2C432&amp;ssl=1 768w, https://i0.wp.com/randomnerdtutorials.com/wp-content/uploads/2019/02/ws2812b-micropython-esp8266-esp32.jpg?resize=1024%2C576&amp;ssl=1 1024w" sizes="(max-width: 1280px) 100vw, 1280px" /></div>
+		</a>
+				<div class="elementor-post__text">
+				<h3 class="elementor-post__title">
+			<a href="https://randomnerdtutorials.com/micropython-ws2812b-addressable-rgb-leds-neopixel-esp32-esp8266/">
+				MicroPython: WS2812B Addressable RGB LEDs with ESP32 and ESP8266			</a>
+		</h3>
+				</div>
+				</article>
+				</div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+						</div>
+			</div>
+		</div>
+		</aside><aside id="text-49" class="widget inner-padding widget_text">			<div class="textwidget"><p><a href="https://makeradvisor.com/?utm_source=rnt&amp;utm_medium=sb&amp;utm_campaign=sb" target="_blank" rel="noopener noreferrer"><img class="aligncenter" src="https://i2.wp.com/randomnerdtutorials.com/wp-content/uploads/2017/10/lab-sb-img.jpg?w=813" data-recalc-dims="1" /></a><br />
+<strong><a href="https://makeradvisor.com/?utm_source=rnt&amp;utm_medium=sb&amp;utm_campaign=sb" target="_blank" rel="noopener noreferrer">Visit Maker Advisor &#8211; Tools and Gear for makers, hobbyists and DIYers »</a></strong></p>
+</div>
+		</aside><aside id="text-47" class="widget inner-padding widget_text">			<div class="textwidget"><p><a href="https://randomnerdtutorials.com/home-automation-using-esp8266/"><img class="aligncenter" src="https://i1.wp.com/randomnerdtutorials.com/wp-content/uploads/2017/10/esp8266-sb-img.jpg?w=813" data-recalc-dims="1" /></a><br />
+<strong><a href="https://randomnerdtutorials.com/home-automation-using-esp8266/">Home Automation using ESP8266 eBook and video course »</a> </strong>Build IoT and home automation projects.</p>
+</div>
+		</aside><aside id="text-46" class="widget inner-padding widget_text">			<div class="textwidget"><p><a href="https://randomnerdtutorials.com/build-a-home-automation-system-for-100/"><img class="aligncenter" src="https://i1.wp.com/randomnerdtutorials.com/wp-content/uploads/2017/10/home-automation-sb-img.jpg?w=813" data-recalc-dims="1" /></a><br />
+<strong><a href="https://randomnerdtutorials.com/build-a-home-automation-system-for-100/">Build a Home Automation System from Scratch »</a> </strong>With Raspberry Pi, ESP8266, Arduino, and Node-RED.</p>
+</div>
+		</aside>	</div><!-- .inside-right-sidebar -->
+</div><!-- #secondary -->
+
+	</div><!-- #content -->
+</div><!-- #page -->
+
+
+<div class="site-footer footer-bar-active footer-bar-align-center">
+			<footer class="site-info" itemtype="https://schema.org/WPFooter" itemscope>
+			<div class="inside-site-info grid-container grid-parent">
+						<div class="footer-bar">
+			<aside id="nav_menu-10" class="widget inner-padding widget_nav_menu"><div class="menu-footer-disclaimer-container"><ul id="menu-footer-disclaimer" class="menu"><li id="menu-item-82503" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-82503"><a href="https://randomnerdtutorials.com/about/">About</a></li>
+<li id="menu-item-20492" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-20492"><a href="https://randomnerdtutorials.com/support">Support</a></li>
+<li id="menu-item-20493" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-20493"><a href="https://randomnerdtutorials.com/terms">Terms</a></li>
+<li id="menu-item-20495" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-20495"><a href="https://randomnerdtutorials.com/privacy">Privacy</a></li>
+<li id="menu-item-20494" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-20494"><a href="https://randomnerdtutorials.com/returns-and-refunds/">Refunds</a></li>
+<li id="menu-item-43625" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-43625"><a target="_blank" rel="noopener noreferrer" href="https://makeradvisor.com/">MakerAdvisor.com</a></li>
+<li id="menu-item-20496" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-20496"><a target="_blank" rel="noopener noreferrer" href="https://rntlab.com/">Join the Lab</a></li>
+</ul></div></aside>		</div>
+						<div class="copyright-bar">
+					Copyright © 2013-2020 · RandomNerdTutorials.com · All Rights Reserved				</div>
+			</div>
+		</footer><!-- .site-info -->
+		</div><!-- .site-footer -->
+
+		<div data-elementor-type="popup" data-elementor-id="83058" class="elementor elementor-83058 elementor-location-popup" data-elementor-settings="{&quot;entrance_animation&quot;:&quot;zoomIn&quot;,&quot;close_button_position&quot;:&quot;outside&quot;,&quot;entrance_animation_duration&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:1.2,&quot;sizes&quot;:[]},&quot;triggers&quot;:{&quot;scrolling&quot;:&quot;yes&quot;,&quot;scrolling_offset&quot;:35,&quot;scrolling_direction&quot;:&quot;down&quot;},&quot;timing&quot;:{&quot;times&quot;:&quot;yes&quot;,&quot;times_times&quot;:3}}">
+			<div class="elementor-inner">
+				<div class="elementor-section-wrap">
+							<section class="elementor-element elementor-element-544e0740 elementor-section-content-bottom elementor-reverse-mobile elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-id="544e0740" data-element_type="section" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div class="elementor-element elementor-element-676b082e elementor-column elementor-col-100 elementor-top-column" data-id="676b082e" data-element_type="column">
+			<div class="elementor-column-wrap  elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div class="elementor-element elementor-element-5eee063c elementor-widget elementor-widget-heading" data-id="5eee063c" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<h2 class="elementor-heading-title elementor-size-default">Download our Free eBooks and Resources</h2>		</div>
+				</div>
+				<div class="elementor-element elementor-element-9bd904c elementor-hidden-phone elementor-widget elementor-widget-text-editor" data-id="9bd904c" data-element_type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><p>Get instant access to our FREE eBooks, Resources, and Exclusive Electronics Projects by entering your email address below.</p></div>
+				</div>
+				</div>
+				<div class="elementor-element elementor-element-2a77907 elementor-button-align-stretch elementor-widget elementor-widget-form" data-id="2a77907" data-element_type="widget" data-widget_type="form.default">
+				<div class="elementor-widget-container">
+					<form class="elementor-form" method="post" name="New Form">
+			<input type="hidden" name="post_id" value="83058"/>
+			<input type="hidden" name="form_id" value="2a77907"/>
+
+			<div class="elementor-form-fields-wrapper elementor-labels-">
+								<div class="elementor-field-type-email elementor-field-group elementor-column elementor-field-group-email elementor-col-100 elementor-field-required">
+					<label for="form-field-email" class="elementor-field-label elementor-screen-only">Email</label><input size="1" type="email" name="form_fields[email]" id="form-field-email" class="elementor-field elementor-size-sm  elementor-field-textual" placeholder="Your Email Address" required="required" aria-required="true">				</div>
+								<div class="elementor-field-group elementor-column elementor-field-type-submit elementor-col-100">
+					<button type="submit" class="elementor-button elementor-size-md">
+						<span >
+															<span class="elementor-align-icon-left elementor-button-icon">
+									<i aria-hidden="true" class="fas fa-cloud-download-alt"></i>																	</span>
+																						<span class="elementor-button-text">FREE DOWNLOAD</span>
+													</span>
+					</button>
+				</div>
+			</div>
+		</form>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+						</div>
+			</div>
+		</div>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.15.0/prism.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.15.0/components/prism-c.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.15.0/components/prism-python.min.js"></script>
+<link rel='stylesheet' id='elementor-post-83032-css'  href='https://randomnerdtutorials.com/wp-content/cache/autoptimize/css/autoptimize_single_6639efc17d0cb09642ef29d245526487.css?ver=1582996063' type='text/css' media='all' />
+<link rel='stylesheet' id='elementor-post-82533-css'  href='https://randomnerdtutorials.com/wp-content/cache/autoptimize/css/autoptimize_single_1db27fa0d1d08b03f47902c45551052a.css?ver=1582996063' type='text/css' media='all' />
+<link rel='stylesheet' id='elementor-post-82829-css'  href='https://randomnerdtutorials.com/wp-content/cache/autoptimize/css/autoptimize_single_bd719510331ff3b64c0016410e7677a9.css?ver=1582996063' type='text/css' media='all' />
+<link rel='stylesheet' id='elementor-post-82648-css'  href='https://randomnerdtutorials.com/wp-content/cache/autoptimize/css/autoptimize_single_040189f692305a3af9062902b495e750.css?ver=1582996011' type='text/css' media='all' />
+
+
+<!--[if lte IE 11]>
+<script type='text/javascript' src='https://randomnerdtutorials.com/wp-content/themes/generatepress/js/classList.min.js?ver=2.4.1'></script>
+<![endif]-->
+
+
+<script type='text/javascript'>
+/* <![CDATA[ */
+var generatepressNavSearch = {"open":"Open Search Bar","close":"Close Search Bar"};
+/* ]]> */
+</script>
+
+
+
+
+
+
+
+<script type='text/javascript'>
+var ElementorProFrontendConfig = {"ajaxurl":"https:\/\/randomnerdtutorials.com\/wp-admin\/admin-ajax.php","nonce":"76e086237d","shareButtonsNetworks":{"facebook":{"title":"Facebook","has_counter":true},"twitter":{"title":"Twitter"},"google":{"title":"Google+","has_counter":true},"linkedin":{"title":"LinkedIn","has_counter":true},"pinterest":{"title":"Pinterest","has_counter":true},"reddit":{"title":"Reddit","has_counter":true},"vk":{"title":"VK","has_counter":true},"odnoklassniki":{"title":"OK","has_counter":true},"tumblr":{"title":"Tumblr"},"delicious":{"title":"Delicious"},"digg":{"title":"Digg"},"skype":{"title":"Skype"},"stumbleupon":{"title":"StumbleUpon","has_counter":true},"telegram":{"title":"Telegram"},"pocket":{"title":"Pocket","has_counter":true},"xing":{"title":"XING","has_counter":true},"whatsapp":{"title":"WhatsApp"},"email":{"title":"Email"},"print":{"title":"Print"}},"facebook_sdk":{"lang":"en_US","app_id":""}};
+</script>
+
+
+
+
+
+
+<script type='text/javascript'>
+var elementorFrontendConfig = {"environmentMode":{"edit":false,"wpPreview":false},"i18n":{"shareOnFacebook":"Share on Facebook","shareOnTwitter":"Share on Twitter","pinIt":"Pin it","downloadImage":"Download image"},"is_rtl":false,"breakpoints":{"xs":0,"sm":480,"md":768,"lg":1025,"xl":1440,"xxl":1600},"version":"2.9.3","urls":{"assets":"https:\/\/randomnerdtutorials.com\/wp-content\/plugins\/elementor\/assets\/"},"settings":{"page":[],"general":{"elementor_lightbox_enable_counter":"yes","elementor_lightbox_enable_fullscreen":"yes","elementor_lightbox_enable_zoom":"yes","elementor_lightbox_enable_share":"yes","elementor_lightbox_title_src":"title","elementor_lightbox_description_src":"description"},"editorPreferences":[]},"post":{"id":86653,"title":"Guide for BME280 Sensor with Arduino (Pressure, Temperature, Humidity) \u2013 Random Nerd Tutorials","excerpt":"","featuredImage":"https:\/\/randomnerdtutorials.com\/wp-content\/uploads\/2019\/07\/BME280-arduino-thumbnail.png"}};
+</script>
+
+
+<script defer src="https://randomnerdtutorials.com/wp-content/cache/autoptimize/js/autoptimize_b4d41c49f741db125b6a0db0ec6c8adb.js"></script></body>
+</html>
+
+<!-- Dynamic page generated in 1.252 seconds. -->
+<!-- Cached page generated by WP-Super-Cache on 2020-03-02 08:31:34 -->
+
+<!-- Compression = gzip -->
