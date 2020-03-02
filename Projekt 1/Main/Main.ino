@@ -11,7 +11,8 @@ Adafruit_BME280 bme; // I2C
 //Adafruit_BME280 bme(BME_CS, BME_MOSI, BME_MISO, BME_SCK); // software SPI
 
 RTC_DS1307 rtc;
-File myFile;
+File myFileA;
+File myFileB;
 
 unsigned long delayTime;
 
@@ -35,15 +36,26 @@ void setup() {
   // open the file. note that only one file can be open at a time,
   // so you have to close this one before opening another.
   if (not SD.exists("DatA.txt")) {
-    myFile = SD.open("DatA.txt", FILE_WRITE);
-    myFile.print("DATE, TIME, TEMP \(C\), PRESSURE \(hPa\)");
-    myFile.println();
-    myFile.close();
+    myFileA = SD.open("DatA.txt", FILE_WRITE);
+    myFileA.print("DATE, TIME, TEMP \(C\), PRESSURE \(hPa\)");
+    myFileA.println();
+    myFileA.close();
   }
   // if the file opened okay, write to it:
-  if (myFile) {
+  if (myFileA) {
     Serial.println("Writing to DatA.txt...");
-    myFile.close();
+    myFileA.close();
+  }
+  if (not SD.exists("DatB.txt")) {
+    myFileB = SD.open("DatB.txt", FILE_WRITE);
+    myFileB.print("DATE, TIME, TEMP \(C\), PRESSURE \(hPa\), HUMIDITY \(%\) ");
+    myFileB.println();
+    myFileB.close();
+  }
+  // if the file opened okay, write to it:
+  if (myFileB) {
+    Serial.println("Writing to DatB.txt...");
+    myFileB.close();
   }
   //Testing if RTC is working
   DateTime now = rtc.now();
