@@ -87,7 +87,7 @@ void setup() {
 void loop() {
   sensorValue = analogRead(analogInPin);
   if (sensorValue < (1024 / 2)) {
-    Temp_And_Humit();
+    Temp_And_Pressure();
     delay(delayTime);
   }
   else {

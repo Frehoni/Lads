@@ -1,5 +1,5 @@
 
-void Temp_And_Humit() {
+void Temp_And_Pressure() {
   Serial.print("Temperature = ");
   Serial.print(bme.readTemperature());
   Serial.println(" *C");
