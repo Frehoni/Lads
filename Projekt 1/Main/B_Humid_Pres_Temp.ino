@@ -1,8 +1,6 @@
 void Humid_Pres_Temp() {
   DateTime now = rtc.now();
   if (now.hour() < 6) {
-    // between 00:00 - 06:00
-    
     Serial.print("Temperature = ");
     Serial.print(bme.readTemperature());
     Serial.println(" *C");
@@ -13,8 +11,6 @@ void Humid_Pres_Temp() {
     Serial.print(bme.readHumidity());
     Serial.println(' \(\%\)');
     Serial.println();
-    // Test-prints to the serial monitor
-    
     myFileB = SD.open("DatB.txt", FILE_WRITE);
     myFileB.print(now.year(), DEC);
     myFileB.print('/');
@@ -34,14 +30,9 @@ void Humid_Pres_Temp() {
     myFileB.print(',');
     myFileB.println(bme.readHumidity());
     myFileB.close();
-    // Print to DatB
-    
-    delay(600000);
-    // 10-minute delay
+    delay(6000);
   }
   else {
-    // between 06:00 - 24:00
-    
     Serial.print("Temperature = ");
     Serial.print(bme.readTemperature());
     Serial.println(" *C");
@@ -52,8 +43,6 @@ void Humid_Pres_Temp() {
     Serial.print(bme.readHumidity());
     Serial.println(' \(\%\)');
     Serial.println();
-    // Test-print to the serial monitor
-    
     myFileB = SD.open("DatB.txt", FILE_WRITE);
     myFileB.print(now.year(), DEC);
     myFileB.print('/');
@@ -73,10 +62,7 @@ void Humid_Pres_Temp() {
     myFileB.print(',');
     myFileB.println(bme.readHumidity());
     myFileB.close();
-    //Print to DatB
-    
-    delay(300000);
-    // 5-minute delay
+    delay(3000);
   }
 
 }
