@@ -1,5 +1,5 @@
 void Humid_Pres_Temp() {
-  DateTime now = rtc.now;
+  DateTime now = rtc.now();
   if (now.hour() < 6) {
     myFileB = SD.open("DatB.txt", FILE_WRITE);
     myFileB.print(now.year(), DEC);
@@ -16,12 +16,12 @@ void Humid_Pres_Temp() {
     myFileB.print(',');
     myFileB.print(bme.readTemperature());
     myFileB.print(',');
-    myFileB.println(bme.readPressure() / 100.0F);
+    myFileB.print(bme.readPressure() / 100.0F);
     myFileB.print(',');
-    myFileB.print(bme.readHumidity());
+    myFileB.println(bme.readHumidity());
     myFileB.close();
 
-    delay(60000);
+    delay(2000);
   }
   else {
     myFileB = SD.open("DatB.txt", FILE_WRITE);
@@ -39,12 +39,12 @@ void Humid_Pres_Temp() {
     myFileB.print(',');
     myFileB.print(bme.readTemperature());
     myFileB.print(',');
-    myFileB.println(bme.readPressure() / 100.0F);
+    myFileB.print(bme.readPressure() / 100.0F);
     myFileB.print(',');
-    myFileB.print(bme.readHumidity());
+    myFileB.println(bme.readHumidity());
     myFileB.close();
 
-    delay(30000);
+    delay(2000);
   }
 
 }

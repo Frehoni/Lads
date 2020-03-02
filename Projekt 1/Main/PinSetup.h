@@ -3,4 +3,5 @@
 #define BME_MOSI 11
 #define BME_CS 10
 //For potentiometeret
-const int potentiometer = A0;
+const int analogInPin = A0;
+int sensorValue = 0;
