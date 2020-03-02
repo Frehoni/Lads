@@ -7,6 +7,8 @@ void Temp_And_Humit() {
   Serial.print(bme.readPressure() / 100.0F);
   Serial.println(" hPa");
   Serial.println();
+  // Test-print to the serial monitor
+  
   DateTime now = rtc.now();
   myFileA = SD.open("DatA.txt", FILE_WRITE);
   myFileA.print(now.year(), DEC);
