@@ -7,8 +7,6 @@
 #include "PinSetup.h"
 #define SEALEVELPRESSURE_HPA (1013.25)
 Adafruit_BME280 bme; // I2C
-//Adafruit_BME280 bme(BME_CS); // hardware SPI
-//Adafruit_BME280 bme(BME_CS, BME_MOSI, BME_MISO, BME_SCK); // software SPI
 
 RTC_DS1307 rtc;
 File myFileA;
@@ -46,6 +44,9 @@ void setup() {
     Serial.println("Writing to DatA.txt...");
     myFileA.close();
   }
+
+  //Making a second file, DatB, and opening.
+
   if (not SD.exists("DatB.txt")) {
     myFileB = SD.open("DatB.txt", FILE_WRITE);
     myFileB.print("DATE, TIME, TEMP \(C\), PRESSURE \(hPa\), HUMIDITY \(%\) ");
@@ -72,9 +73,6 @@ void setup() {
   Serial.print(now.second(), DEC);
   Serial.println();
 
-  // creates a new data file if one does not already exist
-  // default settings
-  // (you can also pass in a Wire library object like &Wire2)
   Serial.println(F("BME280 test"));
   bool status;
   status = bme.begin(0x76);
@@ -85,11 +83,7 @@ void setup() {
   Serial.println("-- Default Test --");
   delayTime = 2000;
   Serial.println();
-
 }
-
-
-
 void loop() {
   sensorValue = analogRead(analogInPin);
   if (sensorValue < (1024 / 2)) {

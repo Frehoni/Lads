@@ -1,6 +1,16 @@
 void Humid_Pres_Temp() {
   DateTime now = rtc.now();
   if (now.hour() < 6) {
+    Serial.print("Temperature = ");
+    Serial.print(bme.readTemperature());
+    Serial.println(" *C");
+    Serial.print("Pressure = ");
+    Serial.print(bme.readPressure() / 100.0F);
+    Serial.println(" hPa");
+    Serial.print('Humidity = ');
+    Serial.print(bme.readHumidity());
+    Serial.println(' \(\%\)');
+    Serial.println();
     myFileB = SD.open("DatB.txt", FILE_WRITE);
     myFileB.print(now.year(), DEC);
     myFileB.print('/');
@@ -20,10 +30,19 @@ void Humid_Pres_Temp() {
     myFileB.print(',');
     myFileB.println(bme.readHumidity());
     myFileB.close();
-
-    delay(2000);
+    delay(600000);
   }
   else {
+    Serial.print("Temperature = ");
+    Serial.print(bme.readTemperature());
+    Serial.println(" *C");
+    Serial.print("Pressure = ");
+    Serial.print(bme.readPressure() / 100.0F);
+    Serial.println(" hPa");
+    Serial.print('Humidity = ');
+    Serial.print(bme.readHumidity());
+    Serial.println(' \(\%\)');
+    Serial.println();
     myFileB = SD.open("DatB.txt", FILE_WRITE);
     myFileB.print(now.year(), DEC);
     myFileB.print('/');
@@ -43,8 +62,7 @@ void Humid_Pres_Temp() {
     myFileB.print(',');
     myFileB.println(bme.readHumidity());
     myFileB.close();
-
-    delay(2000);
+    delay(300000);
   }
 
 }
