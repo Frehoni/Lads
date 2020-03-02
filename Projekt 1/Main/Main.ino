@@ -1,4 +1,3 @@
-
 #include <SD.h>
 #include <Wire.h>
 #include <SPI.h>
@@ -37,7 +36,7 @@ void setup() {
   // so you have to close this one before opening another.
   if (not SD.exists("DatA.txt")) {
     myFile = SD.open("DatA.txt", FILE_WRITE);
-    myFile.print("DATE, TIME, TEMP *C, HUMIDITY");
+    myFile.print("DATE, TIME, TEMP \(C\), PRESSURE \(hPa\)");
     myFile.println();
     myFile.close();
   }
@@ -52,20 +51,27 @@ void setup() {
   Serial.print('/');
   Serial.print(now.month(), DEC);
   Serial.print('/');
-  Serial.println(now.day(), DEC);
-  
+  Serial.print(now.day(), DEC);
+  Serial.print(" ");
+  Serial.print(now.hour(), DEC);
+  Serial.print(':');
+  Serial.print(now.minute(), DEC);
+  Serial.print(':');
+  Serial.print(now.second(), DEC);
+  Serial.println();
+
   // creates a new data file if one does not already exist
   // default settings
   // (you can also pass in a Wire library object like &Wire2)
   Serial.println(F("BME280 test"));
   bool status;
-  status = bme.begin();
+  status = bme.begin(0x76);
   if (!status) {
     Serial.println("Could not find a valid BME280 sensor, check wiring!");
     while (1);
   }
   Serial.println("-- Default Test --");
-  delayTime = 1000;
+  delayTime = 2000;
   Serial.println();
 
 }
