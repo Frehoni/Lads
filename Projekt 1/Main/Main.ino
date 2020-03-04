@@ -12,11 +12,12 @@ RTC_DS1307 rtc;
 File myFileA;
 File myFileB;
 
-unsigned long delayTime;
 
 void setup() {
   // Open serial communications and wait for port to open:
   Serial.begin(57600);
+  pinMode(LED_BUILTIN, OUTPUT);
+  pinMode(buttonPin, INPUT);
   while (!Serial) {
     ; // wait for serial port to connect. Needed for native USB port only
   }
@@ -81,16 +82,33 @@ void setup() {
     while (1);
   }
   Serial.println("-- Default Test --");
-  delayTime = 2000;
   Serial.println();
 }
 void loop() {
-  sensorValue = analogRead(analogInPin);
-  if (sensorValue < (1024 / 2)) {
-    Temp_And_Pressure();
-    delay(delayTime);
+  buttonState = digitalRead(buttonPin);
+  if (millis() >= time_now + period) {
+    time_now += period;
+    if (buttonState == HIGH) {
+      while (digitalRead(buttonPin) == HIGH);
+      n++;
+      Serial.println(n);
+    }
   }
-  else {
+
+  if (n % 2 != 0) { //A
+    digitalWrite(LED_BUILTIN, HIGH);   // turn the LED on (HIGH is the voltage level)
+    if (millis() >= time_nowA + periodA) {
+      time_nowA += periodA;
+      Temp_And_Pressure();
+    }
+    //Serial.println("Part A");
+  }
+
+
+  else if (n % 2 == 0) { //B
+    digitalWrite(LED_BUILTIN, LOW);    // turn the LED off by making the voltage LOW
     Humid_Pres_Temp();
+    //Serial.println("Part B");
   }
+  //Serial.println(n);
 }
