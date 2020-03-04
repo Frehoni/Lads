@@ -8,8 +8,8 @@ unsigned long time_nowA = 0;
 unsigned long time_nowB = 0;
 int period = 100;
 int periodA = 2000;
-int periodB1 = 6000;
-int periodB2 = 3000;
+int periodB1 = 600000;
+int periodB2 = 300000;
 
 // ButtonState
 int buttonState = 0;         // variable for reading the pushbutton status
