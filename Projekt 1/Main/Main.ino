@@ -16,7 +16,6 @@ File myFileB;
 void setup() {
   // Open serial communications and wait for port to open:
   Serial.begin(57600);
-  pinMode(LED_BUILTIN, OUTPUT);
   pinMode(buttonPin, INPUT);
   while (!Serial) {
     ; // wait for serial port to connect. Needed for native USB port only
@@ -25,7 +24,7 @@ void setup() {
     Serial.println("Couldn't find RTC");
     while (1);
   }
-  rtc.adjust(DateTime(F(__DATE__), F(__TIME__)));
+  //rtc.adjust(DateTime(F(__DATE__), F(__TIME__))); //Time should be stored correctly.
   Serial.print("Initializing SD card...");
   if (!SD.begin(4)) {
     Serial.println("initialization failed!");
@@ -85,8 +84,8 @@ void setup() {
   Serial.println();
 }
 void loop() {
-  buttonState = digitalRead(buttonPin);
   if (millis() >= time_now + period) {
+    buttonState = digitalRead(buttonPin);
     time_now += period;
     if (buttonState == HIGH) {
       while (digitalRead(buttonPin) == HIGH);
@@ -95,8 +94,7 @@ void loop() {
     }
   }
 
-  if (n % 2 != 0) { //A
-    digitalWrite(LED_BUILTIN, HIGH);   // turn the LED on (HIGH is the voltage level)
+  if (n % 2 == 0) { //Part A
     if (millis() >= time_nowA + periodA) {
       time_nowA += periodA;
       Temp_And_Pressure();
@@ -105,8 +103,7 @@ void loop() {
   }
 
 
-  else if (n % 2 == 0) { //B
-    digitalWrite(LED_BUILTIN, LOW);    // turn the LED off by making the voltage LOW
+  else if (n % 2 != 0) { //Part B
     Humid_Pres_Temp();
     //Serial.println("Part B");
   }

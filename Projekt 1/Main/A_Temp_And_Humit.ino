@@ -17,7 +17,7 @@ void Temp_And_Pressure() {
   myFileA.print(now.month(), DEC);
   myFileA.print('/');
   myFileA.print(now.day(), DEC);
-  myFileA.print(",");
+  myFileA.print(',');
   myFileA.print(now.hour(), DEC);
   myFileA.print(':');
   myFileA.print(now.minute(), DEC);
