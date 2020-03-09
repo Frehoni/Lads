@@ -2,7 +2,6 @@ void Humid_Pres_Temp() {
   DateTime now = rtc.now();
   if (now.hour() < 6) {
     if (millis() >= time_nowB1 + periodB1) {
-      DateTime now = rtc.now();
       time_nowB1 += periodB1;
       // between 00:00 - 06:00
       Serial.println("Det er nat!");
@@ -45,7 +44,6 @@ void Humid_Pres_Temp() {
   else {
     // between 06:00 - 24:00
     if (millis() >= time_nowB2 + periodB2) {
-      DateTime now = rtc.now();
       time_nowB2 += periodB2;
       Serial.println("Det er dag!");
       Serial.print("Temperature = ");

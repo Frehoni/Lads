@@ -95,6 +95,9 @@ void loop() {
   }
 
   if (n % 2 == 0) { //Part A
+    periodA = 2000;
+    periodB1 = 100000000000000;
+    periodB2 = 100000000000000;
     if (millis() >= time_nowA + periodA) {
       time_nowA += periodA;
       Temp_And_Pressure();
@@ -104,6 +107,9 @@ void loop() {
 
 
   else if (n % 2 != 0) { //Part B
+    periodA = 100000000000000;
+    periodB1 = 600000;
+    periodB2 = 300000;
     Humid_Pres_Temp();
     //Serial.println("Part B");
   }
