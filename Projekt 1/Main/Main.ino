@@ -90,28 +90,26 @@ void loop() {
     if (buttonState == HIGH) {
       while (digitalRead(buttonPin) == HIGH); //Makes the program freeze for the entire duration of the button push
       n++;
-      Serial.println(n);
     }
   }
 
   if (n % 2 == 0) { //Part A
     periodA = 2000;
     periodB1 = 100000000000000;
-    periodB2 = 100000000000000;
+    periodB2 = 100000000000000;   // Er det her nødvendigt eller en test, Frehoni?
     if (millis() >= time_nowA + periodA) {
       time_nowA += periodA;
       Temp_And_Pressure();
+      // Runs Part-A with, constantly adding a delay of period A
     }
-    //Serial.println("Part A");
   }
 
 
   else if (n % 2 != 0) { //Part B
     periodA = 100000000000000;
     periodB1 = 600000;
-    periodB2 = 300000;
+    periodB2 = 300000;        // Er det her nødvendigt eller en test, Fehoni?
     Humid_Pres_Temp();
-    //Serial.println("Part B");
+    // Runs Part-B (which has built in delays)
   }
-  //Serial.println(n);
 }

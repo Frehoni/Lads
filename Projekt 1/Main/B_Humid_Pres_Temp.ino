@@ -3,7 +3,9 @@ void Humid_Pres_Temp() {
   if (now.hour() < 6) {
     if (millis() >= time_nowB1 + periodB1) {
       time_nowB1 += periodB1;
+      //constantly adding a delay of PeriodB1= 10 min.
       // between 00:00 - 06:00
+      
       Serial.println("Det er nat!");
       Serial.print("Temperature = ");
       Serial.print(bme.readTemperature());
@@ -38,13 +40,14 @@ void Humid_Pres_Temp() {
       myFileB.close();
       // Print to DatB
 
-
     }
   }
   else {
     // between 06:00 - 24:00
     if (millis() >= time_nowB2 + periodB2) {
       time_nowB2 += periodB2;
+      //constantly adding a delay of PeriodB2= 5 min.
+      
       Serial.println("Det er dag!");
       Serial.print("Temperature = ");
       Serial.print(bme.readTemperature());
