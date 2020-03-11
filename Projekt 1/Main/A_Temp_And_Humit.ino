@@ -28,4 +28,5 @@ void Temp_And_Pressure() {
   myFileA.print(',');
   myFileA.println(bme.readPressure() / 100.0F);
   myFileA.close();
+  //Prints the data to DatA.txt
 }

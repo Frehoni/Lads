@@ -31,8 +31,8 @@ void setup() {
     while (1);
   }
   Serial.println("initialization done.");
-  // open the file. note that only one file can be open at a time,
-  // so you have to close this one before opening another.
+  // open the file. Only one file can be open at a time,
+  // so this one has to be closed before opening another.
   if (not SD.exists("DatA.txt")) {
     myFileA = SD.open("DatA.txt", FILE_WRITE);
     myFileA.print("DATE, TIME, TEMP \(C\), PRESSURE \(hPa\)");
@@ -84,11 +84,11 @@ void setup() {
   Serial.println();
 }
 void loop() {
-  if (millis() >= time_now + period) {
+  if (millis() >= time_now + period) {    
     buttonState = digitalRead(buttonPin);
-    time_now += period;
+    time_now += period; 
     if (buttonState == HIGH) {
-      while (digitalRead(buttonPin) == HIGH);
+      while (digitalRead(buttonPin) == HIGH); //Makes the program freeze for the entire duration of the button push
       n++;
       Serial.println(n);
     }
