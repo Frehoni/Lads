@@ -1,5 +1,5 @@
 void Humid_Pres_Temp() {
-  DateTime now = rtc.now();
+  DateTime now = rtc.now(); //Gets current date and time
   if (now.hour() < 6) {
     if (millis() >= time_nowB1 + periodB1) {
       time_nowB1 += periodB1;

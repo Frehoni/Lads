@@ -1,4 +1,4 @@
-// Defining BME 280-pins
+// Defining pins, variables and more. 
 #define BME_SCK 13
 #define BME_MISO 12
 #define BME_MOSI 11

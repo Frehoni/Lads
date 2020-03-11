@@ -25,15 +25,15 @@ void setup() {
     while (1);
   }
   //rtc.adjust(DateTime(F(__DATE__), F(__TIME__))); //Time should be stored correctly.
-  Serial.print("Initializing SD card...");
-  if (!SD.begin(4)) {
+  Serial.print("Initializing SD card..."); 
+  if (!SD.begin(4)) { //Checking for SD card. 
     Serial.println("initialization failed!");
     while (1);
   }
   Serial.println("initialization done.");
   // open the file. Only one file can be open at a time,
   // so this one has to be closed before opening another.
-  if (not SD.exists("DatA.txt")) {
+  if (not SD.exists("DatA.txt")) { //Creates the Data A file if it's not created.  
     myFileA = SD.open("DatA.txt", FILE_WRITE);
     myFileA.print("DATE, TIME, TEMP \(C\), PRESSURE \(hPa\)");
     myFileA.println();
@@ -47,7 +47,7 @@ void setup() {
 
   //Making a second file, DatB, and opening.
 
-  if (not SD.exists("DatB.txt")) {
+  if (not SD.exists("DatB.txt")) { //Creates the Data B file if it's not created. 
     myFileB = SD.open("DatB.txt", FILE_WRITE);
     myFileB.print("DATE, TIME, TEMP \(C\), PRESSURE \(hPa\), HUMIDITY \(%\) ");
     myFileB.println();
@@ -75,8 +75,8 @@ void setup() {
 
   Serial.println(F("BME280 test"));
   bool status;
-  status = bme.begin(0x76);
-  if (!status) {
+  status = bme.begin(0x76); 
+  if (!status) { //Checking if the BM280 sensor is working
     Serial.println("Could not find a valid BME280 sensor, check wiring!");
     while (1);
   }
@@ -84,7 +84,7 @@ void setup() {
   Serial.println();
 }
 void loop() {
-  if (millis() >= time_now + period) {    
+  if (millis() >= time_now + period) {  //Checking via millis every half a second, if the buttom is pressed.  
     buttonState = digitalRead(buttonPin);
     time_now += period; 
     if (buttonState == HIGH) {
@@ -93,10 +93,10 @@ void loop() {
     }
   }
 
-  if (n % 2 == 0) { //Part A
-    periodA = 2000;
-    periodB1 = 100000000000000;
-    periodB2 = 100000000000000;   // Er det her nødvendigt eller en test, Frehoni?
+  if (n % 2 == 0) { //Starts recording for Part A of the program
+    periodA = 2000; //Runs BME reading every 2 second
+    periodB1 = 100000000000000;   //// Work around to not let Part B run at the same time.
+    periodB2 = 100000000000000;   // Work around to not let Part B run at the same time.
     if (millis() >= time_nowA + periodA) {
       time_nowA += periodA;
       Temp_And_Pressure();
@@ -106,10 +106,10 @@ void loop() {
 
 
   else if (n % 2 != 0) { //Part B
-    periodA = 100000000000000;
-    periodB1 = 600000;
-    periodB2 = 300000;        // Er det her nødvendigt eller en test, Fehoni?
+    periodA = 100000000000000; // Work around to not let Part B run at the same time.
+    periodB1 = 600000;        // Sets the required delay of 10 minutes for nighttime
+    periodB2 = 300000;        // Sets the required delay of 5 minutes for daytime
     Humid_Pres_Temp();
-    // Runs Part-B (which has built in delays)
+    // Runs Part-B (which has built in millis delays)
   }
 }

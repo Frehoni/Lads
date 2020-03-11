@@ -10,7 +10,7 @@ void Temp_And_Pressure() {
   Serial.println();
   // Test-print to the serial monitor
   
-  DateTime now = rtc.now();
+  DateTime now = rtc.now(); //Gets the current time and date
   myFileA = SD.open("DatA.txt", FILE_WRITE);
   myFileA.print(now.year(), DEC);
   myFileA.print('/');
