@@ -1,5 +1,6 @@
 
-void Temp_And_Humit() {
+void Temp_And_Pressure() {
+
   Serial.print("Temperature = ");
   Serial.print(bme.readTemperature());
   Serial.println(" *C");
@@ -9,14 +10,14 @@ void Temp_And_Humit() {
   Serial.println();
   // Test-print to the serial monitor
   
-  DateTime now = rtc.now();
+  DateTime now = rtc.now(); //Gets the current time and date
   myFileA = SD.open("DatA.txt", FILE_WRITE);
   myFileA.print(now.year(), DEC);
   myFileA.print('/');
   myFileA.print(now.month(), DEC);
   myFileA.print('/');
   myFileA.print(now.day(), DEC);
-  myFileA.print(",");
+  myFileA.print(',');
   myFileA.print(now.hour(), DEC);
   myFileA.print(':');
   myFileA.print(now.minute(), DEC);
@@ -27,4 +28,5 @@ void Temp_And_Humit() {
   myFileA.print(',');
   myFileA.println(bme.readPressure() / 100.0F);
   myFileA.close();
+  //Prints the data to DatA.txt
 }
