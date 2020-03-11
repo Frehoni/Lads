@@ -1,3 +1,10 @@
+//This Code have been equally made by Group 8.A with the following members: 
+//Kristoffer Zanchetta Klercke S183633
+//Frederik Holm Nielsen S173864
+//Marius Havaleska Lyhne S183655
+//Viktor Holm S165273
+
+
 void Humid_Pres_Temp() {
   DateTime now = rtc.now(); //Gets current date and time
   if (now.hour() < 6) {

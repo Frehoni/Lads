@@ -1,3 +1,10 @@
+//This Code have been equally made by Group 8.A with the following members: 
+//Kristoffer Zanchetta Klercke S183633
+//Frederik Holm Nielsen S173864
+//Marius Havaleska Lyhne S183655
+//Viktor Holm S165273
+
+
 
 void Temp_And_Pressure() {
 
