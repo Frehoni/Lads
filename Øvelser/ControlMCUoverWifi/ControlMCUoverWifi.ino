@@ -1,7 +1,7 @@
 #include <ESP8266WiFi.h>
 
-const char* ssid = "OnePlus 6"; // your wifi hotspot name
-const char* password = "12345678"; //wifi password
+const char* ssid = "Powerpuff Pigerne"; // your wifi hotspot name
+const char* password = "BlomstogBobbel"; //wifi password
 
 int ledPin = D7; // which is GPIO13. With nodemcu, you should directly use the pin names as they are stated on the board...
 WiFiServer server(80); //create a server
