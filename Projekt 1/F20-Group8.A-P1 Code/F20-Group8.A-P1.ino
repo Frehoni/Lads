@@ -16,7 +16,6 @@ File myFileB;
 void setup() {
   // Open serial communications and wait for port to open:
   Serial.begin(57600);
-  pinMode(LED_BUILTIN, OUTPUT);
   pinMode(buttonPin, INPUT);
   while (!Serial) {
     ; // wait for serial port to connect. Needed for native USB port only
@@ -25,16 +24,16 @@ void setup() {
     Serial.println("Couldn't find RTC");
     while (1);
   }
-  rtc.adjust(DateTime(F(__DATE__), F(__TIME__)));
-  Serial.print("Initializing SD card...");
-  if (!SD.begin(4)) {
+  //rtc.adjust(DateTime(F(__DATE__), F(__TIME__))); //Time should be stored correctly.
+  Serial.print("Initializing SD card..."); 
+  if (!SD.begin(4)) { //Checking for SD card. 
     Serial.println("initialization failed!");
     while (1);
   }
   Serial.println("initialization done.");
-  // open the file. note that only one file can be open at a time,
-  // so you have to close this one before opening another.
-  if (not SD.exists("DatA.txt")) {
+  // open the file. Only one file can be open at a time,
+  // so this one has to be closed before opening another.
+  if (not SD.exists("DatA.txt")) { //Creates the Data A file if it's not created.  
     myFileA = SD.open("DatA.txt", FILE_WRITE);
     myFileA.print("DATE, TIME, TEMP \(C\), PRESSURE \(hPa\)");
     myFileA.println();
@@ -48,7 +47,7 @@ void setup() {
 
   //Making a second file, DatB, and opening.
 
-  if (not SD.exists("DatB.txt")) {
+  if (not SD.exists("DatB.txt")) { //Creates the Data B file if it's not created. 
     myFileB = SD.open("DatB.txt", FILE_WRITE);
     myFileB.print("DATE, TIME, TEMP \(C\), PRESSURE \(hPa\), HUMIDITY \(%\) ");
     myFileB.println();
@@ -76,8 +75,8 @@ void setup() {
 
   Serial.println(F("BME280 test"));
   bool status;
-  status = bme.begin(0x76);
-  if (!status) {
+  status = bme.begin(0x76); 
+  if (!status) { //Checking if the BM280 sensor is working
     Serial.println("Could not find a valid BME280 sensor, check wiring!");
     while (1);
   }
@@ -85,30 +84,32 @@ void setup() {
   Serial.println();
 }
 void loop() {
-  buttonState = digitalRead(buttonPin);
-  if (millis() >= time_now + period) {
-    time_now += period;
+  if (millis() >= time_now + period) {  //Checking via millis every half a second, if the buttom is pressed.  
+    buttonState = digitalRead(buttonPin);
+    time_now += period; 
     if (buttonState == HIGH) {
-      while (digitalRead(buttonPin) == HIGH);
+      while (digitalRead(buttonPin) == HIGH); //Makes the program freeze for the entire duration of the button push
       n++;
-      Serial.println(n);
     }
   }
 
-  if (n % 2 != 0) { //A
-    digitalWrite(LED_BUILTIN, HIGH);   // turn the LED on (HIGH is the voltage level)
+  if (n % 2 == 0) { //Starts recording for Part A of the program
+    periodA = 2000; //Runs BME reading every 2 second
+    periodB1 = 100000000000000;   //// Work around to not let Part B run at the same time.
+    periodB2 = 100000000000000;   // Work around to not let Part B run at the same time.
     if (millis() >= time_nowA + periodA) {
       time_nowA += periodA;
       Temp_And_Pressure();
+      // Runs Part-A with, constantly adding a delay of period A
     }
-    //Serial.println("Part A");
   }
 
 
-  else if (n % 2 == 0) { //B
-    digitalWrite(LED_BUILTIN, LOW);    // turn the LED off by making the voltage LOW
+  else if (n % 2 != 0) { //Part B
+    periodA = 100000000000000; // Work around to not let Part B run at the same time.
+    periodB1 = 600000;        // Sets the required delay of 10 minutes for nighttime
+    periodB2 = 300000;        // Sets the required delay of 5 minutes for daytime
     Humid_Pres_Temp();
-    //Serial.println("Part B");
+    // Runs Part-B (which has built in millis delays)
   }
-  //Serial.println(n);
 }
