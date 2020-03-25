@@ -85,12 +85,6 @@ void setup() {
   Serial.println();
 }
 void loop() {
-  sensorValue = analogRead(analogInPin);
-  if (sensorValue < (1024 / 2)) {
-    Temp_And_Humit();
-    delay(delayTime);
-  }
-  else {
     Humid_Pres_Temp();
-  }
+
 }

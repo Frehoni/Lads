@@ -3,15 +3,15 @@ void Humid_Pres_Temp() {
   if (now.hour() < 6) {
     // between 00:00 - 06:00
     
-    Serial.print("Temperature = ");
+    Serial.print("Night - Temperature = ");
     Serial.print(bme.readTemperature());
     Serial.println(" *C");
     Serial.print("Pressure = ");
     Serial.print(bme.readPressure() / 100.0F);
     Serial.println(" hPa");
-    Serial.print('Humidity = ');
+    Serial.print("Humidity = ");
     Serial.print(bme.readHumidity());
-    Serial.println(' \(\%\)');
+    Serial.println("%");
     Serial.println();
     // Test-prints to the serial monitor
     
@@ -42,15 +42,15 @@ void Humid_Pres_Temp() {
   else {
     // between 06:00 - 24:00
     
-    Serial.print("Temperature = ");
+    Serial.print("Day - Temperature = ");
     Serial.print(bme.readTemperature());
     Serial.println(" *C");
     Serial.print("Pressure = ");
     Serial.print(bme.readPressure() / 100.0F);
     Serial.println(" hPa");
-    Serial.print('Humidity = ');
+    Serial.print("Humidity = ");
     Serial.print(bme.readHumidity());
-    Serial.println(' \(\%\)');
+    Serial.println("%");
     Serial.println();
     // Test-print to the serial monitor
     
