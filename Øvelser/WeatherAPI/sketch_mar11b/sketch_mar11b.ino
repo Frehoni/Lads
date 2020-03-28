@@ -17,7 +17,9 @@ const char* password = "BlomstogBobbel";
 
 U8G2_SSD1306_128X64_NONAME_F_HW_I2C u8g2(U8G2_R0, /* reset=*/ U8X8_PIN_NONE);
 
+int count;
 void setup() {
+  count = 0;
   Serial.begin(115200);
   u8g2.begin();
   //connect to the wifi access point
@@ -34,9 +36,7 @@ void setup() {
 }
 
 void loop() {
-
   if (WiFi.status() == WL_CONNECTED) { //Check WiFi connection status
-
     HTTPClient http; //Declare an object of class HTTPClient
 
     // REMEMBER to replace YOURKEY from the url with your own key
@@ -83,19 +83,24 @@ void loop() {
       float temp = jsonBuffer["list"][0]["main"]["temp"];
       Serial.print("TEMPERATUR HER MAKKER:");
       Serial.println(temp);
-
+      count ++;
+      Serial.print(count);
       u8g2.clearBuffer();          // clear the internal memory
       u8g2.setFont(u8g2_font_ncenB08_tr); // choose a suitable font
       u8g2.setCursor(0, 10);
       u8g2.print(timestamp);
-      u8g2.setCursor(0, 20);
-      u8g2.print(desc);
       u8g2.setCursor(0, 30);
+      u8g2.print(desc);
+      u8g2.setCursor(0, 40);
       u8g2.print(String(temp));
-      u8g2.setCursor(30, 30);
+      u8g2.setCursor(30, 40);
       u8g2.print("C");
+      u8g2.setCursor(0, 50);
+      u8g2.print("Count: ");
+      u8g2.print(count);
       u8g2.sendBuffer();          // transfer internal memory to the display
     }
+
     http.end(); //Close connection
   }
   /*
@@ -105,5 +110,5 @@ void loop() {
   */
 
   //Send a request every 5 min
-  delay(60*5*1000);
+  delay(5000);
 }
