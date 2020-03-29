@@ -16,10 +16,9 @@ const char* ssid = "Powerpuff Pigerne"; // HINT: create a hotspot with your phon
 const char* password = "BlomstogBobbel";
 
 U8G2_SSD1306_128X64_NONAME_F_HW_I2C u8g2(U8G2_R0, /* reset=*/ U8X8_PIN_NONE);
-
-int count;
+int test = 0;
+String key = "http://api.openweathermap.org/data/2.5/weather?lat=48.21&lon=16.37&appid=95fb8a0ca887dc68309f34e8d20c8ceb&units=metric&cnt=3";
 void setup() {
-  count = 0;
   Serial.begin(115200);
   u8g2.begin();
   //connect to the wifi access point
@@ -38,9 +37,11 @@ void setup() {
 void loop() {
   if (WiFi.status() == WL_CONNECTED) { //Check WiFi connection status
     HTTPClient http; //Declare an object of class HTTPClient
-
+    // Vienna: http://api.openweathermap.org/data/2.5/weather?lat=48.21&lon=16.37&appid=95fb8a0ca887dc68309f34e8d20c8ceb&units=metric&cnt=3
+    // Copenhagen: http://api.openweathermap.org/data/2.5/forecast?q=Copenhagen,dk&appid=95fb8a0ca887dc68309f34e8d20c8ceb&units=metric&cnt=3
     // REMEMBER to replace YOURKEY from the url with your own key
-    http.begin("http://api.openweathermap.org/data/2.5/forecast?q=Copenhagen,dk&appid=95fb8a0ca887dc68309f34e8d20c8ceb&units=metric&cnt=3"); //Specify request destination
+    key = "http://api.openweathermap.org/data/2.5/forecast?q=Copenhagen,dk&appid=8fb15d49e0d25afbf7373135bb753782&units=metric&cnt=3";
+    http.begin(key); //Specify request destination
     int httpCode = http.GET(); //Send the request
 
     if (httpCode > 0) { //Check the returning code
@@ -60,55 +61,52 @@ void loop() {
 
       if (!success) {
         Serial.println("deserialization failed");
+        delay(1000);
         return;
       }
-
-      //if it is successful, let's grab a data fragment and show it on the serial terminal:
-
-      // the first forecast in the json object is at jsonBuffer['list'][0]
-      String timestamp = jsonBuffer["list"][0]["dt_txt"];
-      Serial.print("The time for this forecast: ");
-      Serial.println(timestamp);
-
-      // The 'weather' in the first position in the list, is actually a list, with only one element...
-      String desc = jsonBuffer["list"][0]["weather"][0]["description"];
-      Serial.print("The weather will be: ");
-      Serial.println(desc);
-
-      // The ArduinoJson library also has a utility function to 'pretty print' json objects, try:
-      serializeJsonPretty(jsonBuffer["list"][0], Serial);
-      //or
-      Serial.println("\nThe full forecast Json looks like this: ");
-      serializeJsonPretty(jsonBuffer, Serial);
-      float temp = jsonBuffer["list"][0]["main"]["temp"];
-      Serial.print("TEMPERATUR HER MAKKER:");
-      Serial.println(temp);
-      count ++;
-      Serial.print(count);
-      u8g2.clearBuffer();          // clear the internal memory
-      u8g2.setFont(u8g2_font_ncenB08_tr); // choose a suitable font
-      u8g2.setCursor(0, 10);
-      u8g2.print(timestamp);
-      u8g2.setCursor(0, 30);
-      u8g2.print(desc);
-      u8g2.setCursor(0, 40);
-      u8g2.print(String(temp));
-      u8g2.setCursor(30, 40);
-      u8g2.print("C");
-      u8g2.setCursor(0, 50);
-      u8g2.print("Count: ");
-      u8g2.print(count);
-      u8g2.sendBuffer();          // transfer internal memory to the display
     }
 
-    http.end(); //Close connection
-  }
-  /*
-    Forecast time date
-    Forecast description: e.g. 'few clouds'
-    Forecast temperature in C
-  */
+    //if it is successful, let's grab a data fragment and show it on the serial terminal:
 
-  //Send a request every 5 min
-  delay(5000);
+    // the first forecast in the json object is at jsonBuffer['list'][0]
+    String timestamp = jsonBuffer["list"][0]["dt_txt"];
+    Serial.print("The time for this forecast: ");
+    Serial.println(timestamp);
+
+    // The 'weather' in the first position in the list, is actually a list, with only one element...
+    String desc = jsonBuffer["list"][0]["weather"][0]["description"];
+    Serial.print("The weather will be: ");
+    Serial.println(desc);
+
+    // The ArduinoJson library also has a utility function to 'pretty print' json objects, try:
+    serializeJsonPretty(jsonBuffer["list"][0], Serial);
+    //or
+    Serial.println("\nThe full forecast Json looks like this: ");
+    serializeJsonPretty(jsonBuffer, Serial);
+    float temp = jsonBuffer["list"][0]["main"]["temp"];
+    Serial.print("TEMPERATUR HER MAKKER:");
+    Serial.println(temp);
+    u8g2.clearBuffer();          // clear the internal memory
+    u8g2.setFont(u8g2_font_ncenB08_tr); // choose a suitable font
+    u8g2.setCursor(0, 10);
+    u8g2.print(timestamp);
+    u8g2.setCursor(0, 30);
+    u8g2.print(desc);
+    u8g2.setCursor(0, 40);
+    u8g2.print(String(temp));
+    u8g2.setCursor(30, 40);
+    u8g2.print("C");
+    u8g2.sendBuffer();          // transfer internal memory to the display
+  }
+
+  http.end(); //Close connection
+}
+/*
+  Forecast time date
+  Forecast description: e.g. 'few clouds'
+  Forecast temperature in C
+*/
+
+//Send a request every 5 min
+delay(5 * 60 * 1000);
 }
