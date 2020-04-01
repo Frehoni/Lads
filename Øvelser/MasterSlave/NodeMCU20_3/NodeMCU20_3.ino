@@ -93,7 +93,7 @@ void callback(char* byteArraytopic, byte* byteArrayPayload, unsigned int length)
         Wire.write("TurnOnLED");  /* Turn on LED */
         Wire.endTransmission();    /* stop transmitting */
 
-        Wire.requestFrom(8, 9); /* request & read data of size 13 from slave */
+        Wire.requestFrom(8, 28); /* request & read data of size 13 from slave */
         while (Wire.available()) {
           char c = Wire.read();
           Serial.print(c);
@@ -108,7 +108,7 @@ void callback(char* byteArraytopic, byte* byteArrayPayload, unsigned int length)
         Wire.write("TurnOffLED");  /* Makes the LED turn off*/
         Wire.endTransmission();    /* stop transmitting */
 
-        Wire.requestFrom(8, 10); /* request & read data of size 13 from slave */
+        Wire.requestFrom(8, 28); /* request & read data of size 13 from slave */
         while (Wire.available()) {
           char c = Wire.read();
           Serial.print(c);
@@ -165,7 +165,7 @@ void reconnect() {
     if (client.connect("UNIQUE_CLIENT_NAME", mqtt_user, mqtt_pass)) { // Forbinder til klient med mqtt bruger og password
       Serial.println("connected");
       // Derudover subsribes til topic "Test" hvor NodeMCU modtager payload beskeder fra
-      client.subscribe("Test");
+      client.subscribe("20.3");
 
 
       // Hvis forbindelsen fejler køres loopet igen efter 5 sekunder indtil forbindelse er oprettet
