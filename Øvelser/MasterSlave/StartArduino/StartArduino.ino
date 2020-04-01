@@ -1,13 +1,11 @@
 #include <Wire.h>
-
-String msg;
-
+String test;
+char test1;
 void setup() {
   Wire.begin(8);                /* join i2c bus with address 8 */
   Wire.onReceive(receiveEvent); /* register receive event */
   Wire.onRequest(requestEvent); /* register request event */
-  Serial.begin(115200);           /* start serial for debug */
-  pinMode(LED_BUILTIN, OUTPUT);
+  Serial.begin(9600);           /* start serial for debug */
 }
 
 void loop() {
@@ -16,27 +14,18 @@ void loop() {
 
 // function that executes whenever data is received from master
 void receiveEvent(int howMany) {
-  msg="";
+  test = "";
   while (0 < Wire.available()) {
     char c = Wire.read();      /* receive byte as a character */
-    msg = msg + c;
+    test1 = (c);
+    test = test + test1;
+    Serial.print(c);           /* print the character */
   }
-  Serial.println("Message recieved is:");
-  Serial.println(msg);
-  if (msg == "TurnOnLED") {
-    digitalWrite(LED_BUILTIN, HIGH);
-
-  }
-  if (msg == "TurnOffLED") {
-    digitalWrite(LED_BUILTIN, LOW);
-
-  }
-
-
   Serial.println();             /* to newline */
+  Serial.print(test);
 }
 
 // function that executes whenever data is requested from master
 void requestEvent() {
-  Wire.write("Message recieved! Thank you!");  /*send string on request */
+  Wire.write("Hello NodeMCU");  /*send string on request */
 }
